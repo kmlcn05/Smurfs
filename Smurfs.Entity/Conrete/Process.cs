@@ -11,5 +11,7 @@ namespace Smurfs.Entities.Conrete
         public int Id { get; set; }
         public string ProcessName { get; set; }
 
+        public List<Log> Logs { get; set; }
+
     }
 }

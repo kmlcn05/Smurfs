@@ -9,8 +9,9 @@ namespace Smurfs.Entities.Conrete
     public class Premium
     {
         public int Id { get; set; }
-        public User Users { get; set; }
+        //public User Users { get; set; }
         public decimal Amount { get; set; }
+        public List<User> Users { get; set; }
 
     }
 }

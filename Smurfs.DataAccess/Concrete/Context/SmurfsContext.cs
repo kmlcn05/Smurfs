@@ -16,6 +16,10 @@ namespace Smurfs.DataAccess.Concrete.Context
                 "Authentication Type:SQL Server Authentication;" +
                 "Login:sa; Password:DzdTech2022++");
         }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=.;Database=OrnekDb;integrated security =true;");
+        //}
 
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Call> Calls { get; set; }

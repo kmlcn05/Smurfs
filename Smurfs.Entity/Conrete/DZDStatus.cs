@@ -10,5 +10,7 @@ namespace Smurfs.Entities.Conrete
     {
         public int Id { get; set; }
         public string DZDStatusName { get; set; }
+
+        public List<Project> Project { get; set; }
     }
 }
