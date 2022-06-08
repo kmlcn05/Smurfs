@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Smurfs.DataAccess\Smurfs.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

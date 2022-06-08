@@ -1,0 +1,15 @@
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\bin\Debug\net6.0\Smurfs.Entities.deps.json
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\bin\Debug\net6.0\Smurfs.Entities.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\bin\Debug\net6.0\Smurfs.Entities.pdb
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\bin\Debug\net6.0\Smurfs.Core.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\bin\Debug\net6.0\Smurfs.Core.pdb
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.csproj.AssemblyReference.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.AssemblyInfoInputs.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.AssemblyInfo.cs
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.csproj.CoreCompileInputs.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.csproj.CopyComplete
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\refint\Smurfs.Entities.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\Smurfs.Entities.pdb
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Entity\obj\Debug\net6.0\ref\Smurfs.Entities.dll

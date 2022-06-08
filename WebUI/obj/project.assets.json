@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\": {}
+    "C:\\Users\\HAKAN\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\HAKAN\\Documents\\GitHub\\Smurfs1\\WebUI\\WebUI.csproj",
       "projectName": "WebUI",
-      "projectPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\WebUI.csproj",
-      "packagesPath": "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\obj\\",
+      "projectPath": "C:\\Users\\HAKAN\\Documents\\GitHub\\Smurfs1\\WebUI\\WebUI.csproj",
+      "packagesPath": "C:\\Users\\HAKAN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HAKAN\\Documents\\GitHub\\Smurfs1\\WebUI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Kemalcan CEYLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HAKAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,0 +1,14 @@
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\bin\Debug\net6.0\Smurfs.Core.deps.json
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\bin\Debug\net6.0\Smurfs.Core.runtimeconfig.json
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\bin\Debug\net6.0\Smurfs.Core.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\bin\Debug\net6.0\Smurfs.Core.pdb
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.csproj.AssemblyReference.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.AssemblyInfoInputs.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.AssemblyInfo.cs
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.csproj.CoreCompileInputs.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\refint\Smurfs.Core.dll
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.pdb
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\Smurfs.Core.genruntimeconfig.cache
+C:\Users\HAKAN\Documents\GitHub\Smurfs1\Smurfs.Core\obj\Debug\net6.0\ref\Smurfs.Core.dll
