@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\Smurfs.Entity.csproj": {}
+    "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\Smurfs.Entity.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\Smurfs.Entity.csproj": {
+    "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\Smurfs.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\Smurfs.Entity.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\Smurfs.Entity.csproj",
         "projectName": "Smurfs.Entity",
-        "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\Smurfs.Entity.csproj",
+        "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\Smurfs.Entity.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EfDrCw4HUh4RrKPcqCXd+g6jWxz/9Aq0eFOD7AnlRL5WGMtVPQgE6flTmqetRJg4t4EUFNKrJH+0vBv85rDhsA==",
+  "dgSpecHash": "3Kn2xP0s7ooQu/Q9/Uiht9nGW9Y8Dz3bsI6pLfGGo5FuVxhkHqZR19KaUzN9IW5w1GATxEFIDfFgasLbMYdTpw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Core\\Smurfs.Core.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

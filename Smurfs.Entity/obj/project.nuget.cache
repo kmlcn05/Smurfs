@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iYGSalxcR+PmaPx//2h+qIgm5Mg4pzf4K4sJfAhVzx3/EsZWKKGFu7JX8/1UZn7FjezPlh8I2NhSWdBAySDBdg==",
+  "dgSpecHash": "6G3u7eCKhvEMDWWzJ61KphrCrM8AwKpkmMbqMZg1cAFeixP2pFMYACUgbAsM99/o3krVmC5eXvxiuFACfAZzjg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Entity\\Smurfs.Entity.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Entity\\Smurfs.Entity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.identitymodel.logging\\1.1.5\\microsoft.identitymodel.logging.1.1.5.nupkg.sha512",

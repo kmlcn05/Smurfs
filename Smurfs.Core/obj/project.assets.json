@@ -5766,11 +5766,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Core\\Smurfs.Core.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
       "projectName": "Smurfs.Core",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Core\\Smurfs.Core.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Core\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

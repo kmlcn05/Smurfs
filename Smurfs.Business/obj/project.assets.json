@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Business\\Smurfs.Business.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Business\\Smurfs.Business.csproj",
       "projectName": "Smurfs.Business",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Business\\Smurfs.Business.csproj",
+      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Business\\Smurfs.Business.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs\\Smurfs.Business\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
