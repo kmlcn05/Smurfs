@@ -9,7 +9,7 @@ namespace Smurfs.Entities.Conrete
     public class Call
     {
         public int Id { get; set; }
-        public int BankId { get; set; }
+        public Bank Bank { get; set; }
         public string JiraProjectNo { get; set; }
         public string JiraTaskNo { get; set; }
         public string JiraProjectName { get; set; }
@@ -18,8 +18,8 @@ namespace Smurfs.Entities.Conrete
         public string CallDetails { get; set; }
         public string CallPriority { get; set; }
         public DateTime CallDate { get; set; }
-        public int CallStatusId { get; set; }
+        public CallStatus CallStatus { get; set; }
         public string Appointee { get; set; }
-        public int LogId { get; set; }
+        public Log Log { get; set; }
     }
 }

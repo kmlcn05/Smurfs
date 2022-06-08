@@ -10,20 +10,20 @@ namespace Smurfs.Entities.Conrete
     {
         public int Id { get; set; }
         public DateTime ProjectDate { get; set; }
-        public int BankId { get; set; }
+        public Bank Bank { get; set; }
         public string JiraProjectNo { get; set; }
         public string JiraTaskNo { get; set; }
         public string JiraProjectName { get; set; }
-        public int DZDStatusId { get; set; }
-        public int StatusId { get; set; }
-        public int DepartmentId { get; set; }
-        public int TeamId { get; set; }
+        public DZDStatus DZDStatus { get; set; }
+        public Status Status { get; set; }
+        public Department Department { get; set; }
+        public Team Team { get; set; }
         public string Developer { get; set; }
         public string Analyst { get; set; }
         public string TotalManDay { get; set; }
         public string DeveloperManDay { get; set; }
         public string AnalystManDay { get; set; }
         public string PmManDay { get; set; }
-        public string LogId { get; set; }
+        public Log Log { get; set; }
     }
 }
