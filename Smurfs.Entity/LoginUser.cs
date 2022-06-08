@@ -14,6 +14,6 @@ namespace Smurfs.Entity
         public string Name { get; set; }
         public bool IsActive { get; set; } = true;
 
-        public int sad { get; set; }
+        public int 123 { get; set; }
     }
 }

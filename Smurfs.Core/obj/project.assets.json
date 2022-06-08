@@ -5761,19 +5761,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
+      "projectUniqueName": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
       "projectName": "Smurfs.Core",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\Smurfs.Core\\obj\\",
+      "projectPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\Smurfs.Core\\Smurfs.Core.csproj",
+      "packagesPath": "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\Smurfs.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kemalcan CEYLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5824,12 +5824,26 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[5.0.0, 5.0.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

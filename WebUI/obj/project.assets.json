@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\Smurfs1\\WebUI\\WebUI.csproj",
+      "projectUniqueName": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\WebUI.csproj",
       "projectName": "WebUI",
-      "projectPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\WebUI\\WebUI.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\Smurfs1\\WebUI\\obj\\",
+      "projectPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\WebUI.csproj",
+      "packagesPath": "C:\\Users\\Kemalcan CEYLAN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kemalcan CEYLAN\\Desktop\\Smurfs\\Smurfs1\\WebUI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kemalcan CEYLAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }
