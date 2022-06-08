@@ -10,11 +10,9 @@ namespace Smurfs.Entities.Conrete
     {
         public int Id { get; set; }
         public DateTime Log_date { get; set; }
-        //public User Users { get; set; }
+        public User Users { get; set; }
         public string Page { get; set; }
         public Process process { get; set; }
-
-        public List<User> Users { get; set; }
         public List<Project> Project { get; set; }
     }
 }

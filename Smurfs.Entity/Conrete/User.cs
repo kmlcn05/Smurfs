@@ -19,7 +19,7 @@ namespace Smurfs.Entities.Conrete
         public UserGroup usergroup { get; set; }
         public Team team { get; set; }
         public Premium premium { get; set; }
-        public Log log { get; set; }
+        public List<Log> Logs { get; set; }
 
 
     }
