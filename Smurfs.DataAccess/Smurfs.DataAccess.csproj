@@ -22,8 +22,4 @@
     <ProjectReference Include="..\Smurfs.Entity\Smurfs.Entity.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
 </Project>

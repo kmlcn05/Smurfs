@@ -1,15 +1,15 @@
 ﻿using Smurfs.Core.Abstract;
+using Smurfs.Entities.Conrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smurfs.Entities.Conrete
+namespace Smurfs.DataAccess.Abstract
 {
-    public class CallStatus : IEntity
+    internal interface IUserDal : IEntityRepository<User>
     {
-        public int Id { get; set; }
-        public string CallStatusName { get; set; }
+
     }
 }

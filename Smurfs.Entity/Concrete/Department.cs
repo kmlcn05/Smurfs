@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Entities.Conrete
 {
-    public class Department
+    public class Department : IEntity
     {
         public int Id { get; set; }
         public string DepartmentName { get; set; }

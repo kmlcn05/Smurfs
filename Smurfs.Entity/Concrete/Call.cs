@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Smurfs.Core.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Entities.Conrete
 {
-    public class Call
+    public class Call : IEntity
     {
         public int Id { get; set; }
         public Bank Bank { get; set; }
