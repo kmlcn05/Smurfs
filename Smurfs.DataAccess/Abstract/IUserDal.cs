@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Smurfs.DataAccess.Abstract
 {
-    internal interface IUserDal : IEntityRepository<User>
+    public interface IUserDal : IEntityRepository<User>
     {
 
     }

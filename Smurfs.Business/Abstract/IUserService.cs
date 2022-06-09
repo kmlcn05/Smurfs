@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Business.Abstract
 {
-    internal interface IUserService
+    public interface IUserService
     {
 
     }
