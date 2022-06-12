@@ -10,6 +10,7 @@ namespace Smurfs.DataAccess.Abstract
 {
     public interface IUserDal : IEntityRepository<User>
     {
-
+        public bool UserLogin(String Mail, String Password);
+        
     }
 }

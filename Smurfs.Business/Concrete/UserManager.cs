@@ -1,4 +1,4 @@
-﻿using Smurfs.Business.Abstract;
+﻿using Smurfs.Business.Abstract; 
 using Smurfs.DataAccess.Abstract;
 using Smurfs.DataAccess.Concrete;
 using System;
@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Smurfs.Entities.Conrete;
 
 namespace Smurfs.Business.Concrete
 {
@@ -16,6 +17,11 @@ namespace Smurfs.Business.Concrete
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
+        }
+
+        public void UserLogged(User user,String mail,String password) 
+        {
+            _userDal.UserLogin( mail,password);
         }
     }
 }
