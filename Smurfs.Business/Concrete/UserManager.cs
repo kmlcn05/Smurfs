@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Smurfs.Entities.Conrete;
+using Core.Utilities.Results;
 
 namespace Smurfs.Business.Concrete
 {
@@ -23,5 +24,21 @@ namespace Smurfs.Business.Concrete
         {
             _userDal.UserLogin( mail,password);
         }
+
+        public IDataResult<Task<User>> GetUserById(int id)
+        {
+            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Id ==id)); 
+        }
+
+        public IDataResult<Task<User>> GetMail(string mail)
+        {
+            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Mail == mail));
+        }
+
+        public IDataResult<Task<User>> GetPassword(string password)
+        {
+            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Password == password));
+        }
+
     }
 }

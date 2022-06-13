@@ -10,6 +10,7 @@ namespace Smurfs.Core.Data.Concrete
 {
     public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
+        
     {
         public Task AddAsync(TEntity entity)
         {
@@ -36,7 +37,7 @@ namespace Smurfs.Core.Data.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate = null, params Expression<Func<TEntity, object>>[] includeProperties)
         {
             throw new NotImplementedException();
         }
