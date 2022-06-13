@@ -4,23 +4,13 @@ using WebUI.Models;
 
 namespace WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<LoginController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public LoginController(ILogger<LoginController> logger)
         {
             _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         public IActionResult Login()
