@@ -18,28 +18,29 @@ namespace Smurfs.DataAccess.Concrete
         {
             IQueryable<User> query = null;
 
-            try {
-            using (SmurfsContext context = new SmurfsContext())
+            try
             {
-                query = from u in context.Users
-                        where u.Mail == Mail && u.Password == Password
-                        select u;
+                using (SmurfsContext context = new SmurfsContext())
+                {
+                    query = from u in context.Users
+                            where u.Mail == Mail && u.Password == Password
+                            select u;
 
+                }
+                if (query.SingleOrDefault() != null)
+                {
+                    return true;
+                }
+
+
+                return false;
             }
-            if (query.SingleOrDefault() != null)
+            catch (Exception ex)
             {
-                return true;
+                Console.WriteLine(ex.Message);
             }
-
-
             return false;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
 
-            
         }
     }
 }

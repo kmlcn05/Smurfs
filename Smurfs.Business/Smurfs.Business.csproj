@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Smurfs.DataAccess\Smurfs.DataAccess.csproj" />
+    <ProjectReference Include="..\Smurfs.Entity\Smurfs.Entity.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Core.Abstract
 {
-    public interface IEntityRepository<T> where T : class, IEntity, new()
+    public interface IEntityRepository<T> 
+        where T : class, IEntity, new()
     {
         Task<T> GetAsync(Expression<Func<T, bool>> predicate = null,
             params Expression<Func<T, object>>[] includeProperties);
