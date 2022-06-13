@@ -12,14 +12,13 @@ namespace Smurfs.DataAccess.Concrete.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server Name:45.158.14.184; Initial Catalog=SmurfDb;" +
-                "Authentication Type:SQL Server Authentication;" +
-                "Login:sa; Password:DzdTech2022++");
+            optionsBuilder.UseSqlServer(@"Data Source=45.158.14.184;Initial Catalog = SmurfDb;User ID=sa; Password= DzdTech2022++");
+
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer(@"Server=.;Database=OrnekDb;integrated security =true;");
+        //    optionsBuilder.UseSqlServer(@"Server =.;Database=OrnekDb;integrated security =true;");
         //}
 
         public DbSet<Bank> Banks { get; set; }
