@@ -25,6 +25,6 @@ namespace Smurfs.Entities.Conrete
         public string DeveloperManDay { get; set; }
         public string AnalystManDay { get; set; }
         public string PmManDay { get; set; }
-        public Log Log { get; set; }
+        public List<Log> Log { get; set; }
     }
 }

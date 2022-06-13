@@ -158,12 +158,17 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int?>("ProcessId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UsersId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProcessId");
+
+                    b.HasIndex("ProjectId");
 
                     b.HasIndex("UsersId");
 
@@ -240,9 +245,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<string>("JiraTaskNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LogId")
-                        .HasColumnType("int");
-
                     b.Property<string>("PmManDay")
                         .HasColumnType("nvarchar(max)");
 
@@ -265,8 +267,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.HasIndex("DZDStatusId");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("LogId");
 
                     b.HasIndex("StatusId");
 
@@ -396,11 +396,17 @@ namespace Smurfs.DataAccess.Migrations
                         .WithMany("Logs")
                         .HasForeignKey("ProcessId");
 
+                    b.HasOne("Smurfs.Entities.Conrete.Project", "Project")
+                        .WithMany("Log")
+                        .HasForeignKey("ProjectId");
+
                     b.HasOne("Smurfs.Entities.Conrete.User", "Users")
                         .WithMany("Logs")
                         .HasForeignKey("UsersId");
 
                     b.Navigation("Process");
+
+                    b.Navigation("Project");
 
                     b.Navigation("Users");
                 });
@@ -419,10 +425,6 @@ namespace Smurfs.DataAccess.Migrations
                         .WithMany("Project")
                         .HasForeignKey("DepartmentId");
 
-                    b.HasOne("Smurfs.Entities.Conrete.Log", "Log")
-                        .WithMany("Project")
-                        .HasForeignKey("LogId");
-
                     b.HasOne("Smurfs.Entities.Conrete.Status", "Status")
                         .WithMany("Project")
                         .HasForeignKey("StatusId");
@@ -436,8 +438,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.Navigation("DZDStatus");
 
                     b.Navigation("Department");
-
-                    b.Navigation("Log");
 
                     b.Navigation("Status");
 
@@ -480,11 +480,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("Smurfs.Entities.Conrete.Log", b =>
-                {
-                    b.Navigation("Project");
-                });
-
             modelBuilder.Entity("Smurfs.Entities.Conrete.Premium", b =>
                 {
                     b.Navigation("Users");
@@ -493,6 +488,11 @@ namespace Smurfs.DataAccess.Migrations
             modelBuilder.Entity("Smurfs.Entities.Conrete.Process", b =>
                 {
                     b.Navigation("Logs");
+                });
+
+            modelBuilder.Entity("Smurfs.Entities.Conrete.Project", b =>
+                {
+                    b.Navigation("Log");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Status", b =>

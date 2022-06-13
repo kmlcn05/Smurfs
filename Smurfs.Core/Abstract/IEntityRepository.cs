@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Core.Abstract
 {
-    public interface IEntityRepository<T> 
-        where T : class, IEntity, new()
+    public interface IEntityRepository<T>
     {
-        Task<T> GetAsync(Expression<Func<T, bool>> predicate = null,
-            params Expression<Func<T, object>>[] includeProperties);
-
-        Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null,
-            params Expression<Func<T, object>>[] includeProperties);
-
-        Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
-        Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
-        Task<bool> CountAsync(Expression<Func<T, bool>> predicate);
+        Task<T> GetById(int id);
+        Task<List<T>> GetAll();
+        void Create(T entity);
+        Task CreateAsync(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

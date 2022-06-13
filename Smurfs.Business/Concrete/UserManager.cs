@@ -8,37 +8,37 @@ using System.Text;
 using System.Threading.Tasks;
 using Smurfs.Entities.Conrete;
 using Core.Utilities.Results;
+using Smurfs.Core.Abstract;
 
 namespace Smurfs.Business.Concrete
 {
     internal class UserManager : IUserService
     {
-        IUserDal _userDal;
-
-        public UserManager(IUserDal userDal)
+        private readonly IUnitOfWork _unitofwork;
+        public UserManager(IUnitOfWork unitofwork)
         {
-            _userDal = userDal;
+            _unitofwork = unitofwork;
         }
 
-        public void UserLogged(User user,String mail,String password) 
-        {
-            _userDal.UserLogin( mail,password);
-        }
+        //public void UserLogged(User user, String mail, String password)
+        //{
+        //    _unitofwork.UserLogin(mail, password);
+        //}
 
-        public IDataResult<Task<User>> GetUserById(int id)
-        {
-            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Id ==id)); 
-        }
+        //public IDataResult<Task<User>> GetUserById(int id)
+        //{
+        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Id == id));
+        //}
 
-        public IDataResult<Task<User>> GetMail(string mail)
-        {
-            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Mail == mail));
-        }
+        //public IDataResult<Task<User>> GetMail(string mail)
+        //{
+        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Mail == mail));
+        //}
 
-        public IDataResult<Task<User>> GetPassword(string password)
-        {
-            return new SuccessDataResult<Task<User>>(_userDal.GetAsync(c => c.Password == password));
-        }
+        //public IDataResult<Task<User>> GetPassword(string password)
+        //{
+        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Password == password));
+        //}
 
     }
 }
