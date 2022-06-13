@@ -127,6 +127,58 @@ namespace Smurfs.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BankId = table.Column<int>(type: "int", nullable: true),
+                    JiraProjectNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JiraTaskNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JiraProjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DZDStatusId = table.Column<int>(type: "int", nullable: true),
+                    StatusId = table.Column<int>(type: "int", nullable: true),
+                    DepartmentId = table.Column<int>(type: "int", nullable: true),
+                    TeamId = table.Column<int>(type: "int", nullable: true),
+                    Developer = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Analyst = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeveloperManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AnalystManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PmManDay = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Projects_Banks_BankId",
+                        column: x => x.BankId,
+                        principalTable: "Banks",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Projects_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Projects_DZDStatuses_DZDStatusId",
+                        column: x => x.DZDStatusId,
+                        principalTable: "DZDStatuses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Projects_Statuses_StatusId",
+                        column: x => x.StatusId,
+                        principalTable: "Statuses",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Projects_Teams_TeamId",
+                        column: x => x.TeamId,
+                        principalTable: "Teams",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -171,7 +223,8 @@ namespace Smurfs.DataAccess.Migrations
                     LogDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UsersId = table.Column<int>(type: "int", nullable: true),
                     Page = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProcessId = table.Column<int>(type: "int", nullable: true)
+                    ProcessId = table.Column<int>(type: "int", nullable: true),
+                    ProjectId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -180,6 +233,11 @@ namespace Smurfs.DataAccess.Migrations
                         name: "FK_Logs_Processes_ProcessId",
                         column: x => x.ProcessId,
                         principalTable: "Processes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Logs_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Logs_Users_UsersId",
@@ -227,64 +285,6 @@ namespace Smurfs.DataAccess.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProjectDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BankId = table.Column<int>(type: "int", nullable: true),
-                    JiraProjectNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JiraTaskNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JiraProjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DZDStatusId = table.Column<int>(type: "int", nullable: true),
-                    StatusId = table.Column<int>(type: "int", nullable: true),
-                    DepartmentId = table.Column<int>(type: "int", nullable: true),
-                    TeamId = table.Column<int>(type: "int", nullable: true),
-                    Developer = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Analyst = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TotalManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeveloperManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AnalystManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PmManDay = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LogId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Projects_Banks_BankId",
-                        column: x => x.BankId,
-                        principalTable: "Banks",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Projects_Departments_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Departments",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Projects_DZDStatuses_DZDStatusId",
-                        column: x => x.DZDStatusId,
-                        principalTable: "DZDStatuses",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Projects_Logs_LogId",
-                        column: x => x.LogId,
-                        principalTable: "Logs",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Projects_Statuses_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Statuses",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Projects_Teams_TeamId",
-                        column: x => x.TeamId,
-                        principalTable: "Teams",
-                        principalColumn: "Id");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Calls_BankId",
                 table: "Calls",
@@ -306,6 +306,11 @@ namespace Smurfs.DataAccess.Migrations
                 column: "ProcessId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Logs_ProjectId",
+                table: "Logs",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Logs_UsersId",
                 table: "Logs",
                 column: "UsersId");
@@ -324,11 +329,6 @@ namespace Smurfs.DataAccess.Migrations
                 name: "IX_Projects_DZDStatusId",
                 table: "Projects",
                 column: "DZDStatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Projects_LogId",
-                table: "Projects",
-                column: "LogId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_StatusId",
@@ -362,10 +362,19 @@ namespace Smurfs.DataAccess.Migrations
                 name: "Calls");
 
             migrationBuilder.DropTable(
+                name: "CallStatus");
+
+            migrationBuilder.DropTable(
+                name: "Logs");
+
+            migrationBuilder.DropTable(
+                name: "Processes");
+
+            migrationBuilder.DropTable(
                 name: "Projects");
 
             migrationBuilder.DropTable(
-                name: "CallStatus");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Banks");
@@ -377,16 +386,7 @@ namespace Smurfs.DataAccess.Migrations
                 name: "DZDStatuses");
 
             migrationBuilder.DropTable(
-                name: "Logs");
-
-            migrationBuilder.DropTable(
                 name: "Statuses");
-
-            migrationBuilder.DropTable(
-                name: "Processes");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Premiums");

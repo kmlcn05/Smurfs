@@ -1,18 +1,27 @@
 ﻿using Smurfs.DataAccess.Abstract;
 using Smurfs.DataAccess.Abstract;
-using Smurfs.Core.Data.Concrete;
 
 using System;
 using Smurfs.DataAccess.Concrete.Context;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Smurfs.Entities.Conrete;
+using Smurfs.Core.Concrete;
 
 namespace Smurfs.DataAccess.Concrete
 {
     public class UserDal : EfEntityRepositoryBase<User>, IUserDal
 
     {
+        public UserDal(SmurfsContext context) : base(context)
+        {
+
+        }
+
+        private SmurfsContext SmurfsContext
+        {
+            get { return context as SmurfsContext; }
+        }
 
         public bool UserLogin(String Mail, String Password)
         {
@@ -20,13 +29,12 @@ namespace Smurfs.DataAccess.Concrete
 
             try
             {
-                using (SmurfsContext context = new SmurfsContext())
-                {
-                    query = from u in context.Users
-                            where u.Mail == Mail && u.Password == Password
-                            select u;
 
-                }
+                query = from u in SmurfsContext.Users
+                        where u.Mail == Mail && u.Password == Password
+                        select u;
+
+
                 if (query.SingleOrDefault() != null)
                 {
                     return true;
@@ -40,7 +48,6 @@ namespace Smurfs.DataAccess.Concrete
                 Console.WriteLine(ex.Message);
             }
             return false;
-
         }
     }
 }

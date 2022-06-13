@@ -10,16 +10,15 @@ namespace Smurfs.DataAccess.Concrete.Context
 {
     public class SmurfsContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Data Source=45.158.14.184;Initial Catalog = SmurfDb;User ID=sa; Password= DzdTech2022++");
-
-        }
-
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-        //    optionsBuilder.UseSqlServer(@"Server =.;Database=OrnekDb;integrated security =true;");
+        //    optionsBuilder.UseSqlServer(@"Data Source=45.158.14.184;Initial Catalog = SmurfDb;User ID=sa; Password= DzdTech2022++");
         //}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server =.;Database=OrnekDb;integrated security =true;");
+        }
 
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Call> Calls { get; set; }

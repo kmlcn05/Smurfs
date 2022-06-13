@@ -10,10 +10,10 @@ namespace Smurfs.Business.Abstract
 {
     public interface IUserService
     {
-        public void UserLogged(User user,String mail,String password);
+        //public void UserLogged(User user, string mail, string password);
 
-        IDataResult<Task<User>> GetUserById(int id);
-        IDataResult<Task<User>> GetMail(String mail);
-        IDataResult<Task<User>> GetPassword(String password);
+        //IDataResult<Task<User>> GetUserById(int id);
+        //IDataResult<Task<User>> GetMail(string mail);
+        //IDataResult<Task<User>> GetPassword(string password);
     }
 }
