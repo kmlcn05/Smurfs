@@ -3,15 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -27,7 +19,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseCors();
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
 app.UseAuthorization();
 
 app.MapControllerRoute(

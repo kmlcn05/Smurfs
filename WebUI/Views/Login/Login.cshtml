@@ -8,64 +8,59 @@
     ViewData["Title"] = "Login Page";
 }
 
-<script>
-    $(document).ready(function() {
-        const thisForm = document.getElementById('loginForm');
-        thisForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            var userInfo = {
-                mail: $('#inputEmail').val(),
-                password: $('#inputPassword').val()
-            }
-            console.log(userInfo);
-
-            let headers = new Headers();
-
-            headers.append('Access-Control-Allow-Origin', 'https://localhost');
-            headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-            headers.append('Access-Control-Allow-Headers', 'Authorization, Origin, X-Requested-With, Content-Type, Accept');
-
-
-            $.ajax({
-                url: 'https://localhost:7019/api/Login/Login',
-                type: 'POST',
-                contentType: "application/json; charset=utf-8",
-                dataType: 'json',
-                headers: headers,
-                data: JSON.stringify(userInfo),
-                success: function(data, textStatus, xhr) {
-                    console.log(data);
-                },
-                error: function(xhr, textStatus, errorThrown) {
-                    console.log('Error in Operation');
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            const thisForm = document.getElementById('loginForm');
+            thisForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                var userInfo = {
+                    mail: $('#inputEmail').val(),
+                    password: $('#inputPassword').val()
                 }
+                console.log(userInfo);
+
+                $.ajax({
+                    url: 'https://smuhammetulas.com/api/Login/Login',
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: 'json',
+                    data: JSON.stringify(userInfo),
+                    success: function(data, textStatus, xhr) {
+                        console.log(data);
+                    },
+                    error: function(xhr, textStatus, errorThrown) {
+                        console.log('Error in Operation');
+                    }
+                });
             });
         });
-    });
 
-</script>
+    </script>
+}
 
-@Html.AntiForgeryToken();
-<div class="container">
-    <div class="card card-container">
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-        <p id="profile-name" class="profile-name-card"></p>
-        <form class="form-signin" id="loginForm">
-            <span id="reauth-email" class="reauth-email"></span>
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-            <div id="remember" class="checkbox">
-            <label>
-            <input type="checkbox" value="remember-me"> Remember me
-            </label>
-            </div>
 
-            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">
-                Sign in
-            </button>
-        </form>
-        <a href="#" class="forgot-password">
-            Forgot the password?
-        </a>
+    @Html.AntiForgeryToken();
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" id="loginForm">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">
+                    Sign in
+                </button>
+            </form>
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div>
     </div>
-</div>
