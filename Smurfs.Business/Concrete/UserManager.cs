@@ -12,7 +12,7 @@ using Smurfs.Core.Abstract;
 
 namespace Smurfs.Business.Concrete
 {
-    internal class UserManager : IUserService
+    public class UserManager : IUserService
     {
         private readonly IUnitOfWork _unitofwork;
         public UserManager(IUnitOfWork unitofwork)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
+using Smurfs.DataAccess.Models;
 
 namespace Smurfs.API.Controllers
 {
@@ -8,11 +9,25 @@ namespace Smurfs.API.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        IUserService _userService;
+        ILoginService _loginService;
 
-        public LoginController(IUserService userService)
+        public LoginController(ILoginService loginService)
         {
-            _userService = userService;
+            _loginService = loginService;
+        }
+
+        [HttpPost("Login")]
+        public IActionResult Login(UserLoginModel user)
+        {
+            var userToLogin = _loginService.Login(user);
+            if(!userToLogin.Success)
+            {
+                return BadRequest(userToLogin);
+            }
+            else
+            {
+                return Ok(userToLogin);
+            }
         }
 
         //[HttpGet("getuser")]
