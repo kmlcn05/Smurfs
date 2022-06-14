@@ -14,6 +14,7 @@ namespace Smurfs.Entities.Conrete
         public User Users { get; set; }
         public string Page { get; set; }
         public Process Process { get; set; }
-        public Project Project { get; set; }
+        public Project Projects { get; set; }
+        public Call Calls { get; set; }
     }
 }

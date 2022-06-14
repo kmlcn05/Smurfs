@@ -21,6 +21,6 @@ namespace Smurfs.Entities.Conrete
         public DateTime CallDate { get; set; }
         public CallStatus CallStatus { get; set; }
         public string Appointee { get; set; }
-        public Log Log { get; set; }
+        public List<Log> Log { get; set; }
     }
 }
