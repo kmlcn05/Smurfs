@@ -7,23 +7,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Smurfs.DataAccess.Abstract;
+using Smurfs.Entities.Conrete;
 
 namespace Smurfs.Business.Concrete
 {
     public class ProjectManager:IProjectService
     {
 
-        private readonly IProjectService _projectService;
-        public ProjectManager(ProjectManager projectService)
+        private readonly IProjectDal _projectDal;
+        public ProjectManager(ProjectDal projectDal)
         {
-            _projectService = projectService;
+            _projectDal = projectDal;
         }
-        public void SaveProject(ProjectModel project)
+        public void SaveProject(Project project)
         {
-            var recordedProject = _projectService.GetProjectById(project.Id);
-            if (recordedProject != null)
+            var recordedProject = _projectDal.GetProjectById(project.Id);
+            if (recordedProject == null)
             {
-                _projectService.SaveProject(project);
+                _projectDal.SaveProject(project);
             }
             else
             {
@@ -32,12 +34,12 @@ namespace Smurfs.Business.Concrete
 
         }
         
-        public void UpdateProject(ProjectModel project)
+        public void UpdateProject(Project project)
         {
-            var recordedProject = _projectService.GetProjectById(project.Id);
+            var recordedProject = _projectDal.GetProjectById(project.Id);
             if (project != null)
             {
-                _projectService.UpdateProject(project);
+                _projectDal.UpdateProject(project);
             }
             else
             {
@@ -47,10 +49,10 @@ namespace Smurfs.Business.Concrete
         }
         public void DeleteProject(long projectId)
         {
-            var project = _projectService.GetProjectById(projectId);
+            var project = _projectDal.GetProjectById(projectId);
             if (project != null)
             {
-                _projectService.DeleteProject(project);
+                _projectDal.DeleteProject(project);
             }
             else
             {
