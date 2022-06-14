@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Smurfs.API.Helpers;
+﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
 using Smurfs.DataAccess.Models;
 
