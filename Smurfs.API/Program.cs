@@ -27,6 +27,15 @@ builder.Services.AddSession(options =>
     }
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("EnableCORS", builder =>
+    {
+        builder.WithOrigins().AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true) // allow any origin
+       .AllowCredentials().Build();
+    });
+});
+
 builder.Services.AddDistributedMemoryCache();
 
 var app = builder.Build();
@@ -38,9 +47,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors();
 
 app.UseSession();
 

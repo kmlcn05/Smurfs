@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Smurfs.API.Helpers;
 using Smurfs.Business.Abstract;
@@ -6,6 +7,7 @@ using Smurfs.DataAccess.Models;
 
 namespace Smurfs.API.Controllers
 {
+    [EnableCors("SiteCorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
