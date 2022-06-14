@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Smurfs.API.Helpers;
 using Smurfs.Business.Abstract;
 
 namespace Smurfs.API.Controllers
@@ -14,6 +15,24 @@ namespace Smurfs.API.Controllers
         {
             _userService = userService;
         }
+
+        //Session Kullanımına örnek.
+
+        //[HttpPost("login-user")]
+        //public IActionResult LoginUser(string email, string password)
+        //{
+        //    //Servis çağırımı yapılır başarılı sonuç dönderse aşağıdaki gibi kullanıcı sessiona alınır.
+
+        //    object user = new();
+
+        //    //Sessiona Kullanıcı Ekler.
+        //    HttpContext.Session.SetObject("loginUser", user);
+
+        //    //Sessiondaki Kullanıcıyı Getirir.
+        //    var loggedUser = HttpContext.Session.GetObject<object>("loginUser");
+
+        //    return Ok();
+        //}
 
         //[HttpGet("getuser")]
         //public IActionResult GetUserById(int id)
