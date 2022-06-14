@@ -15,8 +15,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SmurfsContext>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IUserService, UserManager>();
-builder.Services.AddTransient<IBankService, BankManager>();
+builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<IBankService, BankManager>();
+builder.Services.AddScoped<ILoginService, LoginManager>();
 
 builder.Services.AddSession(options =>
     {
