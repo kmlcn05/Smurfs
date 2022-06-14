@@ -12,7 +12,9 @@ namespace Smurfs.Entities.Conrete
         public int Id { get; set; }
         //public User Users { get; set; }
         public decimal Amount { get; set; }
-        public List<User> Users { get; set; }
+        public DateTime PremiumDate { get; set; }
+
+        public User Users { get; set; }
 
     }
 }
