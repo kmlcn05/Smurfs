@@ -25,19 +25,19 @@ namespace Smurfs.DataAccess.Concrete
         {
             using var context = new SmurfsContext();
             context.Add<Project>(project);
-            context.SaveChanges();  
+            context.SaveChanges();            
         }
         public void UpdateProject(Project project)
         {
             using var context = new SmurfsContext();
             context.Update<Project>(project);
-            context.SaveChanges();
+            context.SaveChanges();            
         }
         public void DeleteProject(Project project)
         {
             using var context = new SmurfsContext();
             context.Remove<Project>(project);
-            context.SaveChanges();
+            context.SaveChanges();            
         }
     }
 }
