@@ -2,6 +2,7 @@
 using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.DataAccess.Models;
+using Smurfs.Entities.Conrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,17 @@ namespace Smurfs.Business.Concrete
         {
             _unitOfWork = unitOfWork;
         }
-        public IDataResult<UserLoginModel> Login(UserLoginModel user)
+        public IDataResult<User> Login(UserLoginModel user)
         {
-            var userToCheck = _unitOfWork.User.Get(u => u.Mail == user.Mail && u.Password == user.Password);
+            var userToCheck = _unitOfWork.User.Get(u => u.Mail == user.Mail && u.Password == user.Password );
+            
             if(userToCheck == null)
             {
-                return new ErrorDataResult<UserLoginModel>("Wrong password or Mail");
+                return new ErrorDataResult<User>("Wrong password or Mail");
             }
-            return new SuccessDataResult<UserLoginModel>("Login is successful");
+            return new SuccessDataResult<User>(userToCheck, "Login is successful");
+
+            
 
         }
     }
