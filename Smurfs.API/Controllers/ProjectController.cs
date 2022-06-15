@@ -61,6 +61,12 @@ namespace Smurfs.API.Controllers
                     _projectService.DeleteProject(projectId);
                     return Ok("Silindi");
                 }
-        
+
+            [HttpPost]
+                public IActionResult Calculate([FromBody] long projectId)
+                {
+                    _projectService.Calculate(projectId);
+                    return Ok("Hesaplamalar doğru şekilde yapıldı");
+                }
     }
 }
