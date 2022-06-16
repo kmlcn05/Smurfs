@@ -19,22 +19,27 @@ namespace Smurfs.API.Controllers
         [HttpPost("Login")]
         public IActionResult Login(UserLoginModel user)
         {
-            var userToLogin = _loginService.Login(user);
+            try
+            {
+                var userToLogin = _loginService.Login(user);
 
-            if (!userToLogin.Success)
+                if(userToLogin != null)
+                {
+                    HttpContext.Session.SetObject("loginUser", user);
+
+                    //Sessiondaki Kullanıcıyı Getirir.
+                    var loggedUser = HttpContext.Session.GetObject<object>("loginUser");
+
+                    return Ok(userToLogin);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch
             {
                 return BadRequest();
-            }
-            else
-            {
-
-                //Sessiona Kullanıcı Ekler.
-                HttpContext.Session.SetObject("loginUser", user);
-
-                //Sessiondaki Kullanıcıyı Getirir.
-                var loggedUser = HttpContext.Session.GetObject<object>("loginUser");
-
-                return Ok(userToLogin);
             }
         }
 
