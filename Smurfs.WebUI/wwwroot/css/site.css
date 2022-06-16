@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.logoutLblPos {
+    position: fixed;
+    right: 10px;
+    top: 5px;
+}
