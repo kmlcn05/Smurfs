@@ -18,15 +18,15 @@ namespace Smurfs.Business.Concrete
         {
             _unitOfWork = unitOfWork;
         }
-        public IDataResult<User> Login(UserLoginModel user)
+        public User Login(UserLoginModel user)
         {
             var userToCheck = _unitOfWork.User.Get(u => u.Mail == user.Mail && u.Password == user.Password );
             
             if(userToCheck == null)
             {
-                return new ErrorDataResult<User>("Wrong password or Mail");
+                throw new Exception("Wrong password or Mail");
             }
-            return new SuccessDataResult<User>(userToCheck, "Login is successful");
+            return userToCheck;
 
             
 

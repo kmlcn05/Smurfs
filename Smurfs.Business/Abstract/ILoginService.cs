@@ -11,6 +11,6 @@ namespace Smurfs.Business.Abstract
 {
     public interface ILoginService
     {
-        public IDataResult<User> Login(UserLoginModel user);
+        public User Login(UserLoginModel user);
     }
 }
