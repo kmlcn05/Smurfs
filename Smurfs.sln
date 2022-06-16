@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smurfs.Entity", "Smurfs.Ent
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smurfs.DataAccess", "Smurfs.DataAccess\Smurfs.DataAccess.csproj", "{2AE4262A-08FF-44B4-A7C7-328D679C6CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smurfs.Business", "Smurfs.Business\Smurfs.Business.csproj", "{0C3AB7CC-3471-4DD7-B346-10185C099E52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smurfs.Business", "Smurfs.Business\Smurfs.Business.csproj", "{0C3AB7CC-3471-4DD7-B346-10185C099E52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smurfs.API", "Smurfs.API\Smurfs.API.csproj", "{F56D8D33-40C1-447A-9632-62E080E206C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smurfs.API", "Smurfs.API\Smurfs.API.csproj", "{F56D8D33-40C1-447A-9632-62E080E206C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj", "{15291EA7-956C-489F-9874-E7375779270D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smurfs.WebUI", "Smurfs.WebUI\Smurfs.WebUI.csproj", "{1B71F594-EA30-4212-B3AE-91A2C4197E2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{F56D8D33-40C1-447A-9632-62E080E206C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F56D8D33-40C1-447A-9632-62E080E206C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F56D8D33-40C1-447A-9632-62E080E206C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15291EA7-956C-489F-9874-E7375779270D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15291EA7-956C-489F-9874-E7375779270D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15291EA7-956C-489F-9874-E7375779270D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15291EA7-956C-489F-9874-E7375779270D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B71F594-EA30-4212-B3AE-91A2C4197E2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B71F594-EA30-4212-B3AE-91A2C4197E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B71F594-EA30-4212-B3AE-91A2C4197E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B71F594-EA30-4212-B3AE-91A2C4197E2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

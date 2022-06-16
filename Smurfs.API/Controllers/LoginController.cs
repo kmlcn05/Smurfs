@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.API.Helpers;
 using Smurfs.Business.Abstract;
 using Smurfs.DataAccess.Models;
@@ -20,16 +19,30 @@ namespace Smurfs.API.Controllers
         [HttpPost("Login")]
         public IActionResult Login(UserLoginModel user)
         {
-            var userToLogin = _loginService.Login(user);
-            if(!userToLogin.Success)
+            try
             {
-                return BadRequest(userToLogin);
+                var userToLogin = _loginService.Login(user);
+
+                if(userToLogin != null)
+                {
+                    HttpContext.Session.SetObject("loginUser", user);
+
+                    //Sessiondaki Kullanıcıyı Getirir.
+                    var loggedUser = HttpContext.Session.GetObject<object>("loginUser");
+
+                    return Ok(userToLogin);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
-            else
+            catch
             {
-                return Ok(userToLogin);
+                return BadRequest();
             }
         }
+
 
         //Session Kullanımına örnek.
 
@@ -47,27 +60,6 @@ namespace Smurfs.API.Controllers
         //    var loggedUser = HttpContext.Session.GetObject<object>("loginUser");
 
         //    return Ok();
-        //}
-
-        //[HttpGet("getuser")]
-        //public IActionResult GetUserById(int id)
-        //{
-        //    var result = _userService.GetUserById(id);
-        //    return Ok(result);
-        //}
-
-        //[HttpGet("getmail")]
-        //public IActionResult GetMail(string mail)
-        //{
-        //    var result = _userService.GetMail(mail);
-        //    return Ok(result);
-        //}
-
-        //[HttpGet("getpassword")]
-        //public IActionResult GetPassword(string password)
-        //{
-        //    var result = _userService.GetPassword(password);
-        //    return Ok(result);
         //}
     }
 }

@@ -17,7 +17,7 @@ namespace Smurfs.DataAccess.Concrete.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server =(localdb)\MSSQLLocalDB;Database=OrnekDb;integrated security =true;");
+            optionsBuilder.UseSqlServer(@"Server =45.158.14.184;User Id=sa;password=DzdTech2022++;Database=SmurfDb;");
         }
 
         public DbSet<Bank> Banks { get; set; }
