@@ -18,6 +18,12 @@ namespace Smurfs.WebUI.Controllers
         public IActionResult Welcome()
         {
             ViewBag.username = HttpContext.Session.GetString("LoggedUserMail");
+
+            if(string.IsNullOrEmpty(ViewBag.username))
+            {
+                return View("Login");
+            }
+
             return View();
         }
 
@@ -28,9 +34,17 @@ namespace Smurfs.WebUI.Controllers
 
             if(account != null)
             {
-                HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
+                if(string.IsNullOrEmpty(account.Result.Name))
+                {
+                    ViewBag.msg = "Invalid User";
+                    return View("Login");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
 
-                return RedirectToAction("Welcome");
+                    return RedirectToAction("Welcome");
+                }
             }
             else
             {
@@ -38,5 +52,14 @@ namespace Smurfs.WebUI.Controllers
                 return View("Error");
             }
         }
+
+        [HttpPost]
+        public IActionResult LogoutUser()
+        {
+            HttpContext.Session.Clear();
+
+            return View("Login");
+        }
+
     }
 }
