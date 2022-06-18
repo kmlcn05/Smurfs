@@ -19,6 +19,7 @@ namespace Smurfs.DataAccess.Concrete
 
         private UserDal _userDal;
         private BankDal _bankDal;
+        private ProjectDal _projectDal;
         //private CallDal _callDal;
 
         public IUserDal User =>
@@ -26,6 +27,9 @@ namespace Smurfs.DataAccess.Concrete
 
         public IBankDal Bank =>
              _bankDal = _bankDal ?? new BankDal(_context);
+
+        public IProjectDal Project =>
+             _projectDal = _projectDal ?? new ProjectDal(_context);
 
         //public ICallDal Call =>
         //     _callDal = _callDal ?? new CallDal(_context);

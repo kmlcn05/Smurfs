@@ -12,6 +12,8 @@ namespace Smurfs.Core.Abstract
         IUserDal User { get; }
         IBankDal Bank { get; }
 
+        IProjectDal Project { get; }
+
         //ICallDal Call { get; }
         void Save();
         Task<int> SaveAsync();
