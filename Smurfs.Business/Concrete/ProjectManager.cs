@@ -41,11 +41,12 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Project.Delete(entity);
             _unitofwork.Save();
         }
-        public Project Calculate(long projectId)
+        public Project Calculate(int projectId)
         {
-            var project = _projectDal.GetProjectById(projectId);
-            if (project != null)
+            var projects = _unitofwork.Project.GetById(projectId);
+            if (projects != null)
             {
+                Project project = new Project();
                 project.ProjeVerimYuzdesi = (project.ProjeGerceklesen / project.ProjeKapasite) * 100;
                 project.ProjeVerimDegeri = (project.ProjeGerceklesen - project.ProjeKapasite);
 

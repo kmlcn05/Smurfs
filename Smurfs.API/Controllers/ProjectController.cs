@@ -63,7 +63,7 @@ namespace Smurfs.API.Controllers
                 }
 
             [HttpPost]
-                public IActionResult Calculate([FromBody] long projectId)
+                public IActionResult Calculate([FromBody] int projectId)
                 {
                     _projectService.Calculate(projectId);
                     return Ok("Hesaplamalar doğru şekilde yapıldı");
