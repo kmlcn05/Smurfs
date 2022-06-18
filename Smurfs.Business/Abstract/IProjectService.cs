@@ -1,19 +1,19 @@
-﻿using Smurfs.DataAccess.Models;
-using Smurfs.Entities.Conrete;
+﻿using Smurfs.Entities.Conrete;
 
 namespace Smurfs.Business.Abstract
 {
     public interface IProjectService
     {
-        public List<Project> GetAllProjects();
+        Task<List<Project>> GetAll();
 
-        public Project GetProjectById(long projectId);
-        public void SaveProject(Project project);
+        Task<Project> GetById(int id);
+        void Create(Project entity);
 
-        public void UpdateProject(Project project);
+        void Update(Project entity);
 
-        public void DeleteProject(long projectId);
+        void Delete(Project entity);
 
-        public Project Calculate(long projectId);
+        Project Calculate(long projectId);
+
     }
 }

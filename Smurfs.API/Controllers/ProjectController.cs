@@ -21,15 +21,15 @@ namespace Smurfs.API.Controllers
             [HttpGet]
             public async Task<IActionResult> GetAll()
             {
-                var Project = _projectService.GetAllProjects();
+                var Project = _projectService.GetAll();
                 return Ok(Project);
             }
 
             // GET api/<ProjectController>/5
             [HttpGet("{id}")]
-            public async Task<IActionResult> GetById(long Id)
+            public async Task<IActionResult> GetById(int Id)
             {
-                var p = _projectService.GetProjectById(Id);
+                var p = _projectService.GetById(Id);
                 if (p == null)
                 {
                     return NotFound();
@@ -42,7 +42,7 @@ namespace Smurfs.API.Controllers
             [HttpPost]
                 public IActionResult SaveProject([FromBody] Project project)
                 {
-                    _projectService.SaveProject(project);
+                    _projectService.Create(project);
                     return Ok(project);
                 }
 
@@ -50,15 +50,15 @@ namespace Smurfs.API.Controllers
             [HttpPut]
                 public IActionResult Update([FromBody] Project project)
                 {
-                    _projectService.UpdateProject(project);
+                    _projectService.Update(project);
                     return Ok(project);
                 }
 
             // DELETE api/<ProjectController>/5
             [HttpDelete]
-                public IActionResult Delete([FromBody] long projectId)
+                public IActionResult Delete([FromBody] Project project)
                 {
-                    _projectService.DeleteProject(projectId);
+                    _projectService.Delete(project);
                     return Ok("Silindi");
                 }
 

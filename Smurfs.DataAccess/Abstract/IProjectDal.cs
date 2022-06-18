@@ -1,23 +1,14 @@
-﻿using Smurfs.Entities.Conrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Smurfs.Core.Abstract;
+using Smurfs.Entities.Conrete;
 
 namespace Smurfs.DataAccess.Abstract
 {
-    public interface IProjectDal
+
+    public interface IProjectDal : IEntityRepository<Project>
     {
-        public List<Project>? GetAllProjects();
-
-        public Project? GetProjectById(long projectId);
-
-        public void SaveProject(Project project);
-
-        public void UpdateProject(Project project);
-
-        public void DeleteProject(Project project);
 
     }
+
+
+
 }

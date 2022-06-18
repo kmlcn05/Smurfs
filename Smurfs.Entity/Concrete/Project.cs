@@ -36,5 +36,6 @@ namespace Smurfs.Entities.Conrete
 
         public int ProjeVerimSonucu { get; set; }
 
+
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Smurfs.Business.Abstract;
-using Smurfs.DataAccess.Abstract;
-using Smurfs.DataAccess.Concrete;
+using Smurfs.Core.Abstract;
 using Smurfs.Entities.Conrete;
 
 namespace Smurfs.Business.Concrete
@@ -8,72 +7,39 @@ namespace Smurfs.Business.Concrete
     public class ProjectManager : IProjectService
     {
 
-        private readonly IProjectDal _projectDal;
-        public ProjectManager(ProjectDal projectDal)
+        private readonly IUnitOfWork _unitofwork;
+        public ProjectManager(IUnitOfWork unitofwork)
         {
-            _projectDal = projectDal;
+            _unitofwork = unitofwork;
         }
-        public List<Project> GetAllProjects()
+
+        public async Task<List<Project>> GetAll()
         {
-            return _projectDal.GetAllProjects();
-
-        }
-        public Project GetProjectById(long projectId)
-        {
-            var recordedProject = _projectDal.GetProjectById(projectId);
-            if (recordedProject != null)
-            {
-                return recordedProject;
-            }
-            else
-            {
-                throw new Exception("Project not found!");
-            }
-
-        }
-        public void SaveProject(Project project)
-        {
-            var recordedProject = _projectDal.GetProjectById(project.Id);
-            if (recordedProject == null)
-            {
-                _projectDal.SaveProject(project);
-
-
-            }
-            else
-            {
-                throw new Exception("Project already recorded!");
-            }
+            return await _unitofwork.Project.GetAll();
 
         }
 
-        public void UpdateProject(Project project)
+        public async Task<Project> GetById(int id)
         {
-            var recordedProject = _projectDal.GetProjectById(project.Id);
-            if (project != null)
-            {
-                _projectDal.UpdateProject(project);
-
-            }
-            else
-            {
-                throw new Exception("Project not found!");
-            }
-
+            return await _unitofwork.Project.GetById(id);
         }
-        public void DeleteProject(long projectId)
+
+        public void Create(Project entity)
         {
-            var project = _projectDal.GetProjectById(projectId);
-            if (project != null)
-            {
-                _projectDal.DeleteProject(project);
+            _unitofwork.Project.Create(entity);
+            _unitofwork.Save();
+        }
 
-            }
-            else
-            {
-                throw new Exception("Project not found!");
-            }
+        public void Update(Project entity)
+        {
+            _unitofwork.Project.Update(entity);
+            _unitofwork.Save();
+        }
 
+        public void Delete(Project entity)
+        {
+            _unitofwork.Project.Delete(entity);
+            _unitofwork.Save();
         }
         public Project Calculate(long projectId)
         {
@@ -104,5 +70,6 @@ namespace Smurfs.Business.Concrete
             }
 
         }
+
     }
 }
