@@ -41,7 +41,7 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Project.Delete(entity);
             _unitofwork.Save();
         }
-        public Project Calculate(int projectId)
+       /* public Project Calculate(int projectId)
         {
             var projects = _unitofwork.Project.GetById(projectId);
             if (projects != null)
@@ -70,7 +70,7 @@ namespace Smurfs.Business.Concrete
                 throw new Exception("Project Not found!");
             }
 
-        }
+        }*/
 
     }
 }

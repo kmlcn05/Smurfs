@@ -1,4 +1,5 @@
 ﻿using Smurfs.Core.Abstract;
+using Smurfs.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,6 @@ namespace Smurfs.Entities.Conrete
         public CallStatus CallStatus { get; set; }
         public string Appointee { get; set; }
         public List<Log> Log { get; set; }
+        public List<CallParameters> CallParameters { get; set; }
     }
 }
