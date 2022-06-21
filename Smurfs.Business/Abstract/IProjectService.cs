@@ -13,7 +13,7 @@ namespace Smurfs.Business.Abstract
 
         void Delete(Project entity);
 
-        public Project Calculate(int projectId);
+       // public Project Calculate(int projectId);
 
     }
 }

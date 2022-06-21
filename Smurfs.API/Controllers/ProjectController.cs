@@ -62,11 +62,11 @@ namespace Smurfs.API.Controllers
                     return Ok("Silindi");
                 }
 
-            [HttpPost]
-                public IActionResult Calculate([FromBody] int projectId)
-                {
-                    _projectService.Calculate(projectId);
-                    return Ok("Hesaplamalar doğru şekilde yapıldı");
-                }
+                //[HttpPost]
+                //public IActionResult Calculate([FromBody] int projectId)
+                //{
+                //    _projectService.Calculate(projectId);
+                //    return Ok("Hesaplamalar doğru şekilde yapıldı");
+                //}
     }
 }
