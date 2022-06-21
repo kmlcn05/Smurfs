@@ -1,4 +1,5 @@
 using Smurfs.WebUI.Services;
+using Smurfs.WebUI.Services.Interfaces;
 using Smurfs.WebUI.Services.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 
 var app = builder.Build();
 
@@ -22,6 +24,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseSession();
+
+//app.UseEndpoints(endpoints =>
+//{
+//    endpoints.MapControllers();
+//    endpoints.MapRazorPages();
+//});
 
 app.MapControllerRoute(
     name: "default",

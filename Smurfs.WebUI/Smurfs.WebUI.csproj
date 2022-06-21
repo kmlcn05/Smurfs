@@ -9,9 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.18" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Smurfs.DataAccess\Smurfs.DataAccess.csproj" />
     <ProjectReference Include="..\Smurfs.Entity\Smurfs.Entity.csproj" />
   </ItemGroup>
 

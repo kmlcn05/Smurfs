@@ -1,168 +1,114 @@
 ﻿
 @{
-    ViewData["Title"] = "Project";
+    ViewData["Title"] = "Bank";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Project</h1>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/781d88732d.js" crossorigin="anonymous"></script>
-
-
-    <title>ProjectScreen</title>
-    <style>
-
-
-        body {
-        background: #0083B0;
-        background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
-        background: linear-gradient(to right, #0083B0, #00B4DB);
-        min-height: 100vh;
-        }
-
-        .form-control::placeholder {
-            font-style: italic;
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-        .fontsize{
-            font-size: large;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container text-center text-white">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum veniam quam repellat minus aliquid ut.</p>
-</div>
-
-
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <div class="container">
-    <div class="row">
-        <div class="col-lg mx-auto">
-            <div class="card rounded-0 border-0 shadow">
-                <div class="card-body p-5">
-                    
-                    <!--  Bootstrap table-->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="fontsize ;" scope="col">#</th>
-                                    <th class="fontsize ;" scope="col">ProjectDate</th>
-                                    <th class="fontsize ;" scope="col">Bank</th>
-                                    <th class="fontsize ;" scope="col">JiraProjectNo</th>
-                                    <th class="fontsize ;" scope="col">JiraTaskNo</th>
-                                    <th class="fontsize ;" scope="col">JiraProjectName</th>
-                                    <th class="fontsize ;" scope="col">DZDStatus</th>
-                                    <th class="fontsize ;" scope="col">Status</th>
-                                    <th class="fontsize ;" scope="col">Department</th>
-                                    <th class="fontsize ;" scope="col">Team</th>
-                                    <th class="fontsize ;" scope="col">Developer</th>
-                                    <th class="fontsize ;" scope="col">Analyst</th>
-                                    <th class="fontsize ;" scope="col">TotalManDay</th>
-                                    <th class="fontsize ;" scope="col">DeveloperManDay</th>
-                                    <th class="fontsize ;" scope="col">AnalystManDay</th>
-                                    <th class="fontsize ;" scope="col">PmManDay</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>21.11.1994</td>
-                                    <td>Deniz</td>
-                                    <td>1233465</td>
-                                    <td>123123</td>
-                                    <td>Name</td>
-                                    <td>123123</td>
-                                    <td>12312</td>
-                                    <td>CallCenter</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                    <td>Avengers</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <br />
+    <p><button onclick="document.getElementById('newproject').style.display='block'" class="btn btn-success">New Bank</button></p>
 
-                    <!-- Add rows button-->
-                    <a class="btn btn-primary btn-block" id="insertRow" href="#">Add new row</a>
-                    <!-- <a class="btn btn-secondary btn-block" style ="float:right;" id="insertRow" href="#">Save</a> -->
-                </div>
-            </div>
-        </div>
+    <div style="width:90%; margin:0 auto;">
+        <table id="ProjectDatatable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th class="fontsize ;" scope="col">ProjectDate</th>
+                    <th class="fontsize ;" scope="col">Bank</th>
+                    <th class="fontsize ;" scope="col">JiraProjectNo</th>
+                    <th class="fontsize ;" scope="col">JiraTaskNo</th>
+                    <th class="fontsize ;" scope="col">JiraProjectName</th>
+                    <th class="fontsize ;" scope="col">DZDStatus</th>
+                    <th class="fontsize ;" scope="col">Status</th>
+                    <th class="fontsize ;" scope="col">Department</th>
+                    <th class="fontsize ;" scope="col">Team</th>
+                    <th class="fontsize ;" scope="col">Developer</th>
+                    <th class="fontsize ;" scope="col">Analyst</th> 
+                    <th class="fontsize ;" scope="col">TotalManDay</th>
+                    <th class="fontsize ;" scope="col">DeveloperManDay</th>
+                    <th class="fontsize ;" scope="col">AnalystManDay</th>
+                    <th class="fontsize ;" scope="col">PmManDay</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </div>
 
-<script >
-    $(function () {
 
-    // Start counting from the third row
-    var counter = 3;
+  <!-- NewProject Modal -->
+    <div id="newproject" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
+                <span onclick="document.getElementById('newproject').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <h1>New Project</h1>
+            </div>
+            <form method="post" asp-controller="Login" asp-action="LoginUser">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg mx-auto">
+                            <div class="card shadow">
+                                <div class="card-body p-5">
+                                    <!--  Bootstrap table-->
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="tblProjects" >
+                                            <thead>
+                                                <tr>
+                                                    <th class="fontsize ;" scope="col">ProjectDate</th>
+                                                    <th class="fontsize ;" scope="col">Bank</th>
+                                                    <th class="fontsize ;" scope="col">JiraProjectNo</th>
+                                                    <th class="fontsize ;" scope="col">JiraTaskNo</th>
+                                                    <th class="fontsize ;" scope="col">JiraProjectName</th>
+                                                    <th class="fontsize ;" scope="col">DZDStatus</th>
+                                                    <th class="fontsize ;" scope="col">Status</th>
+                                                    <th class="fontsize ;" scope="col">Department</th>
+                                                    <th class="fontsize ;" scope="col">Team</th>
+                                                    <th class="fontsize ;" scope="col">Developer</th>
+                                                    <th class="fontsize ;" scope="col">Analyst</th> 
+                                                    <th class="fontsize ;" scope="col">TotalManDay</th>
+                                                    <th class="fontsize ;" scope="col">DeveloperManDay</th>
+                                                    <th class="fontsize ;" scope="col">AnalystManDay</th>
+                                                    <th class="fontsize ;" scope="col">PmManDay</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
-    $("#insertRow").on("click", function (event) {
-        event.preventDefault();
+                                                    <tr>   
+                                            <td><input class="form-control rounded-0" type="date" id="ProjectDate" placeholder="ProjectDate"></td>
+                                            <td><dropdown class="btn btn-secondary dropdown-toggle" type="button"id="dropdownBankButton">Bank</td>
+                                            <td><input class="form-control rounded-0" type="text" id="JiraProjectNo" placeholder="JiraProjectNo"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="JiraTaskNo" placeholder="JiraTaskNo"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="JiraProjectName" placeholder="JiraProjectName"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="DZDStatus" placeholder="DZDStatus"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="Status" placeholder="Status"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="Department" placeholder="Department"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="Team" placeholder="Team"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="Developer" placeholder="Developer"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="Analyst" placeholder="Analyst"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="TotalManDay" placeholder="TotalManDay"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="DeveloperManDay" placeholder="DeveloperManDay"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="AnalystManDay" placeholder="AnalystManDay"></td>
+                                            <td><input class="form-control rounded-0" type="text" id="PmManDay" placeholder="PmManDay"></td>
+                                                     </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <button class="btn btn-lg btn-success btn-block" type="submit">Save</button>
+                                </div>                
+                            </div>
+                        </div>
+                    </div> 
+                </div>           
+            </form>                               
+        </div>
 
-        var newRow = $("<tr>");
-        var cols = '';
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/Project.js"></script>
 
-        // Table columns
-        cols += '<th scrope="row">' + counter + '</th>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="firstname" placeholder="ProjectDate"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="lastname" placeholder="Bank"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="JiraProjectNo"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="JiraTaskNo"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="JiraProjectName"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="DZDStatus"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Status"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Department"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Team"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Developer"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="Analyst"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="TotalManDay"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="DeveloperManDay"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="AnalystManDay"></td>';
-        cols += '<td><input class="form-control rounded-0" type="text" name="handle" placeholder="PmManDay"></td>';
-
-        cols += '<td><button class="btn btn-danger rounded-0" id ="deleteRow"><i class="fa fa-trash"></i></button</td>';
-        cols += '<td><button class="btn btn-success rounded-0" id ="saveRow" ><i class="fa-solid fa-floppy-disk"></i></i></button</td>';
-
-        // Insert the columns inside a row
-        newRow.append(cols);
-
-        // Insert the row inside a table
-        $("table").append(newRow);
-
-        // Increase counter after each row insertion
-        counter++;
-    });
-
-    // Remove row when delete btn is clicked
-    $("table").on("click", "#deleteRow", function (event) {
-        $(this).closest("tr").remove();
-        counter -= 1
-    });
-        // Save row when delete btn is clicked
-        $("table").on("click", "#saveRow", function (event) {
-            $(this).closest("tr").
-            counter -= 1
-        });
-});
-</script>
-
-</body>
-</html>
+}
 
