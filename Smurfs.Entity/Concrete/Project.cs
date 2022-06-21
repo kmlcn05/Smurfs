@@ -26,6 +26,5 @@ namespace Smurfs.Entities.Conrete
         public List<Log> Log { get; set; }
         public List<ProjectParameters> ProjectParameters { get; set; }
 
-
     }
 }

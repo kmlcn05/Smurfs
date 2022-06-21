@@ -18,6 +18,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IBankService, BankManager>();
 builder.Services.AddScoped<ILoginService, LoginManager>();
+builder.Services.AddScoped<IProjectService, ProjectManager>();
+
 
 builder.Services.AddSession(options =>
     {

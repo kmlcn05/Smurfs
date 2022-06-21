@@ -21,7 +21,7 @@ namespace Smurfs.API.Controllers
             [HttpGet]
             public async Task<IActionResult> GetAll()
             {
-                var Project = _projectService.GetAll();
+                var Project = await _projectService.GetAll();
                 return Ok(Project);
             }
 
@@ -29,7 +29,7 @@ namespace Smurfs.API.Controllers
             [HttpGet("{id}")]
             public async Task<IActionResult> GetById(int Id)
             {
-                var p = _projectService.GetById(Id);
+                var p = await _projectService.GetById(Id);
                 if (p == null)
                 {
                     return NotFound();
@@ -62,11 +62,13 @@ namespace Smurfs.API.Controllers
                     return Ok("Silindi");
                 }
 
+
                 //[HttpPost]
                 //public IActionResult Calculate([FromBody] int projectId)
                 //{
                 //    _projectService.Calculate(projectId);
                 //    return Ok("Hesaplamalar doğru şekilde yapıldı");
                 //}
+                
     }
 }
