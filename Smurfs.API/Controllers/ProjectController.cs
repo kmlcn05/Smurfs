@@ -26,7 +26,7 @@ namespace Smurfs.API.Controllers
         }
 
         // GET api/<ProjectController>/5
-        [HttpGet("GetByIdp")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> GetById(int Id)
         {
             var p = await _projectService.GetById(Id);
