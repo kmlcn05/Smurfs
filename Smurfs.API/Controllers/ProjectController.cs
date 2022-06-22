@@ -12,10 +12,10 @@ namespace Smurfs.API.Controllers
 
         private IProjectService _projectService;
 
-        public ProjectController(IProjectService projectService)
-        {
-            _projectService = projectService;
-        }
+            public ProjectController(IProjectService projectService)
+            {
+                _projectService = projectService;
+            }
 
         // GET: api/<ProjectController>
         [HttpGet("GetAll")]

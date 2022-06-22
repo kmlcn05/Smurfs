@@ -20,25 +20,32 @@ namespace Smurfs.Business.Concrete
             _unitofwork = unitofwork;
         }
 
-        //public void UserLogged(User user, String mail, String password)
-        //{
-        //    _unitofwork.UserLogin(mail, password);
-        //}
+        public void Create(User entity)
+        {
+            _unitofwork.User.Create(entity);
+            _unitofwork.Save();
+        }
 
-        //public IDataResult<Task<User>> GetUserById(int id)
-        //{
-        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Id == id));
-        //}
+        public void Delete(User entity)
+        {
+            _unitofwork.User.Delete(entity);
+            _unitofwork.Save();
+        }
 
-        //public IDataResult<Task<User>> GetMail(string mail)
-        //{
-        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Mail == mail));
-        //}
+        public async Task<List<User>> GetAll()
+        {
+            return await _unitofwork.User.GetAll();
+        }
 
-        //public IDataResult<Task<User>> GetPassword(string password)
-        //{
-        //    return new SuccessDataResult<Task<User>>(_unitofwork.GetAsync(c => c.Password == password));
-        //}
+        public async Task<User> GetById(int id)
+        {
+            return await _unitofwork.User.GetById(id);
+        }
 
+        public void Update(User entity)
+        {
+            _unitofwork.User.Update(entity);
+            _unitofwork.Save();
+        }
     }
 }
