@@ -14,14 +14,13 @@ namespace Smurfs.WebUI.Controllers
         {
             return View();
         }
-
-        public IActionResult Welcome()
+        public IActionResult Anasayfa()
         {
-            ViewBag.username = HttpContext.Session.GetString("LoggedUserMail");
+            ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
 
-            if(string.IsNullOrEmpty(ViewBag.username))
+            if (string.IsNullOrEmpty(ViewBag.Username))
             {
-                return View("Login");
+                return View("Anasayfa");
             }
 
             return View();
@@ -32,18 +31,18 @@ namespace Smurfs.WebUI.Controllers
         {
             var account = _loginService.LoginAsync(mail, password);
 
-            if(account != null)
+            if (account != null && password != null && mail != null)
             {
-                if(string.IsNullOrEmpty(account.Result.Name))
+                if (string.IsNullOrEmpty(account.Result.Name))
                 {
-                    ViewBag.msg = "Invalid User";
+                    ViewBag.msg = "*Geçersiz kullanıcı adı veya şifre";
                     return View("Login");
                 }
                 else
                 {
                     HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
-
-                    return RedirectToAction("Welcome");
+                    //ViewBag.Username = account.Result.Name + " " + account.Result.Surname;
+                    return RedirectToAction("Anasayfa");
                 }
             }
             else

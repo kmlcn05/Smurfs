@@ -12,13 +12,13 @@ namespace Smurfs.API.Controllers
 
         private IProjectService _projectService;
 
-        public ProjectController(IProjectService projectService)
-        {
-            _projectService = projectService;
-        }
+            public ProjectController(IProjectService projectService)
+            {
+                _projectService = projectService;
+            }
 
         // GET: api/<ProjectController>
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var Project = await _projectService.GetAll();
@@ -26,7 +26,7 @@ namespace Smurfs.API.Controllers
         }
 
         // GET api/<ProjectController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetById")]
         public async Task<IActionResult> GetById(int Id)
         {
             var p = await _projectService.GetById(Id);
@@ -39,7 +39,7 @@ namespace Smurfs.API.Controllers
         }
 
         // POST api/<ProjectController>/5
-        [HttpPost]
+        [HttpPost("Save")]
         public IActionResult SaveProject([FromBody] Project project)
         {
             _projectService.Create(project);
@@ -47,7 +47,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<ProjectController>/5
-        [HttpPut]
+        [HttpPut("Update")]
         public IActionResult Update([FromBody] Project project)
         {
             _projectService.Update(project);
@@ -55,18 +55,21 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<ProjectController>/5
-        [HttpDelete]
+        [HttpDelete("Delete")]
         public IActionResult Delete([FromBody] Project project)
         {
             _projectService.Delete(project);
             return Ok("Silindi");
         }
 
+
+        // CALCULATE api/<ProjectController>/5
         [HttpPost("Calculate")]
         public IActionResult Calculate([FromBody] int projectId)
         {
             _projectService.Calculate(projectId);
             return Ok("Hesaplamalar doğru şekilde yapıldı");
         }
+
     }
 }
