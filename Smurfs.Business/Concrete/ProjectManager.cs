@@ -42,7 +42,7 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Project.Delete(entity);
             _unitofwork.Save();
         }
-       public ProjectParameters Calculate(int projectId)
+        public ProjectParameters Calculate(int projectId)
         {
             var project = _unitofwork.Project.GetById(projectId);
             if (project != null)
