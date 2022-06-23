@@ -47,5 +47,6 @@ namespace Smurfs.Core.Concrete
         {
             context.Entry(entity).State = EntityState.Modified;
         }
+
     }
 }

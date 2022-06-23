@@ -10,6 +10,6 @@ namespace Smurfs.DataAccess.Abstract
 {
     public interface IBankDal: IEntityRepository<Bank>
     {
-
+        public Task<Bank> DeleteBank(int id);
     }
 }

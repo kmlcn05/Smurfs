@@ -61,5 +61,26 @@ namespace Smurfs.API.Controllers
             _bankService.Delete(Bank);
             return Ok("Silindi");
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Bank>> DeleteBank(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _bankService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"Bank with Id = {id} not found");
+                }
+
+                return await _bankService.DeleteBank(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
     }
 }

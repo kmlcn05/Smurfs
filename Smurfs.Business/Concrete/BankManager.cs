@@ -28,6 +28,11 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Save();
         }
 
+        public Task<Bank> DeleteBank(int id)
+        {
+            return _unitofwork.Bank.DeleteBank(id);
+        }
+
         public async Task<List<Bank>> GetAll()
         {
             return await _unitofwork.Bank.GetAll();
