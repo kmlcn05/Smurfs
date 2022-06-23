@@ -1,14 +1,22 @@
 
 var allData = null;
 $.ajax({
-    'url': "https://smuhammetulas.com/api/Project",
+    'url': "https://smuhammetulas.com/api/Project/GetAll",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
     allData = data;
-    $('#bankDatatable').dataTable({
+
+    for (var element of data) {
+        console.log(element);
+
+    }
+
+    $('#ProjectDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
+        "scrollX": true,
         "columns": [
             { "data": "id" },
             { "data": "projectDate" },
@@ -44,24 +52,33 @@ $.ajax({
 })
 
 
-//$(document).ready(function () {
-//    $('#ProjectDatatable').dataTable({
-//        scrollX: true,
-//    });
+$(document).ready(function () {
+    //$('#ProjectDatatable').dataTable({
+    //    scrollX: true,
+    //});
 
-//    $.ajax({
-//        'url': "https://smuhammetulas.com/api/Bank",
-//        'method': "GET",
-//        'contentType': 'application/json'
-//    }).done(function (data) {
-//        data.forEach(x => {
-//            $('#bankDropdown').append(`<option value="1">${x.bankName}</option>`)
-//        });       
-//    })
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/Bank",
+        'method': "GET",
+        'contentType': 'application/json'
+    }).done(function (data) {
+        data.forEach(x => {
+            $('#bankDropdown').append(`<option value="1">${x.bankName}</option>`)
+        });       
+    })
 
-//    //
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/DzdStatus",
+        'method': "GET",
+        'contentType': 'application/json'
+    }).done(function (data2) {
+        data2.forEach(x => {
+            $('#dzdstatusdropdown').append(`<option value="1">${x.bankName}</option>`)
+        });
+    })
 
-//});
+
+});
 
 //$.ajax({
 //    'url': "https://smuhammetulas.com/api/Project",
