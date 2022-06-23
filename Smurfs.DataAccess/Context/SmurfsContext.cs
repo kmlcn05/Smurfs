@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +24,14 @@ namespace Smurfs.DataAccess.Concrete.Context
         public DbSet<Bank> Banks { get; set; }
         public DbSet<Call> Calls { get; set; }
         public DbSet<CallStatus> CallStatus { get; set; }
+        public DbSet<CallParameters> CallParameters { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<DZDStatus> DZDStatuses { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Premium> Premiums { get; set; }
         public DbSet<Process> Processes { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectParameters> ProjectParameters { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<User> Users { get; set; }
