@@ -24,15 +24,29 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.Call.GetAll();
 
         }
+        public async Task<List<CallParameters>> GetAllParameters()
+        {
+            return await _unitofwork.CallParameters.GetAll();
+
+        }
 
         public async Task<Call> GetById(int id)
         {
             return await _unitofwork.Call.GetById(id);
         }
+        public async Task<CallParameters> GetByIdParameters(int id)
+        {
+            return await _unitofwork.CallParameters.GetById(id);
+        }
 
         public void Create(Call entity)
         {
             _unitofwork.Call.Create(entity);
+            _unitofwork.Save();
+        }
+        public void CreateParameters(CallParameters entity)
+        {
+            _unitofwork.CallParameters.Create(entity);
             _unitofwork.Save();
         }
 
@@ -41,10 +55,20 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Call.Update(entity);
             _unitofwork.Save();
         }
+        public void UpdateParameters(CallParameters entity)
+        {
+            _unitofwork.CallParameters.Update(entity);
+            _unitofwork.Save();
+        }
 
         public void Delete(Call entity)
         {
             _unitofwork.Call.Delete(entity);
+            _unitofwork.Save();
+        }
+        public void DeleteParameters(CallParameters entity)
+        {
+            _unitofwork.CallParameters.Delete(entity);
             _unitofwork.Save();
         }
         public CallParameters Calculate(int callId)

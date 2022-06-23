@@ -23,6 +23,7 @@ namespace Smurfs.Core.Abstract
         IDepartmentDal Department { get; }
         ICallStatusDal CallStatus { get; }
         ICallDal Call { get; }
+        ICallParametersDal CallParameters { get; }
 
 
         void Save();

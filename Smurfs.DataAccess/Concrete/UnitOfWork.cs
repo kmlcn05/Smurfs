@@ -20,6 +20,7 @@ namespace Smurfs.DataAccess.Concrete
         private UserDal _userDal;
         private BankDal _bankDal;
         private ProjectDal _projectDal;
+        //private ProjectParametersDal _projectParametersDal;
 
         private UserGroupDal _userGroupDal;
         private TeamDal _teamDal;
@@ -31,6 +32,7 @@ namespace Smurfs.DataAccess.Concrete
         private DepartmentDal _departmentDal;
         private CallStatusDal _callStatusDal;
         private CallDal _callDal;
+        private CallParametersDal _callParametersDal;
 
 
         public IUserDal User =>
@@ -62,9 +64,14 @@ namespace Smurfs.DataAccess.Concrete
 
         public IProjectDal Project =>
              _projectDal = _projectDal ?? new ProjectDal(_context);
+        //public IProjectParametersDal ProjectParameters =>
+         //_projectParametersDal = _projectParametersDal ?? new ProjectParametersDal(_context);
 
         public ICallDal Call =>
              _callDal = _callDal ?? new CallDal(_context);
+
+        public ICallParametersDal CallParameters =>
+             _callParametersDal = _callParametersDal ?? new CallParametersDal(_context);
 
         public void Dispose()
         {
