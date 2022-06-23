@@ -43,7 +43,7 @@ $(document).on('click', '.Delete', function (e) {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:44306/api/Bank/" + id,
+                url: "https://smuhammetulas.com/api/Bank/" + id,
                 type: "DELETE",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -104,7 +104,7 @@ $(document).on('click', '.Save', function () {
             bankname = $('#BankName').val() 
 
             $.ajax({
-                url: "https://localhost:44306/api/Bank",
+                url: "https://smuhammetulas.com/api/Bank",
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",

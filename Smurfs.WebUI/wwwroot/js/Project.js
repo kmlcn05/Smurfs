@@ -22,7 +22,7 @@ function reloadPage() {
 }
 
 $.ajax({
-    'url': "https://localhost:44306/api/Project/GetProjects",
+    'url': "https://smuhammetulas.com/api/Project/GetProjects",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
@@ -90,7 +90,7 @@ $(document).on('click', '.Delete', function (e) {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:44306/api/Project/" + id,
+                url: "https://smuhammetulas.com/Project/" + id,
                 type: "DELETE",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -136,7 +136,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:44306/api/Project/Save",
+                url: "https://smuhammetulas.com/api/Project/Save",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -180,7 +180,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:44306/api/Project/Update",
+                url: "https://smuhammetulas.com/Project/Update",
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
