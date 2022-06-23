@@ -11,8 +11,19 @@ namespace Smurfs.Core.Abstract
     {
         IUserDal User { get; }
         IBankDal Bank { get; }
+
+        IUserGroupDal UserGroup { get; }
+        ITeamDal Team { get; }   
+        IStatusDal Status { get; }
         IProjectDal Project { get; }
+        IProcessDal Process { get; }
+        IDZDStatusDal DZDStatus { get; }
+        IPremiumDal Premium { get; }    
+        ILogDal Log { get; }    
+        IDepartmentDal Department { get; }
+        ICallStatusDal CallStatus { get; }
         ICallDal Call { get; }
+
 
         void Save();
         Task<int> SaveAsync();
