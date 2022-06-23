@@ -1,5 +1,4 @@
 ﻿using Smurfs.Entities.Conrete;
-using Smurfs.Entity.Concrete;
 
 namespace Smurfs.Business.Abstract
 {
@@ -14,7 +13,6 @@ namespace Smurfs.Business.Abstract
 
         void Delete(Project entity);
 
-        public ProjectParameters Calculate(int projectId);
 
     }
 }
