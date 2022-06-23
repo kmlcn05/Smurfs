@@ -1,6 +1,5 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
-using Smurfs.Entities.Conrete;
 using Smurfs.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,48 +9,37 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Business.Concrete
 {
-    public class CallManager : ICallService
+    public class CallParametersManager : ICallParametersService
     {
-
         private readonly IUnitOfWork _unitofwork;
-        public CallManager(IUnitOfWork unitofwork)
+        public CallParametersManager(IUnitOfWork unitofwork)
         {
             _unitofwork = unitofwork;
         }
-
-        public async Task<List<Call>> GetAll()
+        public async Task<List<CallParameters>> GetAllParameters()
         {
-            return await _unitofwork.Call.GetAll();
+            return await _unitofwork.CallParameters.GetAll();
 
         }
-       
-
-        public async Task<Call> GetById(int id)
+        public async Task<CallParameters> GetByIdParameters(int id)
         {
-            return await _unitofwork.Call.GetById(id);
+            return await _unitofwork.CallParameters.GetById(id);
         }
-      
-
-        public void Create(Call entity)
+        public void CreateParameters(CallParameters entity)
         {
-            _unitofwork.Call.Create(entity);
+            _unitofwork.CallParameters.Create(entity);
             _unitofwork.Save();
         }
-       
-
-        public void Update(Call entity)
+        public void UpdateParameters(CallParameters entity)
         {
-            _unitofwork.Call.Update(entity);
+            _unitofwork.CallParameters.Update(entity);
             _unitofwork.Save();
         }
-      
-
-        public void Delete(Call entity)
+        public void DeleteParameters(CallParameters entity)
         {
-            _unitofwork.Call.Delete(entity);
+            _unitofwork.CallParameters.Delete(entity);
             _unitofwork.Save();
         }
-       
         public CallParameters Calculate(int callId)
         {
             var call = _unitofwork.Call.GetById(callId);
@@ -83,29 +71,6 @@ namespace Smurfs.Business.Concrete
 
         }
 
-        public Task<List<CallParameters>> GetAllParameters()
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<CallParameters> GetByIdParameters(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
+}
 }

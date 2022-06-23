@@ -31,6 +31,7 @@ builder.Services.AddScoped<ILogService, LogManager>();
 builder.Services.AddScoped<IDepartmentService, DepartmentManager>();
 builder.Services.AddScoped<ICallStatusService, CallStatusManager>();
 builder.Services.AddScoped<IUserService, UserManager>();
+builder.Services.AddScoped<ICallParametersService, CallParametersManager>();
 
 
 builder.Services.AddSession(options =>
