@@ -57,6 +57,7 @@ $(document).on('click', '.Delete', function (e) {
                 },
                 error: function (e) {
                     alert("Error please try again" + JSON.stringify(e));
+                    window.location.reload()
                 }
 
             })
