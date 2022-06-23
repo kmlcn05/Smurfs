@@ -24,13 +24,7 @@ namespace Smurfs.API.Controllers
             var Call = await _callService.GetAll();
             return Ok(Call);
         }
-        // GET: api/<CallParametersController>
-        [HttpGet("GetAllCallParameters")]
-        public async Task<IActionResult> GetAllParameters()
-        {
-            var CallParameters = await _callService.GetAllParameters();
-            return Ok(CallParameters);
-        }
+       
 
         // GET api/<CallController>/5
         [HttpGet("GetByIdCall")]
@@ -44,18 +38,7 @@ namespace Smurfs.API.Controllers
 
             return Ok(p);
         }
-        // GET api/<CallParametersController>/5
-        [HttpGet("GetByIdCallParameters")]
-        public async Task<IActionResult> GetByIdParameters(int Id)
-        {
-            var p = await _callService.GetByIdParameters(Id);
-            if (p == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(p);
-        }
+        
 
         // POST api/<CallController>
         [HttpPost("CreateCall")]
@@ -64,13 +47,7 @@ namespace Smurfs.API.Controllers
             _callService.Create(Call);
             return Ok(Call);
         }
-        // POST api/<CallParametersController>
-        [HttpPost("CreateCallParameters")]
-        public IActionResult CreateParameters([FromBody] CallParameters CallParameters)
-        {
-            _callService.CreateParameters(CallParameters);
-            return Ok(CallParameters);
-        }
+       
 
         // PUT api/<CallController>/5
         [HttpPut("UpdateCall")]
@@ -80,13 +57,7 @@ namespace Smurfs.API.Controllers
             return Ok(Call);
         }
 
-        // PUT api/<CallParametersController>/5
-        [HttpPut("UpdateCallParameters")]
-        public IActionResult UpdateParameters([FromBody] CallParameters CallParameters)
-        {
-            _callService.UpdateParameters(CallParameters);
-            return Ok(CallParameters);
-        }
+     
 
         // DELETE api/<CallController>/5
         [HttpDelete("DeleteCall")]
@@ -95,13 +66,7 @@ namespace Smurfs.API.Controllers
             _callService.Delete(Call);
             return Ok("Silindi");
         }
-        // DELETE api/<CallParametersController>/5
-        [HttpDelete("DeleteCallParameters")]
-        public IActionResult DeleteParameters([FromBody] CallParameters CallParameters)
-        {
-            _callService.DeleteParameters(CallParameters);
-            return Ok("Silindi");
-        }
+        
 
         // CALCULATE api/<CallController>/5
         [HttpPost("CalculateCall")]
