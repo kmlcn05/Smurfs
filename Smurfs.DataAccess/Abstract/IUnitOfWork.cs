@@ -24,6 +24,7 @@ namespace Smurfs.Core.Abstract
         ICallStatusDal CallStatus { get; }
         ICallDal Call { get; }
         ICallParametersDal CallParameters { get; }
+        IProjectParametersDal ProjectParameters { get; }
 
 
         void Save();

@@ -2,6 +2,7 @@
 using Smurfs.Entity.Concrete;
 using Smurfs.Entity.DTO_s;
 
+
 namespace Smurfs.Business.Abstract
 {
     public interface IProjectService
@@ -19,6 +20,5 @@ namespace Smurfs.Business.Abstract
         List<GetProjectsDto> GetProjectsDetails();
 
         Task<Project> DeleteProject(int id);
-
     }
 }

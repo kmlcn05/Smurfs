@@ -45,36 +45,7 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Project.Delete(entity);
             _unitofwork.Save();
         }
-        public ProjectParameters Calculate(int projectId)
-        {
-            var project = _unitofwork.Project.GetById(projectId);
-            if (project != null)
-            {
-                ProjectParameters projectparameter = new ProjectParameters();
-                projectparameter.ProjeVerimYuzdesi = (projectparameter.ProjeGerceklesen / projectparameter.ProjeKapasite) * 100;
-                projectparameter.ProjeVerimDegeri = (projectparameter.ProjeGerceklesen - projectparameter.ProjeKapasite);
-
-                if (projectparameter.ProjeVerimDegeri < 0)
-                {
-                    projectparameter.ProjeVerimDegeri = 0;
-                }
-                else
-                {
-                    projectparameter.ProjeVerimDegeri = projectparameter.ProjeVerimDegeri;
-                }
-                projectparameter.ProjeVerimSonucu = (projectparameter.ProjeVerimDegeri * projectparameter.ProjeCarpani);
-
-                ProjectParameters projecthesap = new ProjectParameters();
-                projecthesap = projectparameter;
-
-                return projecthesap;
-            }
-            else
-            {
-                throw new Exception("Project Not found!");
-            }
-
-        }
+        
 
         public List<GetProjectsDto> GetProjectsDetails()
         {
