@@ -1,5 +1,4 @@
-﻿
-var allData = null;
+﻿var allData = null;
 var id = null;
 var projectDate = null;
 var bank = null;
@@ -66,7 +65,6 @@ $.ajax({
                 "render": function (data, x, row) {
                     return "<button class='btn btn-info Update' data-id='" + row.id + "' >Update</button>";
                 }
-
             },
 
         ]
@@ -82,8 +80,6 @@ $.ajax({
         $('#Bank').append(`<option value="">${x.bankName}</option>`)
     });
 })
-
-
 
 
 $(document).on('click', '.Delete', function (e) {
@@ -103,6 +99,8 @@ $(document).on('click', '.Delete', function (e) {
                     //Yenile
                     alert("silindi");
                     window.location.reload()
+
+
                 },
                 error: function (e) {
                     alert("Error please try again" + JSON.stringify(e));
@@ -111,6 +109,7 @@ $(document).on('click', '.Delete', function (e) {
         }
     }
 });
+
 
 $(document).on('click', '.Save', function () {
 
@@ -133,7 +132,7 @@ $(document).on('click', '.Save', function () {
     console.log(bank);
 
     if (id == null) {
-        var Confirm = confirm("Kayýt yapýlsýn mý?");
+        var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
 
             $.ajax({
@@ -162,7 +161,7 @@ $(document).on('click', '.Save', function () {
                 }),
                 success: function () {
 
-                    alert("Kayýt Baþarýlý");
+                    alert("Kayıt Başarılı");
                     window.location.reload()
                 },
                 error: function () {
@@ -175,6 +174,8 @@ $(document).on('click', '.Save', function () {
         else {
             return false;
         }
+    }
+    else {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
@@ -221,6 +222,8 @@ $(document).on('click', '.Save', function () {
 
 });
 
+
+
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
@@ -262,8 +265,3 @@ $(document).on('click', '.Update', function (e) {
         $('#PmManDay').val(pmManDay).html();
     }
 });
-
-
-
-
-
