@@ -16,7 +16,6 @@ namespace Smurfs.Business.Abstract
 
         void Delete(Project entity);
 
-        public ProjectParameters Calculate(int projectId);
         List<GetProjectsDto> GetProjectsDetails();
 
         Task<Project> DeleteProject(int id);
