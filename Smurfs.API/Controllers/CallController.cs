@@ -68,13 +68,6 @@ namespace Smurfs.API.Controllers
         }
         
 
-        // CALCULATE api/<CallController>/5
-        [HttpPost("CalculateCall")]
-        public IActionResult Calculate([FromBody] int projectId)
-        {
-            _callService.Calculate(projectId);
-            return Ok("Hesaplamalar doğru şekilde yapıldı");
-        }
     }
 }
 
