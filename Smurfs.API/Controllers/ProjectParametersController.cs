@@ -7,12 +7,12 @@ namespace Smurfs.API.Controllers
 {
     public class ProjectParametersController : Controller
     {
-        {
-        private IProjectParametersService _ProjectParametersService;
+        
+        private IProjectParametersService _projectParametersService;
 
         public ProjectParametersController(IProjectParametersService projectParametersService)
         {
-            _ProjectParametersService = projectParametersService;
+            _projectParametersService = projectParametersService;
         }
 
         // GET: api/<ProjectParametersController>
@@ -20,7 +20,7 @@ namespace Smurfs.API.Controllers
         public async Task<IActionResult> GetAllParameters()
         {
             var ProjectParameters = await _projectParametersService.GetAllParameters();
-            return Ok(projectParameters);
+            return Ok(ProjectParameters);
         }
 
         // GET api/<ProjectParametersController>/5
