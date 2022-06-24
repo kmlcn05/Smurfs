@@ -1,10 +1,10 @@
 html {
-    background: url('https://www.dzdtech.com/wp-content/uploads/2022/05/business.jpg') no-repeat center center fixed;
+    /*background: url('https://www.dzdtech.com/wp-content/uploads/2022/05/business.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    font-size: 14px;
+    font-size: 14px;*/
 }
 
 @media (min-width: 768px) {
@@ -19,8 +19,8 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
-    background-image: url('https://www.dzdtech.com/wp-content/uploads/2022/05/business.jpg');
+    /*margin-bottom: 60px;
+    background-image: url('https://www.dzdtech.com/wp-content/uploads/2022/05/business.jpg');*/
 }
 
 .logoutLblPos {
