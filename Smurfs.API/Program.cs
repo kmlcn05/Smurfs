@@ -21,6 +21,17 @@ builder.Services.AddScoped<ILoginService, LoginManager>();
 builder.Services.AddScoped<IProjectService, ProjectManager>();
 builder.Services.AddScoped<ICallService, CallManager>();
 
+builder.Services.AddScoped<IUserGroupService, UserGroupManager>();
+builder.Services.AddScoped<ITeamService, TeamManager>();
+builder.Services.AddScoped<IStatusService, StatusManager>();
+builder.Services.AddScoped<IProcessService, ProcessManager>();
+builder.Services.AddScoped<IDZDStatusService,DZDStatusManager>();
+builder.Services.AddScoped<IPremiumService, PremiumManager>();
+builder.Services.AddScoped<ILogService, LogManager>();
+builder.Services.AddScoped<IDepartmentService, DepartmentManager>();
+builder.Services.AddScoped<ICallStatusService, CallStatusManager>();
+builder.Services.AddScoped<IUserService, UserManager>();
+
 
 builder.Services.AddSession(options =>
     {
