@@ -67,7 +67,6 @@ namespace Smurfs.API.Controllers
             return Ok("Silindi");
         }
         
-
     }
 }
 

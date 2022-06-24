@@ -27,6 +27,11 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Bank.Delete(entity);
             _unitofwork.Save();
         }
+        public Task<Bank> DeleteBank(int id)
+        {
+            return _unitofwork.Bank.DeleteBank(id);
+        }
+
 
         public async Task<List<Bank>> GetAll()
         {

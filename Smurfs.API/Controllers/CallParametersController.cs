@@ -76,6 +76,5 @@ namespace Smurfs.API.Controllers
             return Ok("Hesaplamalar doğru şekilde yapıldı");
         }
 
-
     }
 }
