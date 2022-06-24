@@ -1,6 +1,8 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.Business.Concrete
 {
@@ -24,15 +26,17 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.Project.GetById(id);
         }
 
-        public void Create(Project entity)
+        public void Create(GetProjectsDto entity)
         {
-            _unitofwork.Project.Create(entity);
+            var project = _unitofwork.Project.AddProject(entity);
+            _unitofwork.Project.Create(project);
             _unitofwork.Save();
         }
 
-        public void Update(Project entity)
+        public void Update(GetProjectsDto entity)
         {
-            _unitofwork.Project.Update(entity);
+            var project = _unitofwork.Project.AddProject(entity);
+            _unitofwork.Project.Update(project);
             _unitofwork.Save();
         }
 
@@ -41,27 +45,27 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Project.Delete(entity);
             _unitofwork.Save();
         }
-       /* public Project Calculate(int projectId)
+        public ProjectParameters Calculate(int projectId)
         {
-            var projects = _unitofwork.Project.GetById(projectId);
-            if (projects != null)
+            var project = _unitofwork.Project.GetById(projectId);
+            if (project != null)
             {
-                Project project = new Project();
-                project.ProjeVerimYuzdesi = (project.ProjeGerceklesen / project.ProjeKapasite) * 100;
-                project.ProjeVerimDegeri = (project.ProjeGerceklesen - project.ProjeKapasite);
+                ProjectParameters projectparameter = new ProjectParameters();
+                projectparameter.ProjeVerimYuzdesi = (projectparameter.ProjeGerceklesen / projectparameter.ProjeKapasite) * 100;
+                projectparameter.ProjeVerimDegeri = (projectparameter.ProjeGerceklesen - projectparameter.ProjeKapasite);
 
-                if (project.ProjeVerimDegeri < 0)
+                if (projectparameter.ProjeVerimDegeri < 0)
                 {
-                    project.ProjeVerimDegeri = 0;
+                    projectparameter.ProjeVerimDegeri = 0;
                 }
                 else
                 {
-                    project.ProjeVerimDegeri = project.ProjeVerimDegeri;
+                    projectparameter.ProjeVerimDegeri = projectparameter.ProjeVerimDegeri;
                 }
-                project.ProjeVerimSonucu = (project.ProjeVerimDegeri * project.ProjeCarpani);
+                projectparameter.ProjeVerimSonucu = (projectparameter.ProjeVerimDegeri * projectparameter.ProjeCarpani);
 
-                Project projecthesap = new Project();
-                projecthesap = project;
+                ProjectParameters projecthesap = new ProjectParameters();
+                projecthesap = projectparameter;
 
                 return projecthesap;
             }
@@ -70,7 +74,18 @@ namespace Smurfs.Business.Concrete
                 throw new Exception("Project Not found!");
             }
 
-        }*/
+        }
+
+        public List<GetProjectsDto> GetProjectsDetails()
+        {
+            var projects = _unitofwork.Project.GetProjectsDetails();
+            return projects;
+        }
+
+        public Task<Project> DeleteProject(int id)
+        {
+            return _unitofwork.Project.DeleteProject(id);
+        }
 
     }
 }

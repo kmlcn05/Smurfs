@@ -24,29 +24,34 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.Call.GetAll();
 
         }
+       
 
         public async Task<Call> GetById(int id)
         {
             return await _unitofwork.Call.GetById(id);
         }
+      
 
         public void Create(Call entity)
         {
             _unitofwork.Call.Create(entity);
             _unitofwork.Save();
         }
+       
 
         public void Update(Call entity)
         {
             _unitofwork.Call.Update(entity);
             _unitofwork.Save();
         }
+      
 
         public void Delete(Call entity)
         {
             _unitofwork.Call.Delete(entity);
             _unitofwork.Save();
         }
+       
         public CallParameters Calculate(int callId)
         {
             var call = _unitofwork.Call.GetById(callId);
@@ -76,6 +81,31 @@ namespace Smurfs.Business.Concrete
                 throw new Exception("Call Not found!");
             }
 
+        }
+
+        public Task<List<CallParameters>> GetAllParameters()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CallParameters> GetByIdParameters(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateParameters(CallParameters entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateParameters(CallParameters entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteParameters(CallParameters entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -11,16 +11,21 @@ namespace Smurfs.Business.Abstract
     public interface ICallService
     {
         Task<List<Call>> GetAll();
+       
 
         Task<Call> GetById(int id);
+       
 
         void Create(Call entity);
+       
 
         void Update(Call entity);
+       
 
         void Delete(Call entity);
-
-        public CallParameters Calculate(int callId);
        
+        
+
+
     }
 }

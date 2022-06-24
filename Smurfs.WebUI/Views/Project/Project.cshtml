@@ -1,35 +1,38 @@
-﻿
-@{
-    ViewData["Title"] = "Bank";
+﻿@{
+    ViewData["Title"] = "Project";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+ <link rel="stylesheet" href="~/css/Project.css">
 <div class="container">
     <br />
-    <p><button onclick="document.getElementById('newproject').style.display='block'" class="btn btn-success">New Bank</button></p>
+    <p><button onclick="document.getElementById('newproject').style.display='block'" class="btn btn-success">New Project</button></p>
 
     <div style="width:90%; margin:0 auto;">
         <table id="ProjectDatatable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th class="fontsize ;" scope="col">ProjectDate</th>
-                    <th class="fontsize ;" scope="col">Bank</th>
-                    <th class="fontsize ;" scope="col">JiraProjectNo</th>
-                    <th class="fontsize ;" scope="col">JiraTaskNo</th>
-                    <th class="fontsize ;" scope="col">JiraProjectName</th>
-                    <th class="fontsize ;" scope="col">DZDStatus</th>
-                    <th class="fontsize ;" scope="col">Status</th>
-                    <th class="fontsize ;" scope="col">Department</th>
-                    <th class="fontsize ;" scope="col">Team</th>
-                    <th class="fontsize ;" scope="col">Developer</th>
-                    <th class="fontsize ;" scope="col">Analyst</th> 
-                    <th class="fontsize ;" scope="col">TotalManDay</th>
-                    <th class="fontsize ;" scope="col">DeveloperManDay</th>
-                    <th class="fontsize ;" scope="col">AnalystManDay</th>
-                    <th class="fontsize ;" scope="col">PmManDay</th>
+                    <th>Id</th>
+                    <th>ProjectDate</th>
+                    <th>Bank</th>
+                    <th>JiraProjectNo</th>
+                    <th>JiraTaskNo</th>
+                    <th>JiraProjectName</th>
+                    <th>DZDStatus</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Team</th>
+                    <th>Developer</th>
+                    <th>Analyst</th>
+                    <th>TotalManDay</th>
+                    <th>DeveloperManDay</th>
+                    <th>AnalystManDay</th>
+                    <th>PmManDay</th>
+                    <th>Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
         </table>
@@ -37,78 +40,57 @@
 </div>
 
 
-  <!-- NewProject Modal -->
-    <div id="newproject" class="w3-modal">
-        <div class="w3-modal-content w3-animate-zoom">
-            <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
-                <span onclick="document.getElementById('newproject').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-                <h1>New Project</h1>
-            </div>
-            <form method="post" asp-controller="Login" asp-action="LoginUser">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg mx-auto">
-                            <div class="card shadow">
-                                <div class="card-body p-5">
-                                    <!--  Bootstrap table-->
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="tblProjects" >
-                                            <thead>
-                                                <tr>
-                                                    <th class="fontsize ;" scope="col">ProjectDate</th>
-                                                    <th class="fontsize ;" scope="col">Bank</th>
-                                                    <th class="fontsize ;" scope="col">JiraProjectNo</th>
-                                                    <th class="fontsize ;" scope="col">JiraTaskNo</th>
-                                                    <th class="fontsize ;" scope="col">JiraProjectName</th>
-                                                    <th class="fontsize ;" scope="col">DZDStatus</th>
-                                                    <th class="fontsize ;" scope="col">Status</th>
-                                                    <th class="fontsize ;" scope="col">Department</th>
-                                                    <th class="fontsize ;" scope="col">Team</th>
-                                                    <th class="fontsize ;" scope="col">Developer</th>
-                                                    <th class="fontsize ;" scope="col">Analyst</th> 
-                                                    <th class="fontsize ;" scope="col">TotalManDay</th>
-                                                    <th class="fontsize ;" scope="col">DeveloperManDay</th>
-                                                    <th class="fontsize ;" scope="col">AnalystManDay</th>
-                                                    <th class="fontsize ;" scope="col">PmManDay</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                    <tr>   
-                                            <td><input class="form-control rounded-0" type="date" id="ProjectDate" placeholder="ProjectDate"></td>
-                                            <td><dropdown class="btn btn-secondary dropdown-toggle" type="button"id="dropdownBankButton">Bank</td>
-                                            <td><input class="form-control rounded-0" type="text" id="JiraProjectNo" placeholder="JiraProjectNo"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="JiraTaskNo" placeholder="JiraTaskNo"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="JiraProjectName" placeholder="JiraProjectName"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="DZDStatus" placeholder="DZDStatus"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="Status" placeholder="Status"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="Department" placeholder="Department"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="Team" placeholder="Team"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="Developer" placeholder="Developer"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="Analyst" placeholder="Analyst"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="TotalManDay" placeholder="TotalManDay"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="DeveloperManDay" placeholder="DeveloperManDay"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="AnalystManDay" placeholder="AnalystManDay"></td>
-                                            <td><input class="form-control rounded-0" type="text" id="PmManDay" placeholder="PmManDay"></td>
-                                                     </tr>
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <button class="btn btn-lg btn-success btn-block" type="submit">Save</button>
-                                </div>                
-                            </div>
-                        </div>
-                    </div> 
-                </div>           
-            </form>                               
+<!-- NewProject Modal -->
+<div id="newproject" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom">
+        <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
+            <span onclick= "reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
+            <h1>New Project</h1>
         </div>
+            <div id="Form">
+                <form method="post">
 
-@section Scripts
-{
-    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/js/Project.js"></script>
+                        Project Date: <input type="date" value="2018-07-22" id="projectDate" placeholder="ProjectDate">
+                        <br>
+                        Bank: <select id="Bank"></select>
+                        <br>
+                        JiraProjectNo: <input type="text" id="JiraProjectNo" placeholder="JiraProjectNo">
+                        <br>
+                        JiraTaskNo: <input type="text" id="JiraTaskNo" placeholder="JiraTaskNo">
+                        <br>
+                        JiraName: <input type="text" id="JiraProjectName" placeholder="JiraProjectName">
+                        <br>
+                        DZDStatus: <input type="text" id="DZDStatus" placeholder="DZDStatus">
+                        <br>
+                        Status: <input type="text" id="Status" placeholder="Status">
+                        <br>
+                        Department: <input type="text" id="Department" placeholder="Department">
+                        <br>
+                        Team: <input type="text" id="Team" placeholder="Team">
+                        <br>
+                        Developer: <input type="text" id="Developer" placeholder="Developer">
+                        <br>
+                        Analyst: <input type="text" id="Analyst" placeholder="Analyst">
+                        <br>
+                        TotalManDay: <input type="text" id="TotalManDay" placeholder="TotalManDay">
+                        <br>
+                        DevManDay: <input type="text" id="DeveloperManDay" placeholder="DeveloperManDay">
+                        <br>
+                        AnalystMDay: <input type="text" id="AnalystManDay" placeholder="AnalystManDay">
+                        <br>
+                        PmManDay: <input type="text" id="PmManDay" placeholder="PmManDay">
+                        <br>
 
-}
+                        <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
+                </form>
+         </div>
+     </div>
+</div>
 
+    @section Scripts
+        {
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/Project.js"></script>
+
+    }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.Concrete;
 
 namespace Smurfs.API.Controllers
 {
@@ -23,6 +24,7 @@ namespace Smurfs.API.Controllers
             var Call = await _callService.GetAll();
             return Ok(Call);
         }
+       
 
         // GET api/<CallController>/5
         [HttpGet("GetByIdCall")]
@@ -36,6 +38,7 @@ namespace Smurfs.API.Controllers
 
             return Ok(p);
         }
+        
 
         // POST api/<CallController>
         [HttpPost("CreateCall")]
@@ -44,6 +47,7 @@ namespace Smurfs.API.Controllers
             _callService.Create(Call);
             return Ok(Call);
         }
+       
 
         // PUT api/<CallController>/5
         [HttpPut("UpdateCall")]
@@ -53,6 +57,8 @@ namespace Smurfs.API.Controllers
             return Ok(Call);
         }
 
+     
+
         // DELETE api/<CallController>/5
         [HttpDelete("DeleteCall")]
         public IActionResult Delete([FromBody] Call Call)
@@ -60,14 +66,7 @@ namespace Smurfs.API.Controllers
             _callService.Delete(Call);
             return Ok("Silindi");
         }
-
-        // CALCULATE api/<CallController>/5
-        [HttpPost("CalculateCall")]
-        public IActionResult Calculate([FromBody] int projectId)
-        {
-            _callService.Calculate(projectId);
-            return Ok("Hesaplamalar doğru şekilde yapıldı");
-        }
+        
     }
 }
 
