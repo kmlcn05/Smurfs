@@ -21,5 +21,19 @@ namespace Smurfs.DataAccess.Concrete
         {
             get { return context as SmurfsContext; }
         }
+
+        public async Task<Bank> DeleteBank(int id)
+        {
+            var result = await SmurfsContext.Banks
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (result != null)
+            {
+                SmurfsContext.Banks.Remove(result);
+                await SmurfsContext.SaveChangesAsync();
+                return result;
+            }
+
+            return null;
+        }
     }
 }

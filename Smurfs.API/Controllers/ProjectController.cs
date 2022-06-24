@@ -2,6 +2,7 @@
 using Smurfs.Business.Abstract;
 using Smurfs.DataAccess.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.API.Controllers
 {
@@ -40,7 +41,7 @@ namespace Smurfs.API.Controllers
 
         // POST api/<ProjectController>/5
         [HttpPost("Save")]
-        public IActionResult SaveProject([FromBody] Project project)
+        public IActionResult SaveProject([FromBody] GetProjectsDto project)
         {
             _projectService.Create(project);
             return Ok(project);
@@ -48,7 +49,7 @@ namespace Smurfs.API.Controllers
 
         // PUT api/<ProjectController>/5
         [HttpPut("Update")]
-        public IActionResult Update([FromBody] Project project)
+        public IActionResult Update([FromBody] GetProjectsDto project)
         {
             _projectService.Update(project);
             return Ok(project);
@@ -64,6 +65,34 @@ namespace Smurfs.API.Controllers
 
 
         
+
+        [HttpGet("GetProjects")]
+        public IActionResult GetProjects()
+        {
+            var Project = _projectService.GetProjectsDetails();
+            return Ok(Project);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Project>> DeleteProject(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _projectService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"Project with Id = {id} not found");
+                }
+
+                return await _projectService.DeleteProject(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
 
     }
 }

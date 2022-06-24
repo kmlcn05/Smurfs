@@ -1,4 +1,7 @@
 ﻿using Smurfs.Entities.Conrete;
+using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
+
 
 namespace Smurfs.Business.Abstract
 {
@@ -7,12 +10,15 @@ namespace Smurfs.Business.Abstract
         Task<List<Project>> GetAll();
 
         Task<Project> GetById(int id);
-        void Create(Project entity);
+        void Create(GetProjectsDto entity);
 
-        void Update(Project entity);
+        void Update(GetProjectsDto entity);
 
         void Delete(Project entity);
 
+        public ProjectParameters Calculate(int projectId);
+        List<GetProjectsDto> GetProjectsDetails();
 
+        Task<Project> DeleteProject(int id);
     }
 }
