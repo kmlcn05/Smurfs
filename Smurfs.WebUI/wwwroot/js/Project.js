@@ -1,14 +1,43 @@
+﻿var allData = null;
+var id = null;
+var projectDate = null;
+var bank = null;
+var jiraProjectNo = null;
+var jiraTaskNo = null;
+var jiraProjectName = null;
+var dZDStatus = null;
+var status = null;
+var department = null;
+var team = null;
+var developer = null;
+var analyst = null;
+var totalManDay = null;
+var developerManDay = null;
+var analystManDay = null;
+var pmManDay = null;
 
-var allData = null;
+function reloadPage() {
+    document.getElementById('newproject').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
-    'url': "https://smuhammetulas.com/api/Project",
+    'url': "https://smuhammetulas.com/api/Project/GetProjects",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
     allData = data;
-    $('#bankDatatable').dataTable({
+
+    for (var element of data) {
+        console.log(element);
+
+    }
+
+    $('#ProjectDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
+        "scrollX": true,
         "columns": [
             { "data": "id" },
             { "data": "projectDate" },
@@ -33,91 +62,206 @@ $.ajax({
                 }
             },
             {
-                "render": function (data, row) {
-                    return "<button onclick= 'newbankupdate()' class= 'btn btn-info Update' id= 'Update'>Update</button>";
+                "render": function (data, x, row) {
+                    return "<button class='btn btn-info Update' data-id='" + row.id + "' >Update</button>";
                 }
-
             },
 
         ]
     })
 })
 
-
-//$(document).ready(function () {
-//    $('#ProjectDatatable').dataTable({
-//        scrollX: true,
-//    });
-
-//    $.ajax({
-//        'url': "https://smuhammetulas.com/api/Bank",
-//        'method': "GET",
-//        'contentType': 'application/json'
-//    }).done(function (data) {
-//        data.forEach(x => {
-//            $('#bankDropdown').append(`<option value="1">${x.bankName}</option>`)
-//        });       
-//    })
-
-//    //
-
-//});
-
-//$.ajax({
-//    'url': "https://smuhammetulas.com/api/Project",
-//    'method': "GET",
-//    'contentType': 'application/json'
-//}).done(function (data) {
-//    $('#ProjectDatatable').dataTable({
-//        "aaData": data,
-//        "columns": [
-//            { "data": "id" },
-//            { "data": "bankName" },
-
-//            {
-//                "render": function (data, row) { return "<button class='btn btn-danger Delete' data-id=('" + row.id + "'); >Delete</button>"; }
-//            },
-//            {
-//                "render": function (data, row) { return "<button  class='btn btn-info Update' > Update</button>"; }
-
-//            },
-
-//        ]
-//    })
-//})
-
-//to delete
-$(document).on('click', '.Delete', function () {
-
-    var Confirm = confirm("Are you sure, do you want to delete it?");
-    if (Confirm) {
-        var id = $(this).attr('data-id');
-        $.ajax({
-            url: "https://smuhammetulas.com/api/Bank",
-            type: "Delete",
-            dataType: "json",
-            data: {
-                "id": id,
-                "bankName": bankName
-            },
-            success: function () {
-
-                alert("silindi");
-                //reload jquery datatable
-                $customerDatatable.api().ajax.reload();
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Bank",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Bank').append(`<option value="">${x.bankName}</option>`)
+    });
+})
 
 
-            },
-            error: function () {
-                alert("Error please try again");
-            }
+$(document).on('click', '.Delete', function (e) {
+    if (allData && e.target && e.target.dataset && e.target.dataset.id) {
+        var id = e.target.dataset.id;
 
-        })
+        var Confirm = confirm("Are you sure, do you want to delete it?");
+        if (Confirm) {
 
-    }
-    else {
-        return false;
+            $.ajax({
+                url: "https://smuhammetulas.com/Project/" + id,
+                type: "DELETE",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+
+                    //Yenile
+                    alert("silindi");
+                    window.location.reload()
+
+
+                },
+                error: function (e) {
+                    alert("Error please try again" + JSON.stringify(e));
+                }
+            })
+        }
     }
 });
 
 
+$(document).on('click', '.Save', function () {
+
+    projectDate = $('#ProjectDate').val();
+    bank = $("#Bank option:selected").text()
+    jiraProjectNo = $('#JiraProjectNo').val();
+    jiraTaskNo = $('#JiraTaskNo').val();
+    jiraProjectName = $('#JiraProjectName').val();
+    dZDStatus = $('#DZDStatus').val();
+    status = $('#Status').val();
+    department = $('#Department').val();
+    team = $('#Team').val();
+    developer = $('#Developer').val();
+    analyst = $('#Analyst').val();
+    totalManDay = $('#TotalManDay').val();
+    developerManDay = $('#DeveloperManDay').val();
+    analystManDay = $('#AnalystManDay').val();
+    pmManDay = $('#PmManDay').val();
+
+    console.log(bank);
+
+    if (id == null) {
+        var Confirm = confirm("Kayıt yapılsın mı?");
+        if (Confirm) {
+
+            $.ajax({
+                url: "https://smuhammetulas.com/api/Project/Save",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+
+                    "projectDate": projectDate,
+                    "bank": bank,
+                    "jiraProjectNo": jiraProjectNo,
+                    "jiraTaskNo": jiraTaskNo,
+                    "jiraProjectName": jiraProjectName,
+                    "dZDStatus": dZDStatus,
+                    "status": status,
+                    "department": department,
+                    "team": team,
+                    "developer": developer,
+                    "analyst": analyst,
+                    "totalManDay": totalManDay,
+                    "developerManDay": developerManDay,
+                    "analystManDay": analystManDay,
+                    "pmManDay": pmManDay
+
+                }),
+                success: function () {
+
+                    alert("Kayıt Başarılı");
+                    window.location.reload()
+                },
+                error: function () {
+                    alert("Error please try again");
+                    window.location.reload()
+                }
+
+            })
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        var Confirm = confirm("Are you sure, do you want to update it?");
+        if (Confirm) {
+
+            $.ajax({
+                url: "https://smuhammetulas.com/Project/Update",
+                type: "PUT",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "id": id,
+                    "projectDate": projectDate,
+                    "bank": bank,
+                    "jiraProjectNo": jiraProjectNo,
+                    "jiraTaskNo": jiraTaskNo,
+                    "jiraProjectName": jiraProjectName,
+                    "dZDStatus": dZDStatus,
+                    "status": status,
+                    "department": department,
+                    "team": team,
+                    "developer": developer,
+                    "analyst": analyst,
+                    "totalManDay": totalManDay,
+                    "developerManDay": developerManDay,
+                    "analystManDay": analystManDay,
+                    "pmManDay": pmManDay
+                }),
+                success: function () {
+
+                    //Yenile
+                    alert("The record is updated.");
+                    window.location.reload()
+
+
+                },
+                error: function (e) {
+                    alert("Error please try again" + JSON.stringify(e));
+                    window.location.reload()
+                }
+
+            })
+
+        }
+    }
+
+});
+
+
+
+$(document).on('click', '.Update', function (e) {
+    if (allData && e.target && e.target.dataset && e.target.dataset.id) {
+        id = e.target.dataset.id;
+
+        projectDate = allData.find(x => x.id == parseInt(id)).projectDate;
+        bank = allData.find(x => x.id == parseInt(id)).bank;
+        jiraProjectNo = allData.find(x => x.id == parseInt(id)).jiraProjectNo;
+        jiraTaskNo = allData.find(x => x.id == parseInt(id)).jiraTaskNo;
+        jiraProjectName = allData.find(x => x.id == parseInt(id)).jiraProjectName;
+        dZDStatus = allData.find(x => x.id == parseInt(id)).dZDStatus;
+        status = allData.find(x => x.id == parseInt(id)).status;
+        department = allData.find(x => x.id == parseInt(id)).department;
+        team = allData.find(x => x.id == parseInt(id)).team;
+        developer = allData.find(x => x.id == parseInt(id)).developer;
+        analyst = allData.find(x => x.id == parseInt(id)).analyst;
+        totalManDay = allData.find(x => x.id == parseInt(id)).totalManDay;
+        developerManDay = allData.find(x => x.id == parseInt(id)).developerManDay;
+        analystManDay = allData.find(x => x.id == parseInt(id)).analystManDay;
+        pmManDay = allData.find(x => x.id == parseInt(id)).pmManDay;
+
+
+        document.getElementById('newproject').style.display = 'block';
+
+
+        $('#projectDate').val(projectDate);
+        $("#Bank option:selected").text(bank);
+        $('#JiraProjectNo').val(jiraProjectNo).html();
+        $('#JiraTaskNo').val(jiraTaskNo).html();
+        $('#JiraProjectName').val(jiraProjectName).html();
+        $('#DZDStatus').val(dZDStatus).html();
+        $('#Status').val(status).html();
+        $('#Department').val(department).html();
+        $('#Team').val(team).html();
+        $('#Developer').val(developer).html();
+        $('#Analyst').val(analyst).html();
+        $('#TotalManDay').val(totalManDay).html();
+        $('#DeveloperManDay').val(developerManDay).html();
+        $('#AnalystManDay').val(analystManDay).html();
+        $('#PmManDay').val(pmManDay).html();
+    }
+});

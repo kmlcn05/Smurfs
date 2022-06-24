@@ -14,5 +14,6 @@ namespace Smurfs.Business.Abstract
         void Create(Bank entity);
         void Update(Bank entity);
         void Delete(Bank entity);
+        Task<Bank> DeleteBank(int id);
     }
 }

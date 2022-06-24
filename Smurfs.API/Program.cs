@@ -20,7 +20,7 @@ builder.Services.AddScoped<IBankService, BankManager>();
 builder.Services.AddScoped<ILoginService, LoginManager>();
 builder.Services.AddScoped<IProjectService, ProjectManager>();
 builder.Services.AddScoped<ICallService, CallManager>();
-
+    
 builder.Services.AddScoped<IUserGroupService, UserGroupManager>();
 builder.Services.AddScoped<ITeamService, TeamManager>();
 builder.Services.AddScoped<IStatusService, StatusManager>();
