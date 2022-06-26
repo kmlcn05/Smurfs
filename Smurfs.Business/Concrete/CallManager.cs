@@ -2,6 +2,7 @@
 using Smurfs.Core.Abstract;
 using Smurfs.Entities.Conrete;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,18 +31,19 @@ namespace Smurfs.Business.Concrete
         {
             return await _unitofwork.Call.GetById(id);
         }
-      
 
-        public void Create(Call entity)
+        public void Create(GetCallDto entity)
         {
-            _unitofwork.Call.Create(entity);
-            _unitofwork.Save();
+            var call = _unitofwork.Call.AddCall(entity);
+            _unitofwork.Call.Create(call);
+            _unitofwork.Save();           
         }
        
 
-        public void Update(Call entity)
+        public void Update(GetCallDto entity)
         {
-            _unitofwork.Call.Update(entity);
+            var call = _unitofwork.Call.AddCall(entity);
+            _unitofwork.Call.Update(call);
             _unitofwork.Save();
         }
       
@@ -106,6 +108,17 @@ namespace Smurfs.Business.Concrete
         public void DeleteParameters(CallParameters entity)
         {
             throw new NotImplementedException();
+        }
+
+        public List<GetCallDto> GetCallDetails()
+        {
+            var call = _unitofwork.Call.GetCallDetails();
+            return call;
+        }
+
+        public Task<Call> DeleteCall(int id)
+        {
+            return _unitofwork.Call.DeleteCall(id);
         }
     }
 }
