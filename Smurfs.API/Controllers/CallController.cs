@@ -2,6 +2,7 @@
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.API.Controllers
 {
@@ -38,20 +39,20 @@ namespace Smurfs.API.Controllers
 
             return Ok(p);
         }
-        
+
 
         // POST api/<CallController>
         [HttpPost("CreateCall")]
-        public IActionResult Create([FromBody] Call Call)
+        public IActionResult Create([FromBody] GetCallDto call)
         {
-            _callService.Create(Call);
-            return Ok(Call);
+            _callService.Create(call);
+            return Ok(call);
         }
        
 
         // PUT api/<CallController>/5
         [HttpPut("UpdateCall")]
-        public IActionResult Update([FromBody] Call Call)
+        public IActionResult Update([FromBody] GetCallDto Call)
         {
             _callService.Update(Call);
             return Ok(Call);
@@ -66,7 +67,35 @@ namespace Smurfs.API.Controllers
             _callService.Delete(Call);
             return Ok("Silindi");
         }
-        
+
+        [HttpGet("GetCall")]
+        public IActionResult GetCall()
+        {
+            var Call = _callService.GetCallDetails();
+            return Ok(Call);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Call>> DeleteCall(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _callService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"ITSM with Id = {id} not found");
+                }
+
+                return await _callService.DeleteCall(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
+
     }
 }
 

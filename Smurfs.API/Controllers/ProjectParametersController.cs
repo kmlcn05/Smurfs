@@ -5,7 +5,10 @@ using Smurfs.Entity.Concrete;
 
 namespace Smurfs.API.Controllers
 {
-    public class ProjectParametersController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public class ProjectParametersController : ControllerBase
     {
         
         private IProjectParametersService _projectParametersService;

@@ -3,6 +3,7 @@ using Smurfs.Core.Concrete;
 using Smurfs.DataAccess.Abstract;
 using Smurfs.DataAccess.Concrete.Context;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,53 @@ namespace Smurfs.DataAccess.Concrete
         {
             get { return context as SmurfsContext; }
         }
+
+        public List<GetCallDto> GetCallDetails()
+        {
+
+            var result = from c in SmurfsContext.Calls
+                         join b in SmurfsContext.Banks
+                         on c.Bank.Id equals b.Id
+                         join cs in SmurfsContext.CallStatus
+                         on c.CallStatus.Id equals cs.Id                      
+                         select new GetCallDto
+                         { Id = c.Id, CallDate = c.CallDate, Bank = b.BankName, CallStatus = cs.CallStatusName };
+            return result.ToList();
+        }
+
+        public async Task<Call> DeleteCall(int id)
+        {
+            var result = await SmurfsContext.Calls
+                .FirstOrDefaultAsync(e => e.Id == id);
+            if (result != null)
+            {
+                SmurfsContext.Calls.Remove(result);
+                await SmurfsContext.SaveChangesAsync();
+                return result;
+            }
+
+            return null;
+        }
+
+        public Call AddCall(GetCallDto call)
+        {
+            var result = new Call();
+
+            result.Id = call.Id;
+            result.CallDate = call.CallDate;
+            result.Bank = SmurfsContext.Banks.Single(a => a.BankName == call.Bank);
+            result.CallStatus = SmurfsContext.CallStatus.Single(a => a.CallStatusName == call.CallStatus);
+            return result;
+        }
+
     }
+
+        
+
+        
+       
+
+
+    
 }
 
