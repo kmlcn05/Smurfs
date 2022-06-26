@@ -28,9 +28,8 @@ $.ajax({
 }).done(function (data) {
     allData = data;
 
-    for (var element of data) {
-        console.log(element);
-
+    for (var x of data) {
+        x.projectDate = x.projectDate.replace("T00:00:00", "")
     }
 
     $('#ProjectDatatable').dataTable({
@@ -40,7 +39,7 @@ $.ajax({
         "scrollX": true,
         "columns": [
             { "data": "id" },
-            { "data": "projectDate" },
+            { "data": "projectDate"},
             { "data": "bank" },
             { "data": "jiraProjectNo" },
             { "data": "jiraTaskNo" },
@@ -81,6 +80,46 @@ $.ajax({
     });
 })
 
+$.ajax({
+    'url': "https://smuhammetulas.com/api/DZDStatus",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#DZDStatus').append(`<option value="">${x.dzdStatusName}</option>`)
+    });
+})
+
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Status",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Status').append(`<option value="">${x.statusName}</option>`)
+    });
+})
+
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Department",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Department').append(`<option value="">${x.departmentName}</option>`)
+    });
+})
+
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Team",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Team').append(`<option value="">${x.teamName}</option>`)
+    });
+})
+
 
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
@@ -114,22 +153,20 @@ $(document).on('click', '.Delete', function (e) {
 $(document).on('click', '.Save', function () {
 
     projectDate = $('#ProjectDate').val();
-    bank = $("#Bank option:selected").text()
+    bank = $("#Bank option:selected").text();
     jiraProjectNo = $('#JiraProjectNo').val();
     jiraTaskNo = $('#JiraTaskNo').val();
     jiraProjectName = $('#JiraProjectName').val();
-    dZDStatus = $('#DZDStatus').val();
-    status = $('#Status').val();
-    department = $('#Department').val();
-    team = $('#Team').val();
+    dZDStatus = $("#DZDStatus option:selected").text();
+    status = $("#Status option:selected").text();
+    department = $("#Department option:selected").text();
+    team = $("#Team option:selected").text();
     developer = $('#Developer').val();
     analyst = $('#Analyst').val();
     totalManDay = $('#TotalManDay').val();
     developerManDay = $('#DeveloperManDay').val();
     analystManDay = $('#AnalystManDay').val();
     pmManDay = $('#PmManDay').val();
-
-    console.log(bank);
 
     if (id == null) {
         var Confirm = confirm("Kayıt yapılsın mı?");
@@ -166,7 +203,7 @@ $(document).on('click', '.Save', function () {
                 },
                 error: function () {
                     alert("Error please try again");
-                    window.location.reload()
+                    window.location.reload();
                 }
 
             })
@@ -180,7 +217,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             $.ajax({
-                url: "https://smuhammetulas.com/Project/Update",
+                url: "https://smuhammetulas.com/api/Project/Update",
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -206,13 +243,13 @@ $(document).on('click', '.Save', function () {
 
                     //Yenile
                     alert("The record is updated.");
-                    window.location.reload()
+                    window.location.reload();
 
 
                 },
                 error: function (e) {
                     alert("Error please try again" + JSON.stringify(e));
-                    window.location.reload()
+                    window.location.reload();
                 }
 
             })
@@ -247,16 +284,15 @@ $(document).on('click', '.Update', function (e) {
 
         document.getElementById('newproject').style.display = 'block';
 
-
-        $('#projectDate').val(projectDate);
+        $('#ProjectDate').val(projectDate);
         $("#Bank option:selected").text(bank);
         $('#JiraProjectNo').val(jiraProjectNo).html();
         $('#JiraTaskNo').val(jiraTaskNo).html();
         $('#JiraProjectName').val(jiraProjectName).html();
-        $('#DZDStatus').val(dZDStatus).html();
-        $('#Status').val(status).html();
-        $('#Department').val(department).html();
-        $('#Team').val(team).html();
+        $("#DZDStatus option:selected").text(dZDStatus);
+        $("#Status option:selected").text(status);
+        $("#Department option:selected").text(department);
+        $("#Team option:selected").text(team);
         $('#Developer').val(developer).html();
         $('#Analyst').val(analyst).html();
         $('#TotalManDay').val(totalManDay).html();
