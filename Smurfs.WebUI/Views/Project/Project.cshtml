@@ -49,37 +49,49 @@
             <div id="Form">
                 <form method="post">
 
-                        Project Date: <input type="date" value="2018-07-22" id="ProjectDate">
+                        Project Date: <input type="date" value=" " id="ProjectDate">
                         <br>
-                        Bank: <select id="Bank"></select>
+                        Bank: <select id="Bank">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
                         <br>
-                        JiraProjectNo: <input type="text" id="JiraProjectNo" placeholder="JiraProjectNo">
+                        JiraProjectNo: <input type="text" value="JiraProjectNo" id="JiraProjectNo" placeholder="JiraProjectNo">
                         <br>
-                        JiraTaskNo: <input type="text" id="JiraTaskNo" placeholder="JiraTaskNo">
+                        JiraTaskNo: <input type="text" value="JiraTaskNo" id="JiraTaskNo"placeholder="JiraTaskNo" >
                         <br>
-                        JiraName: <input type="text" id="JiraProjectName" placeholder="JiraProjectName">
+                        JiraName: <input type="text" value="JiraProjectName" id="JiraProjectName"placeholder="JiraProjectName" >
                         <br>
-                        DZDStatus: <select id="DZDStatus"></select>
+                        DZDStatus: <select id="DZDStatus">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
                         <br>
-                        Status: <select id="Status"></select>
+                        Status: <select id="Status">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
                         <br>
-                        Department: <select id="Department"></select>
+                        Department: <select id="Department">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
                         <br>
-                        Team: <select id="Team"></select>
+                        Team: <select id="Team">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
                         <br>
-                        Developer: <input type="text" id="Developer" placeholder="Developer">
+                        Developer: <input type="text" value="Developer " id="Developer"placeholder="Developer" >
                         <br>
-                        Analyst: <input type="text" id="Analyst" placeholder="Analyst">
+                        Analyst: <input type="text" value="Analyst" id="Analyst"placeholder="Analyst" >
                         <br>
-                        TotalManDay: <input type="text" id="TotalManDay" placeholder="TotalManDay">
+                        TotalManDay: <input type="number" value="TotalManDay " id="TotalManDay"placeholder="TotalManDay" >
                         <br>
-                        DevManDay: <input type="text" id="DeveloperManDay" placeholder="DeveloperManDay">
+                        DevManDay: <input type="number" value="DeveloperManDay " id="DeveloperManDay"placeholder="DeveloperManDay" >
                         <br>
-                        AnalystMDay: <input type="text" id="AnalystManDay" placeholder="AnalystManDay">
+                        AnalystMDay: <input type="number" value="AnalystManDay " id="AnalystManDay"placeholder="AnalystManDay" >
                         <br>
-                        PmManDay: <input type="text" id="PmManDay" placeholder="PmManDay">
+                        PmManDay: <input type="number" value="PmManDay" id="PmManDay" placeholder="PmManDay">
                         <br>
+                        <div id="hata" style="text-align:center; color:red;"> 
 
+                        </div>
                         <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
                 </form>
          </div>

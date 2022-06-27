@@ -168,7 +168,18 @@ $(document).on('click', '.Save', function () {
     analystManDay = $('#AnalystManDay').val();
     pmManDay = $('#PmManDay').val();
 
+    //boş kontrolü yapılacak
+
     if (id == null) {
+        if (projectDate == " " || bank == "Bir Değer Seçiniz" || jiraProjectNo == "JiraProjectNo" || jiraTaskNo == "JiraTaskNo"
+            || jiraProjectName == "JiraProjectName"
+            || dZDStatus == "Bir Değer Seçiniz" || status == "Bir Değer Seçiniz" || department == "Bir Değer Seçiniz"
+            || team == "Bir Değer Seçiniz" || developer == "Developer" || analyst == "Analyst"
+            || totalManDay == "TotalManDay" || developerManDay == "DeveloperManDay" || analystManDay == "AnalystManDay" || pmManDay == "PmManDay") {
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
+        console.log(analyst);
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
 
@@ -202,7 +213,7 @@ $(document).on('click', '.Save', function () {
                     window.location.reload()
                 },
                 error: function () {
-                    alert("Error please try again");
+                    alert("Error please try again" + JSON.stringify(e));
                     window.location.reload();
                 }
 
