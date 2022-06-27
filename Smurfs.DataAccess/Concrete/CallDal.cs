@@ -30,9 +30,9 @@ namespace Smurfs.DataAccess.Concrete
                          join b in SmurfsContext.Banks
                          on c.Bank.Id equals b.Id
                          join cs in SmurfsContext.CallStatus
-                         on c.CallStatus.Id equals cs.Id                      
+                         on c.CallStatus.Id equals cs.Id
                          select new GetCallDto
-                         { Id = c.Id, CallDate = c.CallDate, Bank = b.BankName, CallStatus = cs.CallStatusName };
+                         { Id = c.Id, CallDate = c.CallDate, Bank = b.BankName, JiraProjectNo = c.JiraProjectNo, JiraTaskNo = c.JiraTaskNo, JiraProjectName = c.JiraProjectName, CallName = c.CallName, CagriCozumSuresi = c.CagriCozumSuresi, CallDetails = c.CallDetails, CallPriority = c.CallPriority, CallStatus = cs.CallStatusName, Appointee = c.Appointee };
             return result.ToList();
         }
 
@@ -57,18 +57,26 @@ namespace Smurfs.DataAccess.Concrete
             result.Id = call.Id;
             result.CallDate = call.CallDate;
             result.Bank = SmurfsContext.Banks.Single(a => a.BankName == call.Bank);
+            result.JiraProjectNo = call.JiraProjectNo;
+            result.JiraTaskNo = call.JiraTaskNo;
+            result.JiraProjectName = call.JiraProjectName;
+            result.CallName = call.CallName;
+            result.CagriCozumSuresi = call.CagriCozumSuresi;
+            result.CallDetails = call.CallDetails;
+            result.CallPriority = call.CallPriority;
             result.CallStatus = SmurfsContext.CallStatus.Single(a => a.CallStatusName == call.CallStatus);
+            result.Appointee = call.Appointee;
             return result;
         }
 
     }
 
-        
-
-        
-       
 
 
-    
+
+
+
+
+
 }
 
