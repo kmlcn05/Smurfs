@@ -39,7 +39,7 @@ $.ajax({
         "scrollX": true,
         "columns": [
             { "data": "id" },
-            { "data": "projectDate"},
+            { "data": "projectDate" },
             { "data": "bank" },
             { "data": "jiraProjectNo" },
             { "data": "jiraTaskNo" },
@@ -76,7 +76,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Bank').append(`<option value="">${x.bankName}</option>`)
+        $('#Bank').append(`<option value="${x.bankName}">${x.bankName}</option>`)
     });
 })
 
@@ -86,7 +86,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#DZDStatus').append(`<option value="">${x.dzdStatusName}</option>`)
+        $('#DZDStatus').append(`<option value="${x.dzdStatusName}">${x.dzdStatusName}</option>`)
     });
 })
 
@@ -96,7 +96,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Status').append(`<option value="">${x.statusName}</option>`)
+        $('#Status').append(`<option value="${x.statusName}">${x.statusName}</option>`)
     });
 })
 
@@ -106,7 +106,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Department').append(`<option value="">${x.departmentName}</option>`)
+        $('#Department').append(`<option value="${x.departmentName}">${x.departmentName}</option>`)
     });
 })
 
@@ -116,7 +116,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Team').append(`<option value="">${x.teamName}</option>`)
+        $('#Team').append(`<option value="${x.teamName}">${x.teamName}</option>`)
     });
 })
 
@@ -285,14 +285,14 @@ $(document).on('click', '.Update', function (e) {
         document.getElementById('newproject').style.display = 'block';
 
         $('#ProjectDate').val(projectDate);
-        $("#Bank option:selected").text(bank);
+        $("#Bank").val(bank);
         $('#JiraProjectNo').val(jiraProjectNo).html();
         $('#JiraTaskNo').val(jiraTaskNo).html();
         $('#JiraProjectName').val(jiraProjectName).html();
-        $("#DZDStatus option:selected").text(dZDStatus);
-        $("#Status option:selected").text(status);
-        $("#Department option:selected").text(department);
-        $("#Team option:selected").text(team);
+        $("#DZDStatus").val(dZDStatus);
+        $("#Status").val(status);
+        $("#Department").val(department);
+        $("#Team").val(team);
         $('#Developer').val(developer).html();
         $('#Analyst').val(analyst).html();
         $('#TotalManDay').val(totalManDay).html();
