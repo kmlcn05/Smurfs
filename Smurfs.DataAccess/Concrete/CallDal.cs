@@ -32,7 +32,7 @@ namespace Smurfs.DataAccess.Concrete
                          join cs in SmurfsContext.CallStatus
                          on c.CallStatus.Id equals cs.Id
                          select new GetCallDto
-                         { Id = c.Id, CallDate = c.CallDate, Bank = b.BankName, JiraProjectNo = c.JiraProjectNo, JiraTaskNo = c.JiraTaskNo, JiraProjectName = c.JiraProjectName, CallName = c.CallName, CagriCozumSuresi = c.CagriCozumSuresi, CallDetails = c.CallDetails, CallPriority = c.CallPriority, CallStatus = cs.CallStatusName, Appointee = c.Appointee };
+                         { Id = c.Id, Bank = b.BankName, TaskType = c.TaskType, JiraTaskNo = c.JiraTaskNo, CallName = c.CallName, CagriCozumSuresi = c.CagriCozumSuresi, CallDetails = c.CallDetails, CallPriority = c.CallPriority, CallDateCreated = c.CallDateCreated, CallDateResolved = c.CallDateResolved, CallStatus = cs.CallStatusName, Appointee = c.Appointee, Reporter = c.Reporter };
             return result.ToList();
         }
 
@@ -55,17 +55,18 @@ namespace Smurfs.DataAccess.Concrete
             var result = new Call();
 
             result.Id = call.Id;
-            result.CallDate = call.CallDate;
             result.Bank = SmurfsContext.Banks.Single(a => a.BankName == call.Bank);
-            result.JiraProjectNo = call.JiraProjectNo;
+            result.TaskType = call.TaskType;
             result.JiraTaskNo = call.JiraTaskNo;
-            result.JiraProjectName = call.JiraProjectName;
             result.CallName = call.CallName;
             result.CagriCozumSuresi = call.CagriCozumSuresi;
             result.CallDetails = call.CallDetails;
             result.CallPriority = call.CallPriority;
+            result.CallDateCreated = call.CallDateCreated;
+            result.CallDateResolved = call.CallDateResolved;
             result.CallStatus = SmurfsContext.CallStatus.Single(a => a.CallStatusName == call.CallStatus);
             result.Appointee = call.Appointee;
+            result.Reporter = call.Reporter;
             return result;
         }
 

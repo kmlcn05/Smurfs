@@ -21,7 +21,5 @@ namespace Smurfs.Entities.Conrete
         public Team team { get; set; }
         public List<Premium> Premium { get; set; }
         public List<Log> Logs { get; set; }
-
-
     }
 }

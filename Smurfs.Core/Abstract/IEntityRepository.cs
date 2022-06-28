@@ -15,5 +15,6 @@ namespace Smurfs.Core.Abstract
         Task CreateAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
+        Task<T> Delete2(int id);
     }
 }
