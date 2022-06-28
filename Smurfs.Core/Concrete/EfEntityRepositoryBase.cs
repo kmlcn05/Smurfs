@@ -47,5 +47,17 @@ namespace Smurfs.Core.Concrete
         {
             context.Entry(entity).State = EntityState.Modified;
         }
+        public async Task<TEntity> Delete2(int id)
+        {
+            var result = await context.Set<TEntity>().FindAsync(id);
+
+            if (result != null)
+            {
+                context.Set<TEntity>().Remove(result);
+                await context.SaveChangesAsync();
+                return result;
+            }
+            return null;
+        }
     }
 }

@@ -171,11 +171,11 @@ $(document).on('click', '.Save', function () {
     //boş kontrolü yapılacak
 
     if (id == null) {
-        if (projectDate == " " || bank == "Bir Değer Seçiniz" || jiraProjectNo == "JiraProjectNo" || jiraTaskNo == "JiraTaskNo"
-            || jiraProjectName == "JiraProjectName"
+        if (projectDate == " " || bank == "Bir Değer Seçiniz" || jiraProjectNo == "" || jiraTaskNo == ""|| jiraProjectName == ""
             || dZDStatus == "Bir Değer Seçiniz" || status == "Bir Değer Seçiniz" || department == "Bir Değer Seçiniz"
             || team == "Bir Değer Seçiniz" || developer == "Developer" || analyst == "Analyst"
-            || totalManDay == "TotalManDay" || developerManDay == "DeveloperManDay" || analystManDay == "AnalystManDay" || pmManDay == "PmManDay") {
+            || totalManDay == "TotalManDay" || developerManDay == "" || analystManDay == "" || pmManDay == "PmManDay") {
+
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
             return false;
         }
