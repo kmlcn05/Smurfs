@@ -53,7 +53,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<DZDStatusController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] DZDStatus DZDStatus)
         {
             _dzdstatusService.Delete(DZDStatus);

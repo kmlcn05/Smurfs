@@ -54,7 +54,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<UserGroupController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] UserGroup UserGroup)
         {
             _usergroupservis.Delete(UserGroup);

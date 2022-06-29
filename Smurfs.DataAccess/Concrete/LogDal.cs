@@ -8,7 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;namespace Smurfs.DataAccess.Concrete
+using System.Threading.Tasks;
+
+namespace Smurfs.DataAccess.Concrete
 {
     public class LogDal : EfEntityRepositoryBase<Log>, ILogDal
     {
@@ -31,7 +33,7 @@ using System.Threading.Tasks;namespace Smurfs.DataAccess.Concrete
                          join de in SmurfsContext.Users
                          on p.Users.Id equals de.Id
                          select new LogDto
-                         { Id = p.Id, Page = p.Page, LogDate = p.LogDate };
+                         { Id = p.Id, Page = p.Page, LogDate = p.LogDate,Calls = s.CallName, Process = dz.ProcessName, Projects = b.JiraProjectName, Users = de.Name };
             return result.ToList();
         }
         public async Task<Log> DeleteLog(int id)

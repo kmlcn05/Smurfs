@@ -20,7 +20,7 @@ function reloadPage() {
 }
 
 $.ajax({
-    'url': "https://localhost:7019/api/Call/GetCall",
+    'url': "https://smuhammetulas.com/api/Call/GetCall",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
@@ -77,7 +77,7 @@ $.ajax({
 })
 
 $.ajax({
-    'url': "https://localhost:7019/api/CallStatus",
+    'url': "https://smuhammetulas.com/api/CallStatus",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
@@ -95,7 +95,7 @@ $(document).on('click', '.Delete', function (e) {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:7019/api/Call/" + id,
+                url: "https://smuhammetulas.com/api/Call/" + id,
                 type: "DELETE",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -146,7 +146,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:7019/api/Call/CreateCall",
+                url: "https://smuhammetulas.com/api/Call/CreateCall",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -187,7 +187,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             $.ajax({
-                url: "https://localhost:7019/api/Call/UpdateCall",
+                url: "https://smuhammetulas.com/api/Call/UpdateCall",
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",

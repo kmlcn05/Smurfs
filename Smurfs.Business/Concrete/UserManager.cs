@@ -53,12 +53,14 @@ namespace Smurfs.Business.Concrete
 
         public List<UserDto> UserDetails()
         {
-            throw new NotImplementedException();
+            var User = _unitofwork.User.UserDetails();
+            return User;
         }
 
         public Task<User> DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            return _unitofwork.User.DeleteUser(id);
         }
+
     }
 }

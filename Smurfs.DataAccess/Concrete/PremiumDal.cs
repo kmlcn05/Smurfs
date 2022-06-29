@@ -28,7 +28,7 @@ namespace Smurfs.DataAccess.Concrete
                          join b in SmurfsContext.Users
                          on p.Users.Id equals b.Id
                          select new PremiumDto
-                         { Id = p.Id, Amount = Convert.ToString(p.Amount), PremiumDate = p.PremiumDate };
+                         { Id = p.Id, Amount = Convert.ToString(p.Amount), PremiumDate = p.PremiumDate, Users = b.Name };
             return result.ToList();
         }
 

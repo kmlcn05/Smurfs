@@ -53,7 +53,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<ProcessController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] Process Process)
         {
             _processService.Delete(Process);

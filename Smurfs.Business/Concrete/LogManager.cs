@@ -38,13 +38,6 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Log.Delete(entity);
             _unitofwork.Save();
         }
-
-
-        public Task<Log> DeleteLog(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<Log>> GetAll()
         {
             return await _unitofwork.Log.GetAll();
@@ -57,10 +50,14 @@ namespace Smurfs.Business.Concrete
 
         public List<LogDto> LogDetails()
         {
-            throw new NotImplementedException();
+            var Log = _unitofwork.Log.LogDetails();
+            return Log;
+        }
+        public Task<Log> DeleteLog(int id)
+        {
+            return _unitofwork.Log.DeleteLog(id);
         }
 
 
-       
     }
 }

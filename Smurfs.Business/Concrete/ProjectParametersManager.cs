@@ -76,12 +76,13 @@ namespace Smurfs.Business.Concrete
 
         public List<ProjectParametersDto> ProjectParametersDetails()
         {
-            throw new NotImplementedException();
+            var ProjectParameters = _unitofwork.ProjectParameters.ProjectParametersDetails();
+            return ProjectParameters;
         }
 
         public Task<ProjectParameters> DeleteProjectParameters(int id)
         {
-            throw new NotImplementedException();
+            return _unitofwork.ProjectParameters.DeleteProjectParameters(id);
         }
     }
 }
