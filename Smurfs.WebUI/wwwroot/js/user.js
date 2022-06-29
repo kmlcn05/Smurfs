@@ -10,7 +10,7 @@ var usergroup = null;
 var team = null; 
                     
 $.ajax({
-    'url': "https://smuhammetulas.com/api/User",
+    'url': "https://smuhammetulas.com/api/User/GetUser",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
