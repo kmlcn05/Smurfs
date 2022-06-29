@@ -179,6 +179,10 @@ $(document).on('click', '.Save', function () {
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
             return false;
         }
+        if (totalManDay != (developerManDay + analystManDay + pmManDay)) {
+            alert("Girilen Eforlar Total Efora Eşit Olmalı");
+            return false;
+        }
         console.log(analyst);
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
