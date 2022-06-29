@@ -70,6 +70,11 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+        if (departmentName == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var departmentName = $('#departmentName').val()

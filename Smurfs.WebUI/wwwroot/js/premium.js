@@ -11,6 +11,11 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     allData = data;
+
+    for (var x of data) {
+        x.premiumDate = x.premiumDate.replace("T00:00:00", "");
+    }
+
     $('#premiumDatatable').dataTable({
         "paging": true,
         "aaData": data,
@@ -35,7 +40,15 @@ $.ajax({
     })
 })
 
-
+$.ajax({
+    'url': "https://smuhammetulas.com/api/User/GetUser",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Users').append(`<option value="${x.name}">${x.name}</option>`)
+    });
+})
 
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
@@ -71,17 +84,30 @@ $(document).on('click', '.Delete', function (e) {
 
 
 $(document).on('click', '.Save', function () {
+
+    amount = $('#Amount').val();
+    premiumDate = $('#PremiumDate').val();
+    users = $("#Users option:selected").text();
+
     if (id == null) {
+        if (amount == "Bir Değer Seçiniz" || premiumDate == "" || users == "Bir Değer Seçiniz") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
-            var premiumname = $('#PremiumName').val()
+            
             $.ajax({
                 url: "https://smuhammetulas.com/api/Premium",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
-                    "premiumName": premiumname
+
+                    "amount": amount,
+                    "premiumDate": premiumDate,
+                    "users": users
                 }),
                 success: function () {
 
@@ -104,7 +130,10 @@ $(document).on('click', '.Save', function () {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
-            premiumname = $('#PremiumName').val()
+            
+            amount = $('#Amount').val();
+            premiumDate = $('#PremiumDate').val();
+            users = $("#Users option:selected").text();
 
             $.ajax({
                 url: "https://smuhammetulas.com/api/Premium",
@@ -112,13 +141,16 @@ $(document).on('click', '.Save', function () {
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
+
                     "id": id,
-                    "PremiumName": premiumname
+                    "amount": amount,
+                    "premiumDate": premiumDate,
+                    "users": users
                 }),
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated");
                     window.location.reload()
 
 
@@ -140,10 +172,16 @@ $(document).on('click', '.Save', function () {
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
-        premiumname = allData.find(x => x.id == parseInt(id)).premiumName;
+
+        amount = allData.find(x => x.id == parseInt(id)).amount;
+        premiumDate = allData.find(x => x.id == parseInt(id)).premiumDate;
+        users = allData.find(x => x.id == parseInt(id)).users;
 
         document.getElementById('newpremium').style.display = 'block';
-        $('#PremiumName').val(premiumname).html();
+
+        $('#Amount').val(amount).html();
+        $('#PremiumDate').val(premiumdate).html();
+        $('#Users').val(users).html();
 
     }
 });

@@ -69,6 +69,13 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+
+        if (processname == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
+
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var processname = $('#ProcessName').val()
@@ -78,6 +85,7 @@ $(document).on('click', '.Save', function () {
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
+
                     "processName": processname
                 }),
                 success: function () {
