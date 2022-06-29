@@ -2,12 +2,13 @@
 using Smurfs.Entities.Conrete;
 using Smurfs.WebUI.Models;
 using Newtonsoft.Json;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.WebUI.Services.Repositories
 {
     public class LoginService : ILoginService
     {
-        public async Task<User> LoginAsync(string mail, string password)
+        public async Task<LoginUserDto> LoginAsync(string mail, string password)
         {
             using(var client = new HttpClient())
             {
@@ -28,15 +29,15 @@ namespace Smurfs.WebUI.Services.Repositories
                     {
                         var stringResponse = await result.Content.ReadAsStringAsync();
 
-                        return JsonConvert.DeserializeObject<User>(stringResponse);
+                        return JsonConvert.DeserializeObject<LoginUserDto>(stringResponse);
                     }
                     else
                     {
-                        return new User();
+                        return new LoginUserDto();
                     }
                 }
 
-                return new User();
+                return new LoginUserDto();
             }
         }
     }

@@ -18,12 +18,14 @@ namespace Smurfs.WebUI.Controllers
         {
             ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
 
-            if (string.IsNullOrEmpty(ViewBag.Username))
+            if (HttpContext.Session.GetString("UserRole") == "Admin")
+            {
+                return View("Admin");
+            }
+            else
             {
                 return View("Anasayfa");
             }
-
-            return View();
         }
 
         [HttpPost]
@@ -41,6 +43,8 @@ namespace Smurfs.WebUI.Controllers
                 else
                 {
                     HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
+                    HttpContext.Session.SetString("UserRole", account.Result.UserGroup +"");
+                    
                     //ViewBag.Username = account.Result.Name + " " + account.Result.Surname;
                     return RedirectToAction("Anasayfa");
                 }
