@@ -1,6 +1,7 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,18 @@ namespace Smurfs.Business.Concrete
         {
             _unitofwork = unitofwork;
         }
-        public void Create(Premium entity)
+        public void Create(PremiumDto entity)
         {
-            _unitofwork.Premium.Create(entity);
+            var Premium = _unitofwork.Premium.AddPremium(entity);
+            _unitofwork.Premium.Create(Premium);
+            _unitofwork.Save();
+
+        }
+
+        public void Update(PremiumDto entity)
+        {
+            var Premium = _unitofwork.Premium.AddPremium(entity);
+            _unitofwork.Premium.Update(Premium);
             _unitofwork.Save();
         }
 
@@ -39,10 +49,14 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.Premium.GetById(id);
         }
 
-        public void Update(Premium entity)
+        public List<PremiumDto> PremiumDetails()
         {
-            _unitofwork.Premium.Update(entity);
-            _unitofwork.Save();
+            throw new NotImplementedException();
+        }
+
+        public Task<Premium> DeletePremium(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

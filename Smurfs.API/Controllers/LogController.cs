@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -37,7 +38,7 @@ namespace Smurfs.API.Controllers
         }
         // POST api/<LogController>
         [HttpPost]
-        public IActionResult Create([FromBody] Log Log)
+        public IActionResult Create([FromBody] LogDto Log)
         {
             _logService.Create(Log);
             return Ok(Log);
@@ -45,7 +46,7 @@ namespace Smurfs.API.Controllers
 
         // PUT api/<LogController>/5
         [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Log Log)
+        public IActionResult Update([FromBody] LogDto Log)
         {
             _logService.Update(Log);
             return Ok(Log);
@@ -57,6 +58,34 @@ namespace Smurfs.API.Controllers
         {
             _logService.Delete(Log);
             return Ok("Silindi");
+        }
+
+        [HttpGet("GetLog")]
+        public IActionResult GetLog()
+        {
+            var Log = _logService.LogDetails();
+            return Ok(Log);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Log>> DeleteLog(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _logService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"ITSM with Id = {id} not found");
+                }
+
+                return await _logService.DeleteLog(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

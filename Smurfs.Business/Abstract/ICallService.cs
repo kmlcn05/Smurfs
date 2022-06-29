@@ -12,19 +12,12 @@ namespace Smurfs.Business.Abstract
     public interface ICallService
     {
         Task<List<Call>> GetAll();
-       
 
         Task<Call> GetById(int id);
 
-
-
         void Create(GetCallDto entity);
 
-
-
         void Update(GetCallDto entity);
-
-
 
         void Delete(Call entity);
 

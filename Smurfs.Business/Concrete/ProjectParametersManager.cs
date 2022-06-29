@@ -1,6 +1,7 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +26,16 @@ namespace Smurfs.Business.Concrete
         {
             return await _unitofwork.ProjectParameters.GetById(id);
         }
-        public void CreateParameters(ProjectParameters entity)
+        public void CreateParameters(ProjectParametersDto entity)
         {
-            _unitofwork.ProjectParameters.Create(entity);
+            var ProjectParameters = _unitofwork.ProjectParameters.AddProjectParameters(entity);
+            _unitofwork.ProjectParameters.Create(ProjectParameters);
             _unitofwork.Save();
         }
-        public void UpdateParameters(ProjectParameters entity)
+        public void UpdateParameters(ProjectParametersDto entity)
         {
-            _unitofwork.ProjectParameters.Update(entity);
+            var ProjectParameters = _unitofwork.ProjectParameters.AddProjectParameters(entity);
+            _unitofwork.ProjectParameters.Update(ProjectParameters);
             _unitofwork.Save();
         }
         public void DeleteParameters(ProjectParameters entity)
@@ -69,6 +72,16 @@ namespace Smurfs.Business.Concrete
                 throw new Exception("Project Not found!");
             }
 
+        }
+
+        public List<ProjectParametersDto> ProjectParametersDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ProjectParameters> DeleteProjectParameters(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
