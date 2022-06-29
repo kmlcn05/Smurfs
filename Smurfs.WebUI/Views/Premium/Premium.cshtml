@@ -35,30 +35,26 @@
             <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
                 <span onclick="document.getElementById('newpremium').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
                 <h3>Premium</h3>
-            </div>
-            <form method="post">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg mx-auto">
-                            <div class="card shadow">
-                                <div class="card-body p-5">
-                                    <!--  Bootstrap table-->
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="tblProjects" >
-                                        <input class="form-control rounded-0" type="text" id="Amount" placeholder="Amount"></td>  
-                                        <input class="form-control rounded-0" type="date" id="PremiumDate" placeholder="PremiumDate"></td>
-                                        <input class="form-control rounded-0" type="date" id="Users" placeholder="Users"></td>
-                                        </table>
-                                    </div>
-                                    <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
-                                </div>                
-                            </div>
+                </div>
+            <div id="Form">
+                <form method="post">    
+
+                        Amount: <input type="text" id="Amount" placeholder="Amount">
+                        <br>
+                        PremiumDate: <input type="date" id="PremiumDate" placeholder="PremiumDate">
+                        <br>
+                        Users: <select id="Users">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>       
+                        <br>
+                        <div id="hata" style="text-align:center; color:red;"> 
+
                         </div>
-                    </div> 
-                </div>           
-            </form>                               
-        </div>
-    </div>
+                        <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
+                </form>
+            </div>
+         </div>
+    </div>  
 
 @section Scripts
 {

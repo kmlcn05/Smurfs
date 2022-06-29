@@ -14,5 +14,6 @@ namespace Smurfs.Business.Abstract
         void Create(UserGroup entity);
         void Update(UserGroup entity);
         void Delete(UserGroup entity);
+        Task<UserGroup> DeleteUserGroup(int id);
     }
 }

@@ -45,7 +45,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<TeamController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] Team Teams)
         {
             _teamService.Update(Teams);
@@ -58,6 +58,27 @@ namespace Smurfs.API.Controllers
         {
             _teamService.Delete(Teams);
             return Ok("Silindi");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Team>> DeleteTeam(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _teamService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"Team with Id = {id} not found");
+                }
+
+                return await _teamService.DeleteTeam(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

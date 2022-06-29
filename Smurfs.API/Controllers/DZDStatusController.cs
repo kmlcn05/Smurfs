@@ -45,7 +45,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<DZDStatusController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] DZDStatus DZDStatus)
         {
             _dzdstatusService.Update(DZDStatus);
@@ -58,6 +58,27 @@ namespace Smurfs.API.Controllers
         {
             _dzdstatusService.Delete(DZDStatus);
             return Ok("Silindi");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<DZDStatus>> DeleteDZDStatus(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _dzdstatusService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"DZDStatus with Id = {id} not found");
+                }
+
+                return await _dzdstatusService.DeleteDZDStatus(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

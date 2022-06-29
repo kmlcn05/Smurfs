@@ -43,5 +43,9 @@ namespace Smurfs.Business.Concrete
             _unitofwork.UserGroup.Update(entity);
             _unitofwork.Save();
         }
+        public Task<UserGroup> DeleteUserGroup(int id)
+        {
+            return _unitofwork.UserGroup.Delete2(id);
+        }
     }
 }

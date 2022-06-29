@@ -45,7 +45,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<ProcessController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] Process Process)
         {
             _processService.Update(Process);
@@ -58,6 +58,27 @@ namespace Smurfs.API.Controllers
         {
             _processService.Delete(Process);
             return Ok("Silindi");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Process>> DeleteProcess(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _processService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"Process with Id = {id} not found");
+                }
+
+                return await _processService.DeleteProcess(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

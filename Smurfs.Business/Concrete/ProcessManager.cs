@@ -43,5 +43,9 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Process.Update(entity);
             _unitofwork.Save();
         }
+        public Task<Process> DeleteProcess(int id)
+        {
+            return _unitofwork.Process.Delete2(id);
+        }
     }
 }

@@ -46,7 +46,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<UserGroupController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] UserGroup UserGroup)
         {
             _usergroupservis.Update(UserGroup);
@@ -59,6 +59,27 @@ namespace Smurfs.API.Controllers
         {
             _usergroupservis.Delete(UserGroup);
             return Ok("Silindi");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<UserGroup>> DeleteUserGroup(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _usergroupservis.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"UserGroup with Id = {id} not found");
+                }
+
+                return await _usergroupservis.DeleteUserGroup(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }
