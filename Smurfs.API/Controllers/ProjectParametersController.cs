@@ -2,6 +2,7 @@
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.API.Controllers
 {
@@ -41,7 +42,7 @@ namespace Smurfs.API.Controllers
 
         // POST api/<ProjectParametersController>
         [HttpPost("CreateProjectParameters")]
-        public IActionResult CreateParameters([FromBody] ProjectParameters ProjectParameters)
+        public IActionResult CreateParameters([FromBody] ProjectParametersDto ProjectParameters)
         {
             _projectParametersService.CreateParameters(ProjectParameters);
             return Ok(ProjectParameters);
@@ -49,7 +50,7 @@ namespace Smurfs.API.Controllers
 
         // PUT api/<ProjectParametersController>/5
         [HttpPut("UpdateProjectParameters")]
-        public IActionResult UpdateParameters([FromBody] ProjectParameters ProjectParameters)
+        public IActionResult UpdateParameters([FromBody] ProjectParametersDto ProjectParameters)
         {
             _projectParametersService.UpdateParameters(ProjectParameters);
             return Ok(ProjectParameters);
@@ -69,6 +70,34 @@ namespace Smurfs.API.Controllers
         {
             _projectParametersService.Calculate(projectId);
             return Ok("Hesaplamalar doğru şekilde yapıldı");
+        }
+
+        [HttpGet("GetProjectParameters")]
+        public IActionResult GetProjectParameters()
+        {
+            var projectParameters = _projectParametersService.ProjectParametersDetails();
+            return Ok(projectParameters);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProjectParameters>> DeleteProjectParameters(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _projectParametersService.GetByIdParameters(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"ITSM with Id = {id} not found");
+                }
+
+                return await _projectParametersService.DeleteProjectParameters(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

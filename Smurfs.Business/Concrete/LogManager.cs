@@ -1,6 +1,7 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,31 @@ namespace Smurfs.Business.Concrete
         {
             _unitofwork = unitofwork;
         }
-        public void Create(Log entity)
+        public void Create(LogDto entity)
         {
-            _unitofwork.Log.Create(entity);
+            var Log = _unitofwork.Log.AddLog(entity);
+            _unitofwork.Log.Create(Log);
+            _unitofwork.Save();
+        }
+
+        public void Update(LogDto entity)
+        {
+            var Log = _unitofwork.Log.AddLog(entity);
+            _unitofwork.Log.Update(Log);
             _unitofwork.Save();
         }
 
         public void Delete(Log entity)
         {
+            
             _unitofwork.Log.Delete(entity);
             _unitofwork.Save();
+        }
+
+
+        public Task<Log> DeleteLog(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<Log>> GetAll()
@@ -39,10 +55,12 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.Log.GetById(id);
         }
 
-        public void Update(Log entity)
+        public List<LogDto> LogDetails()
         {
-            _unitofwork.Log.Update(entity);
-            _unitofwork.Save();
+            throw new NotImplementedException();
         }
+
+
+       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.Business.Abstract
 {
@@ -9,14 +10,15 @@ namespace Smurfs.Business.Abstract
 
         Task<ProjectParameters> GetByIdParameters(int id);
 
-        void CreateParameters(ProjectParameters entity);
+        void CreateParameters(ProjectParametersDto entity);
 
-        void UpdateParameters(ProjectParameters entity);
+        void UpdateParameters(ProjectParametersDto entity);
 
         void DeleteParameters(ProjectParameters entity);
         public ProjectParameters Calculate(int callId);
+        List<ProjectParametersDto> ProjectParametersDetails();
 
-
+        Task<ProjectParameters> DeleteProjectParameters(int id);
 
     }
 }

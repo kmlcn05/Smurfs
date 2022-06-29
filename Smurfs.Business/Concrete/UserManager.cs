@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Smurfs.Entities.Conrete;
 using Core.Utilities.Results;
 using Smurfs.Core.Abstract;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.Business.Concrete
 {
@@ -20,9 +21,17 @@ namespace Smurfs.Business.Concrete
             _unitofwork = unitofwork;
         }
 
-        public void Create(User entity)
+        public void Create(UserDto entity)
         {
-            _unitofwork.User.Create(entity);
+            var User = _unitofwork.User.AddUser(entity);
+            _unitofwork.User.Create(User);
+            _unitofwork.Save();
+        }
+
+        public void Update(UserDto entity)
+        {
+            var User = _unitofwork.User.AddUser(entity);
+            _unitofwork.User.Update(User);
             _unitofwork.Save();
         }
 
@@ -42,10 +51,14 @@ namespace Smurfs.Business.Concrete
             return await _unitofwork.User.GetById(id);
         }
 
-        public void Update(User entity)
+        public List<UserDto> UserDetails()
         {
-            _unitofwork.User.Update(entity);
-            _unitofwork.Save();
+            throw new NotImplementedException();
+        }
+
+        public Task<User> DeleteUser(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

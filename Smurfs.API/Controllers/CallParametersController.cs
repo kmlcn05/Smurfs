@@ -2,6 +2,7 @@
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 
 namespace Smurfs.API.Controllers
 {
@@ -43,7 +44,7 @@ namespace Smurfs.API.Controllers
        
         // POST api/<CallParametersController>
         [HttpPost("CreateCallParameters")]
-        public IActionResult CreateParameters([FromBody] CallParameters CallParameters)
+        public IActionResult CreateParameters([FromBody] CallParametersDto CallParameters)
         {
             _callParametersService.CreateParameters(CallParameters);
             return Ok(CallParameters);
@@ -53,7 +54,7 @@ namespace Smurfs.API.Controllers
 
         // PUT api/<CallParametersController>/5
         [HttpPut("UpdateCallParameters")]
-        public IActionResult UpdateParameters([FromBody] CallParameters CallParameters)
+        public IActionResult UpdateParameters([FromBody] CallParametersDto CallParameters)
         {
             _callParametersService.UpdateParameters(CallParameters);
             return Ok(CallParameters);
@@ -74,6 +75,34 @@ namespace Smurfs.API.Controllers
         {
             _callParametersService.Calculate(projectId);
             return Ok("Hesaplamalar doğru şekilde yapıldı");
+        }
+
+        [HttpGet("GetCallParameters")]
+        public IActionResult GetCallParameters()
+        {
+            var CallParameters = _callParametersService.CallParametersDetails();
+            return Ok(CallParameters);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CallParameters>> DeleteCallParameters(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _callParametersService.GetByIdParameters(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"ITSM with Id = {id} not found");
+                }
+
+                return await _callParametersService.DeleteCallParameters(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
 
     }

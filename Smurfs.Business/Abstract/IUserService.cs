@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,11 @@ namespace Smurfs.Business.Abstract
     {
         Task<User> GetById(int id);
         Task<List<User>> GetAll();
-        void Create(User entity);
-        void Update(User entity);
+        void Create(UserDto entity);
+        void Update(UserDto entity);
         void Delete(User entity);
+        List<UserDto> UserDetails();
+
+        Task<User> DeleteUser(int id);
     }
 }

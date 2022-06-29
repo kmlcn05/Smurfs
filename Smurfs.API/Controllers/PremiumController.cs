@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,7 +39,7 @@ namespace Smurfs.API.Controllers
 
         // POST api/<PremiumController>
         [HttpPost]
-        public IActionResult Create([FromBody] Premium Premium)
+        public IActionResult Create([FromBody] PremiumDto Premium)
         {
             _premiumService.Create(Premium);
             return Ok(Premium);
@@ -46,7 +47,7 @@ namespace Smurfs.API.Controllers
 
         // PUT api/<PremiumController>/5
         [HttpPut("{id}")]
-        public IActionResult Update([FromBody] Premium Premium)
+        public IActionResult Update([FromBody] PremiumDto Premium)
         {
             _premiumService.Update(Premium);
             return Ok(Premium);
@@ -58,6 +59,34 @@ namespace Smurfs.API.Controllers
         {
             _premiumService.Delete(Premium);
             return Ok("Silindi");
+        }
+
+        [HttpGet("GetPremium")]
+        public IActionResult GetPremium()
+        {
+            var Premium = _premiumService.PremiumDetails();
+            return Ok(Premium);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Premium>> DeletePremium(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _premiumService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"ITSM with Id = {id} not found");
+                }
+
+                return await _premiumService.DeletePremium(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }

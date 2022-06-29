@@ -1,6 +1,7 @@
 ﻿using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.Entity.Concrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +26,16 @@ namespace Smurfs.Business.Concrete
         {
             return await _unitofwork.CallParameters.GetById(id);
         }
-        public void CreateParameters(CallParameters entity)
+        public void CreateParameters(CallParametersDto entity)
         {
-            _unitofwork.CallParameters.Create(entity);
+            var CallParameters = _unitofwork.CallParameters.AddCallParameters(entity);
+            _unitofwork.CallParameters.Create(CallParameters);
             _unitofwork.Save();
         }
-        public void UpdateParameters(CallParameters entity)
+        public void UpdateParameters(CallParametersDto entity)
         {
-            _unitofwork.CallParameters.Update(entity);
+            var CallParameters = _unitofwork.CallParameters.AddCallParameters(entity);
+            _unitofwork.CallParameters.Update(CallParameters);
             _unitofwork.Save();
         }
         public void DeleteParameters(CallParameters entity)
@@ -71,6 +74,15 @@ namespace Smurfs.Business.Concrete
 
         }
 
+        public List<CallParametersDto> CallParametersDetails()
+        {
+            throw new NotImplementedException();
+        }
 
-}
+        public Task<CallParameters> DeleteCallParameters(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }
