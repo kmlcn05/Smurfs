@@ -16,7 +16,7 @@ namespace Smurfs.Entities.Conrete
         public string Password { get; set; }
         public byte Active { get; set; }
         public DateTime DateOfStart { get; set; }
-        //public ICollection<UserGroup> usergroup { get; set; }
+
         public UserGroup usergroup { get; set; }
         public Team team { get; set; }
         public List<Premium> Premium { get; set; }
