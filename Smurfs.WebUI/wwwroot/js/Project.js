@@ -179,7 +179,7 @@ $(document).on('click', '.Save', function () {
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
             return false;
         }
-        if (totalManDay != (developerManDay + analystManDay + pmManDay)) {
+        if (parseInt(totalManDay) != (parseInt(developerManDay) + parseInt(analystManDay) + parseInt(pmManDay))) {
             alert("Girilen Eforlar Total Efora Eşit Olmalı");
             return false;
         }

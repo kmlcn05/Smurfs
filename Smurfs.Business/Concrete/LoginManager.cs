@@ -3,6 +3,7 @@ using Smurfs.Business.Abstract;
 using Smurfs.Core.Abstract;
 using Smurfs.DataAccess.Models;
 using Smurfs.Entities.Conrete;
+using Smurfs.Entity.DTO_s;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Smurfs.Business.Concrete
         {
             _unitOfWork = unitOfWork;
         }
-        public User Login(UserLoginModel user)
+        public LoginUserDto Login(UserLoginModel user)
         {
             var userToCheck = _unitOfWork.User.Get(u => u.Mail == user.Mail && u.Password == user.Password );
             
@@ -26,10 +27,7 @@ namespace Smurfs.Business.Concrete
             {
                 throw new Exception("Wrong password or Mail");
             }
-            return userToCheck;
-
-            
-
+            return userToCheck[0];
         }
     }
 }
