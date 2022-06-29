@@ -31,7 +31,7 @@ namespace Smurfs.DataAccess.Concrete
                          select new CallParametersDto
                          { Id = c.Id, Name = c.Name, CallCarpani = Convert.ToString(c.CallCarpani), CallKapasite = Convert.ToString(c.CallKapasite), 
                          CallGerceklesen = Convert.ToString(c.CallGerceklesen), CallVerimYuzdesi = Convert.ToString(c.CallVerimYuzdesi), 
-                         CallVerimDegeri = Convert.ToString(c.CallVerimDegeri), CallVerimSonucu = Convert.ToString(c.CallVerimSonucu) };
+                         CallVerimDegeri = Convert.ToString(c.CallVerimDegeri), CallVerimSonucu = Convert.ToString(c.CallVerimSonucu),Call=b.CallName, ParametersDate = c.ParametersDate };
             return result.ToList();
         }
 

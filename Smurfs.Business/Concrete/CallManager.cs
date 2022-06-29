@@ -84,32 +84,6 @@ namespace Smurfs.Business.Concrete
             }
 
         }
-
-        public Task<List<CallParameters>> GetAllParameters()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<CallParameters> GetByIdParameters(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteParameters(CallParameters entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<GetCallDto> GetCallDetails()
         {
             var call = _unitofwork.Call.GetCallDetails();

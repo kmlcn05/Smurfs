@@ -45,7 +45,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<LogController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] LogDto Log)
         {
             _logService.Update(Log);
@@ -53,7 +53,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<LogController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] Log Log)
         {
             _logService.Delete(Log);

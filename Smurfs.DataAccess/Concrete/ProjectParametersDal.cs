@@ -32,7 +32,7 @@ namespace Smurfs.DataAccess.Concrete
                          { Id = p.Id, Name = p.Name, ParametersDate = p.ParametersDate, ProjeCarpani = Convert.ToString(p.ProjeCarpani), 
                          ProjeKapasite = Convert.ToString(p.ProjeKapasite), ProjeGerceklesen = Convert.ToString(p.ProjeGerceklesen), 
                          ProjeVerimYuzdesi = Convert.ToString(p.ProjeVerimYuzdesi), ProjeVerimDegeri = Convert.ToString(p.ProjeVerimDegeri), 
-                         ProjeVerimSonucu = Convert.ToString(p.ProjeVerimSonucu) };
+                         ProjeVerimSonucu = Convert.ToString(p.ProjeVerimSonucu), Project = b.JiraProjectName };
             return result.ToList();
         }
 

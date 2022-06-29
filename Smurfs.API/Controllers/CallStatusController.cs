@@ -53,7 +53,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<CallStatusController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] CallStatus CallStatus)
         {
             _callstatusService.Delete(CallStatus);

@@ -13,7 +13,7 @@ namespace Smurfs.DataAccess.Abstract
     public interface IUserDal : IEntityRepository<User>
     {
         //public bool UserLogin(String Mail, String Password);
-        User Get(Expression<Func<User, bool>> filter);
+        public List<LoginUserDto> Get(Expression<Func<User, bool>> filter);
 
         public List<UserDto> UserDetails();
 

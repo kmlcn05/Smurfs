@@ -51,12 +51,13 @@ namespace Smurfs.Business.Concrete
 
         public List<PremiumDto> PremiumDetails()
         {
-            throw new NotImplementedException();
+            var Premium = _unitofwork.Premium.PremiumDetails();
+            return Premium;
         }
 
         public Task<Premium> DeletePremium(int id)
         {
-            throw new NotImplementedException();
+            return _unitofwork.Premium.DeletePremium(id);
         }
     }
 }

@@ -76,12 +76,13 @@ namespace Smurfs.Business.Concrete
 
         public List<CallParametersDto> CallParametersDetails()
         {
-            throw new NotImplementedException();
+            var call = _unitofwork.CallParameters.CallParametersDetails();
+            return call;
         }
 
         public Task<CallParameters> DeleteCallParameters(int id)
         {
-            throw new NotImplementedException();
+            return _unitofwork.CallParameters.DeleteCallParameters(id);
         }
 
     }

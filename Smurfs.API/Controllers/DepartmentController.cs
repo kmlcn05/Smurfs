@@ -53,7 +53,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<DepartmentController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] Department Department)
         {
             _departmentService.Delete(Department);

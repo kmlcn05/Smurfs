@@ -54,7 +54,7 @@ namespace Smurfs.API.Controllers
         }
 
         // DELETE api/<PremiumController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] Premium Premium)
         {
             _premiumService.Delete(Premium);
