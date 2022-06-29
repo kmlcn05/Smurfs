@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "ProjectParameters";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ProjectParameters</h1>
+
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<div class="container">
+    <br />
+    <p><button onclick="document.getElementById('newprojectparameter').style.display='block'" class="btn btn-success">New Project Parameter</button></p>
+
+    <div style="width:90%; margin:0 auto;">
+        <table id="projectparameter" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>ParametersDate</th>
+                    <th>Project</th>
+                    <th>ProjeCarpani</th>
+                    <th>ProjeKapasite</th>
+                    <th>ProjeGerceklesen</th>
+                    <th>ProjeVerimYuzdesi</th>
+                    <th>ProjeVerimDegeri</th>
+                    <th>ProjeVerimSonucu</th>
+                    <th>Actions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+
+  <!-- NewProject Modal -->
+    <div id="newprojectparameter" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
+                <span onclick="document.getElementById('newprojectparameter').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <h3>Project Parameter</h3>
+            </div>
+            <form method="post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg mx-auto">
+                            <div class="card shadow">
+                                <div class="card-body p-5">
+                                    <!--  Bootstrap table-->
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="tblProjects" >
+                                        <input class="form-control rounded-0" type="text" id="Name" placeholder="Name"></td>  
+                                        <input class="form-control rounded-0" type="date" id="ParametersDate" placeholder="ParametersDate"></td>  
+                                        <input class="form-control rounded-0" type="text" id="Project" placeholder="Project"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeCarpani" placeholder="ProjeCarpani"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeKapasite" placeholder="ProjeKapasite"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeGerceklesen" placeholder="ProjeGerceklesen"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeVerimYuzdesi" placeholder="ProjeVerimYuzdesi"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeVerimDegeri" placeholder="ProjeVerimDegeri"></td>  
+                                        <input class="form-control rounded-0" type="text" id="ProjeVerimSonucu" placeholder="ProjeVerimSonucu"></td>  
+                                        </table>
+                                    </div>
+                                    <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
+                                </div>                
+                            </div>
+                        </div>
+                    </div> 
+                </div>           
+            </form>                               
+        </div>
+    </div>
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/projectparameters.js"></script>
+
+}

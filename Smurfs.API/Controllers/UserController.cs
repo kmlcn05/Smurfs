@@ -21,8 +21,8 @@ namespace Smurfs.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var Bank = await _userService.GetAll();
-            return Ok(Bank);
+            var User = await _userService.GetAll();
+            return Ok(User);
         }
 
         // GET api/<BankController>/5
