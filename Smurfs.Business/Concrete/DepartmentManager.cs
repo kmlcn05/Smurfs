@@ -44,5 +44,9 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Department.Update(entity);
             _unitofwork.Save();
         }
+        public Task<Department> DeleteDepartment(int id)
+        {
+            return _unitofwork.Department.Delete2(id);
+        }
     }
 }

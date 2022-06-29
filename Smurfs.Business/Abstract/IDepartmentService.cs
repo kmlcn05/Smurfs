@@ -14,5 +14,6 @@ namespace Smurfs.Business.Abstract
         void Create(Department entity);
         void Update(Department entity);
         void Delete(Department entity);
+        Task<Department> DeleteDepartment(int id);
     }
 }

@@ -46,7 +46,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<PremiumController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] PremiumDto Premium)
         {
             _premiumService.Update(Premium);

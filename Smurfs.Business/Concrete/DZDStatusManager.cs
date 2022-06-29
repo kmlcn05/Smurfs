@@ -44,5 +44,9 @@ namespace Smurfs.Business.Concrete
             _unitofwork.DZDStatus.Update(entity);
             _unitofwork.Save();
         }
+        public Task<DZDStatus> DeleteDZDStatus(int id)
+        {
+            return _unitofwork.DZDStatus.Delete2(id);
+        }
     }
 }

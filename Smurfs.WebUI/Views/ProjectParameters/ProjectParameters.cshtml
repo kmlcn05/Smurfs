@@ -43,35 +43,37 @@
                 <span onclick="document.getElementById('newprojectparameter').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
                 <h3>Project Parameter</h3>
             </div>
-            <form method="post">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg mx-auto">
-                            <div class="card shadow">
-                                <div class="card-body p-5">
-                                    <!--  Bootstrap table-->
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="tblProjects" >
-                                        <input class="form-control rounded-0" type="text" id="Name" placeholder="Name"></td>  
-                                        <input class="form-control rounded-0" type="date" id="ParametersDate" placeholder="ParametersDate"></td>  
-                                        <input class="form-control rounded-0" type="text" id="Project" placeholder="Project"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeCarpani" placeholder="ProjeCarpani"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeKapasite" placeholder="ProjeKapasite"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeGerceklesen" placeholder="ProjeGerceklesen"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeVerimYuzdesi" placeholder="ProjeVerimYuzdesi"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeVerimDegeri" placeholder="ProjeVerimDegeri"></td>  
-                                        <input class="form-control rounded-0" type="text" id="ProjeVerimSonucu" placeholder="ProjeVerimSonucu"></td>  
-                                        </table>
-                                    </div>
-                                    <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
-                                </div>                
-                            </div>
+            <div id="Form">
+                <form method="post">
+
+                        Name: <input type="text" id="Name" placeholder="Name">
+                        <br>
+                        ParametersDate: <input type="date" id="ParametersDate" placeholder="ParametersDate">
+                        <br>
+                        Project: <select id="Project">
+                            <option selected>Bir Değer Seçiniz</option>
+                        </select>
+                        <br>                   
+                        ProjeCarpani: <input type="text" id="ProjeCarpani" placeholder="ProjeCarpani">>
+                        <br>
+                        ProjeKapasite: <input type="text" id="ProjeKapasite" placeholder="ProjeKapasite">
+                        <br>
+                        ProjeGerceklesen: <input type="text" id="ProjeGerceklesen" placeholder="ProjeGerceklesen" >
+                        <br>
+                        ProjeVerimYuzdesi: <input type="text" id="ProjeVerimYuzdesi" placeholder="ProjeVerimYuzdesi">
+                        <br>
+                        ProjeVerimDegeri: <input type="text" id="ProjeVerimDegeri" placeholder="ProjeVerimDegeri">
+                        <br>
+                        ProjeVerimSonucu: <input type="text" id="ProjeVerimSonucu" placeholder="ProjeVerimSonucu">
+                        <br>
+                        <div id="hata" style="text-align:center; color:red;"> 
+
                         </div>
-                    </div> 
-                </div>           
-            </form>                               
-        </div>
-    </div>
+                        <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
+                </form>
+            </div>
+         </div>
+    </div>  
 
 @section Scripts
 {

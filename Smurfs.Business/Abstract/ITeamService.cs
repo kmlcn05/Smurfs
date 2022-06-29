@@ -14,5 +14,6 @@ namespace Smurfs.Business.Abstract
         void Create(Team entity);
         void Update(Team entity);
         void Delete(Team entity);
+        Task<Team> DeleteTeam(int id);
     }
 }

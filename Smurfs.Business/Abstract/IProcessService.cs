@@ -14,5 +14,6 @@ namespace Smurfs.Business.Abstract
         void Create(Process entity);
         void Update(Process entity);
         void Delete(Process entity);
+        Task<Process> DeleteProcess(int id);
     }
 }

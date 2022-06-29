@@ -44,5 +44,10 @@ namespace Smurfs.Business.Concrete
             _unitofwork.CallStatus.Update(entity);
             _unitofwork.Save();
         }
+
+        public Task<CallStatus> DeleteCallStatus(int id)
+        {
+            return _unitofwork.CallStatus.Delete2(id);
+        }
     }
 }

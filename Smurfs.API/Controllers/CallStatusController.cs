@@ -45,7 +45,7 @@ namespace Smurfs.API.Controllers
         }
 
         // PUT api/<CallStatusController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public IActionResult Update([FromBody] CallStatus CallStatus)
         {
             _callstatusService.Update(CallStatus);
@@ -58,6 +58,26 @@ namespace Smurfs.API.Controllers
         {
             _callstatusService.Delete(CallStatus);
             return Ok("Silindi");
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CallStatus>> DeleteCallStatus(int id)
+        {
+            try
+            {
+                var employeeToDelete = await _callstatusService.GetById(id);
+
+                if (employeeToDelete == null)
+                {
+                    return NotFound($"CallStatus with Id = {id} not found");
+                }
+
+                return await _callstatusService.DeleteCallStatus(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
         }
     }
 }
