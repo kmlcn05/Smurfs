@@ -1,7 +1,7 @@
 ﻿
 var allData = null;
 var id = null;
-var name = null;
+var username = null;
 var surname = null;
 var active = null;
 var mail = null;
@@ -15,6 +15,11 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     allData = data;
+
+    for (var x of data) {
+        x.dateOfStart = x.dateOfStart.replace("T00:00:00", "");
+    }
+
     $('#userDatatable').dataTable({
         "paging": true,
         "aaData": data,
@@ -44,7 +49,25 @@ $.ajax({
     })
 })
 
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Usergroup",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#UserGroup').append(`<option value="${x.groupName}">${x.groupName}</option>`)
+    });
+})
 
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Team",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Team').append(`<option value="${x.teamName}">${x.teamName}</option>`)
+    });
+})
 
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
@@ -81,16 +104,41 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+
+        username = $('#UserName').val();
+        surname = $('#Surname').val();
+        active = $('#Active').val();
+        mail = $('#Mail').val();
+        dateOfStart = $('#DateOfStart').val();
+        usergroup = $('#Usergroup option:selected').text();
+        team = $('#Team option:selected').text();
+
+        if (name == "Bir Değer Seçiniz" || surname == "" || active == "" || mail == ""
+            || dateOfStart == "" || usergroup == "Bir Değer Seçiniz" || team == "Bir Değer Seçiniz") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
+
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
-            var username = $('#UserName').val()
+            
             $.ajax({
                 url: "https://smuhammetulas.com/api/User",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
-                    "userName": username
+
+                    "name": username,
+                    "surname": surname,
+                    "mail": mail,
+                    //password eklencek
+                    "active": active,
+                    "dateOfStart": dateOfStart,
+                    "usergroup": usergroup,
+                    "team": team
+
                 }),
                 success: function () {
 
@@ -122,12 +170,19 @@ $(document).on('click', '.Save', function () {
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
                     "id": id,
-                    "userName": username
+                    "name": username,
+                    "surname": surname,
+                    "mail": mail,
+                    //password eklencek
+                    "active": active,
+                    "dateOfStart": dateOfStart,
+                    "usergroup": usergroup,
+                    "team": team
                 }),
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated");
                     window.location.reload()
 
 
@@ -149,10 +204,24 @@ $(document).on('click', '.Save', function () {
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
-        username = allData.find(x => x.id == parseInt(id)).userName;
+
+        username = allData.find(x => x.id == parseInt(id)).name;
+        surname = allData.find(x => x.id == parseInt(id)).surname;
+        mail = allData.find(x => x.id == parseInt(id)).mail;
+        active = allData.find(x => x.id == parseInt(id)).active;
+        dateOfStart = allData.find(x => x.id == parseInt(id)).dateOfStart;
+        usergroup = allData.find(x => x.id == parseInt(id)).usergroup;
+        team = allData.find(x => x.id == parseInt(id)).team;
 
         document.getElementById('newuser').style.display = 'block';
+
         $('#UserName').val(username).html();
+        $('#Surname').val(surname).html();
+        $('#Mail').val(mail).html();
+        $('#Active').val(active).html();
+        $('#DateOfStart').val(dateOfStart).html();
+        $('#Usergroup').val(usergroup).html();
+        $('#Team').val(team).html();
 
     }
 });

@@ -5,7 +5,7 @@ var callStatusName = null;
 
 
 $.ajax({
-    'url': "https://smuhammetulas.com/api/CallStatus",
+    'url': "https://smuhammetulas.com/api/CallStatus" ,
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
@@ -70,6 +70,12 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+        if (id == null) {
+            if (callStatusName == "") {
+
+                document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+                return false;
+            }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var callStatusName = $('#callStatusName').val()
@@ -116,7 +122,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated");
                     window.location.reload()
 
 
@@ -141,7 +147,7 @@ $(document).on('click', '.Update', function (e) {
         callStatusName = allData.find(x => x.id == parseInt(id)).callStatusName;
 
         document.getElementById('newcallStatusName').style.display = 'block';
-        $('#callStatusName').val(callStatusName).html();
+        $('#CallStatusName').val(callStatusName).html();
 
     }
 });

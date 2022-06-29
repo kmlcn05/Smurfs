@@ -70,6 +70,13 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+
+        if (groupname == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
+
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var groupname = $('#GroupName').val()

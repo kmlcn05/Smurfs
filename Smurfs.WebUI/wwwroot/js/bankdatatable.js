@@ -116,7 +116,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated");
                     window.location.reload()
 
 

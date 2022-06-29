@@ -69,6 +69,13 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+
+        if (teamname == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
+
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var teamname = $('#TeamName').val()

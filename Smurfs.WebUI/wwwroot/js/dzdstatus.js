@@ -69,6 +69,12 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
     if (id == null) {
+
+        if (dzdstatusname == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
             var dzdstatusname = $('#DZDStatusName').val()
@@ -115,7 +121,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated");
                     window.location.reload()
 
 
