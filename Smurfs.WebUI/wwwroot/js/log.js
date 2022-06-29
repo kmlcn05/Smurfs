@@ -9,7 +9,7 @@ var projects = null;
 var calls = null;
 
 $.ajax({
-    'url': "https://smuhammetulas.com/api/Log",
+    'url': "https://smuhammetulas.com/api/GetLog",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {

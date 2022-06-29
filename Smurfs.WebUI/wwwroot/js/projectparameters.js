@@ -12,7 +12,7 @@ var projeVerimDegeri = null;
 var projeVerimSonucu = null;
 
 $.ajax({
-    'url': "https://smuhammetulas.com/api/ProjectParameters/GetAllProjectParameters",
+    'url': "https://smuhammetulas.com/api/ProjectParameters/GetProjectParameters",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
@@ -71,7 +71,7 @@ $(document).on('click', '.Delete', function (e) {
         if (Confirm) {
 
             $.ajax({
-                url: "https://smuhammetulas.com/api/ProjectParameters/GetAllProjectParameters/" + id,
+                url: "https://smuhammetulas.com/api/ProjectParameters/" + id,
                 type: "DELETE",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -122,7 +122,7 @@ $(document).on('click', '.Save', function () {
 
 
             $.ajax({
-                url: "https://smuhammetulas.com/api/ProjectParameters/GetAllProjectParameters",
+                url: "https://smuhammetulas.com/api/ProjectParameters/CreateProjectParameters",
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -163,7 +163,7 @@ $(document).on('click', '.Save', function () {
             name = $('#Name').val()
 
             $.ajax({
-                url: "https://smuhammetulas.com/api/ProjectParameters/GetAllProjectParameters",
+                url: "https://smuhammetulas.com/api/ProjectParameters/UpdateProjectParameters",
                 type: "PUT",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",

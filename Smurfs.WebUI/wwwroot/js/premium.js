@@ -6,7 +6,7 @@ var premiumDate = null;
 var users = null;
 
 $.ajax({
-    'url': "https://smuhammetulas.com/api/Premium",
+    'url': "https://smuhammetulas.com/api/Premium/GetPremium",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
