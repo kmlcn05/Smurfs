@@ -10,7 +10,7 @@ builder.Services.AddSession();
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ICallService, CallService>();
-
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 
