@@ -3,6 +3,11 @@ var allData = null;
 var id = null;
 var dzdStatusName = null;
 
+function reloadPage() {
+    document.getElementById('newdzdstatus').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/DZDStatus",
     'method': "GET",
@@ -143,10 +148,12 @@ $(document).on('click', '.Save', function () {
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
-        dzdstatusname = allData.find(x => x.id == parseInt(id)).dzdstatusName;
+
+        dzdstatusname = allData.find(x => x.id == parseInt(id)).dzdStatusName;
 
         document.getElementById('newdzdstatus').style.display = 'block';
-        $('#DZDStatusName').val().html();
+
+        $('#DZDStatusName').val(dzdstatusname).html();
 
     }
 });

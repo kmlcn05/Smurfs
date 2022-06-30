@@ -11,6 +11,11 @@ var projeVerimYuzdesi = null;
 var projeVerimDegeri = null;
 var projeVerimSonucu = null;
 
+function reloadPage() {
+    document.getElementById('newprojectparameter').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/ProjectParameters/GetProjectParameters",
     'method': "GET",
@@ -23,6 +28,7 @@ $.ajax({
     }
 
     $('#projectparametersDatatable').dataTable({
+        scrollX : true,
         "paging": true,
         "aaData": data,
         "columns": [
@@ -58,10 +64,11 @@ $.ajax({
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
-    data.forEach(x => {
-        $('#Project').append(`<option value="${x.name}">${x.name}</option>`)
+    data.forEach(x => { 
+        $('#Project').append(`<option value="${x.jiraProjectName}">${x.jiraProjectName}</option>`)
     });
 })
+
 
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
@@ -97,28 +104,28 @@ $(document).on('click', '.Delete', function (e) {
 
 
 $(document).on('click', '.Save', function () {
-    if (id == null) {
+
 
         name = $('#Name').val();
         parametersDate = $('#ParametersDate').val();
-        project = $("#Call option:selected").text();
-        projeCarpani = $('#CallCarpani').val();
-        projeKapasite = $('#CallKapasite').val();
-        projeGerceklesen = $('#CallGerceklesen').val();
-        projeVerimYuzdesi = $('#CallVerimYuzdesi').val();
-        projeVerimDegeri = $('#CallVerimDegeri').val();
-        projeVerimSonucu = $('#CallVerimSonucu').val();
+        project = $("#Project option:selected").text();
+        projeCarpani = $('#ProjeCarpani').val();
+        projeKapasite = $('#ProjeKapasite').val();
+        projeGerceklesen = $('#ProjeGerceklesen').val();
+        projeVerimYuzdesi = $('#ProjeVerimYuzdesi').val();
+        projeVerimDegeri = $('#ProjeVerimDegeri').val();
+        projeVerimSonucu = $('#ProjeVerimSonucu').val();
 
         if (id == null) {
-            if (name == "Bir Değer Seçiniz" || parametersDate == "" || project == "Bir Değer Seçiniz" || projeCarpani == ""
+            if (name == "" || parametersDate == "" || project == "Bir Değer Seçiniz" || projeCarpani == ""
                 || projeKapasite == "" || projeGerceklesen == "" || projeVerimYuzdesi == "" || projeVerimDegeri == ""
                 || projeVerimSonucu == "") {
 
                 document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
                 return false;
             }
-        var Confirm = confirm("Kayıt yapılsın mı?");
-        if (Confirm) {
+            var Confirm = confirm("Kayıt yapılsın mı?");
+            if (Confirm) {
 
 
             $.ajax({
@@ -157,8 +164,8 @@ $(document).on('click', '.Save', function () {
         }
     }
     else {
-        var Confirm = confirm("Are you sure, do you want to update it?");
-        if (Confirm) {
+            var Confirm = confirm("Are you sure, do you want to update it?");
+            if (Confirm) {
 
             name = $('#Name').val()
 
@@ -184,7 +191,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated.");
                     window.location.reload()
 
 
@@ -207,7 +214,7 @@ $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
 
-        name = allData.find(x => x.id == parseInt(id)).Name;
+        name = allData.find(x => x.id == parseInt(id)).name;
         parametersDate = allData.find(x => x.id == parseInt(id)).parametersDate;
         project = allData.find(x => x.id == parseInt(id)).project;
         projeCarpani = allData.find(x => x.id == parseInt(id)).projeCarpani;
@@ -217,9 +224,9 @@ $(document).on('click', '.Update', function (e) {
         projeVerimDegeri = allData.find(x => x.id == parseInt(id)).projeVerimDegeri;
         projeVerimSonucu = allData.find(x => x.id == parseInt(id)).projeVerimSonucu;
 
-        document.getElementById('newprojectparameters').style.display = 'block';
+        document.getElementById('newprojectparameter').style.display = 'block';
 
-        $('#Name').val(name).html();
+        $('#Name').val(name);
         $('#ParametersDate').val(parametersDate);
         $('#Project').val(project);
         $('#ProjeCarpani').val(projeCarpani);

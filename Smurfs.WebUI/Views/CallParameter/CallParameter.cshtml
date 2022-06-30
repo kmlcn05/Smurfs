@@ -9,6 +9,7 @@
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="~/css/Project.css" rel="stylesheet" />
 <div class="container">
     <br />
     <p><button onclick="document.getElementById('newcallparameter').style.display='block'" class="btn btn-success">New Call Parameter</button></p>
@@ -39,7 +40,7 @@
     <div id="newcallparameter" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
             <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
-                <span onclick="document.getElementById('newcallparameter').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <span onclick= "reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
                 <h3>callparameter</h3>
             </div>
             <div id="Form">
@@ -47,23 +48,23 @@
 
                         Name: <input type="text" id="Name" placeholder="Name">
                         <br>
-                        ParametersDate: <input type="date" id="ParametersDate" placeholder="ParametersDate">
+                        Date: <input type="date" id="ParametersDate" placeholder="ParametersDate">
                         <br>
                         Call: <select id="Call">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>
                         <br>                   
-                        CallCarpani: <input type="text" id="CallCarpani" placeholder="CallCarpani">>
+                        Carpani: <input type="number" id="CallCarpani" placeholder="CallCarpani">
                         <br>
-                        CallKapasite: <input type="text" id="CallKapasite" placeholder="CallKapasite">
+                        Kapasite: <input type="number" id="CallKapasite" placeholder="CallKapasite">
                         <br>
-                        CallGerceklesen: <input type="text" id="CallGerceklesen" placeholder="CallGerceklesen" >
+                        Gerceklesen: <input type="number" id="CallGerceklesen" placeholder="CallGerceklesen" >
                         <br>
-                        CallVerimYuzdesi: <input type="text" id="CallVerimYuzdesi" placeholder="CallVerimYuzdesi">
+                        VerimYuzdesi: <input type="number" id="CallVerimYuzdesi" placeholder="CallVerimYuzdesi">
                         <br>
-                        CallVerimDegeri: <input type="text" id="CallVerimDegeri" placeholder="CallVerimDegeri">
+                        VerimDegeri: <input type="number" id="CallVerimDegeri" placeholder="CallVerimDegeri">
                         <br>
-                        CallVerimSonucu: <input type="text" id="CallVerimSonucu" placeholder="CallVerimSonucu">
+                        VerimSonucu: <input type="number" id="CallVerimSonucu" placeholder="CallVerimSonucu">
                         <br>
                         <div id="hata" style="text-align:center; color:red;"> 
 

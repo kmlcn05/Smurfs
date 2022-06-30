@@ -3,6 +3,11 @@ var allData = null;
 var id = null;
 var statusName = null;
 
+function reloadPage() {
+    document.getElementById('newstatus').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Status",
     'method': "GET",

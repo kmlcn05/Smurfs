@@ -11,6 +11,10 @@ var callVerimYuzdesi = null;
 var callVerimDegeri = null;
 var callVerimSonucu = null;
 
+function reloadPage() {
+    document.getElementById('newcallparameter').style.display = 'none';
+    window.location.reload()
+}
 
 $.ajax({
     'url': "https://smuhammetulas.com/api/CallParameters/GetCallParameters",
@@ -62,7 +66,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Call').append(`<option value="${x.name}">${x.name}</option>`)
+        $('#Call').append(`<option value="${x.callName}">${x.callName}</option>`)
     });
 })
 
@@ -115,7 +119,7 @@ $(document).on('click', '.Save', function () {
     callVerimSonucu = $('#CallVerimSonucu').val();
 
     if (id == null) {
-        if (name == "Bir Değer Seçiniz" || parametersDate == "" || call == "Bir Değer Seçiniz" || callCarpani == ""
+        if (name == "" || parametersDate == "" || call == "Bir Değer Seçiniz" || callCarpani == ""
             || callKapasite == "" || callGerceklesen == "" || callVerimYuzdesi == "" ||callVerimDegeri == "" || callVerimSonucu == "") {
 
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
@@ -219,9 +223,9 @@ $(document).on('click', '.Update', function (e) {
         callVerimDegeri = allData.find(x => x.id == parseInt(id)).callVerimDegeri;
         callVerimSonucu = allData.find(x => x.id == parseInt(id)).callVerimSonucu;
 
-        document.getElementById('newcallparamater').style.display = 'block';
+        document.getElementById('newcallparameter').style.display = 'block';
 
-        $('#Name').val(name).html();
+        $('#Name').val(name);
         $('#ParametersDate').val(parametersDate);
         $('#Call').val(call);
         $('#CallCarpani').val(callCarpani);

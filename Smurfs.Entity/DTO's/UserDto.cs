@@ -16,7 +16,6 @@ namespace Smurfs.Entity.DTO_s
         public string Password { get; set; }
         public string Active { get; set; }
         public DateTime DateOfStart { get; set; }
-        //public ICollection<UserGroup> usergroup { get; set; }
         public string usergroup { get; set; }
         public string team { get; set; }
     }

@@ -3,7 +3,10 @@ var allData = null;
 var id = null;
 var departmentName = null;
 
-
+function reloadPage() {
+    document.getElementById('newdepartment').style.display = 'none';
+    window.location.reload()
+}
 $.ajax({
     'url': "https://smuhammetulas.com/api/Department",
     'method': "GET",
@@ -77,7 +80,7 @@ $(document).on('click', '.Save', function () {
         }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
-            var departmentName = $('#departmentName').val()
+            var departmentName = $('#DepartmentName').val()
             $.ajax({
                 url: "https://smuhammetulas.com/api/Department",
                 type: "POST",
@@ -107,7 +110,7 @@ $(document).on('click', '.Save', function () {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
-            departmentName = $('#departmentName').val()
+            departmentName = $('#DepartmentName').val()
 
             $.ajax({
                 url: "https://smuhammetulas.com/api/Department",
@@ -145,8 +148,8 @@ $(document).on('click', '.Update', function (e) {
         id = e.target.dataset.id;
         departmentName = allData.find(x => x.id == parseInt(id)).departmentName;
 
-        document.getElementById('newdepartmentName').style.display = 'block';
-        $('#departmentName').val(departmentName).html();
+        document.getElementById('newdepartment').style.display = 'block';
+        $('#DepartmentName').val(departmentName).html();
 
     }
 });

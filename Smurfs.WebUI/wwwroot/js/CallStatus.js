@@ -3,6 +3,10 @@ var allData = null;
 var id = null;
 var callStatusName = null;
 
+function reloadPage() {
+    document.getElementById('newcallStatus').style.display = 'none';
+    window.location.reload()
+}
 
 $.ajax({
     'url': "https://smuhammetulas.com/api/CallStatus" ,
@@ -69,16 +73,19 @@ $(document).on('click', '.Delete', function (e) {
 
 
 $(document).on('click', '.Save', function () {
-    if (id == null) {
-        if (id == null) {
-            if (callStatusName == "") {
 
-                document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
-                return false;
-            }
+    var callStatusName = $('#CallStatusName').val()
+
+
+    if (id == null) {
+        if (callStatusName == "") {
+
+            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
+            return false;
+        }
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
-            var callStatusName = $('#callStatusName').val()
+
             $.ajax({
                 url: "https://smuhammetulas.com/api/CallStatus",
                 type: "POST",
@@ -108,8 +115,6 @@ $(document).on('click', '.Save', function () {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
-            callStatusName = $('#callStatusName').val()
-
             $.ajax({
                 url: "https://smuhammetulas.com/api/CallStatus",
                 type: "PUT",
@@ -137,6 +142,7 @@ $(document).on('click', '.Save', function () {
         }
     }
 
+
 });
 
 
@@ -146,7 +152,7 @@ $(document).on('click', '.Update', function (e) {
         id = e.target.dataset.id;
         callStatusName = allData.find(x => x.id == parseInt(id)).callStatusName;
 
-        document.getElementById('newcallStatusName').style.display = 'block';
+        document.getElementById('newcallStatus').style.display = 'block';
         $('#CallStatusName').val(callStatusName).html();
 
     }

@@ -137,7 +137,7 @@ $(document).on('click', '.Save', function () {
         if (bank == "Bir Değer Seçiniz" || taskType == "" || jiraTaskNo == "" || callName == ""
             || cagriCozumSuresi == "" || callDetails == "" || callPriority == ""
             || callDateCreated == " " || callDateResolved == " " || callStatus == "Bir Değer Seçiniz"
-            || appointee == "" || developerManDay == "" || reporter == "") {
+            || appointee == "" || reporter == "") {
 
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
             return false;

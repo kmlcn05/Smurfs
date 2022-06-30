@@ -8,7 +8,12 @@ var mail = null;
 var dateOfStart = null;
 var usergroup = null; 
 var team = null; 
-                    
+
+function reloadPage() {
+    document.getElementById('newuser').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/User/GetUser",
     'method': "GET",
