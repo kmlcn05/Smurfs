@@ -20,6 +20,9 @@ $.ajax({
     for (var x of data) {
         x.premiumDate = x.premiumDate.replace("T00:00:00", "");
     }
+    for (var x of data) {
+        x.amount = x.amount.replace(".00", "");
+    }
 
     $('#premiumDatatable').dataTable({
         "paging": true,

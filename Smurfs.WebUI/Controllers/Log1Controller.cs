@@ -2,9 +2,9 @@
 
 namespace Smurfs.WebUI.Controllers
 {
-    public class LogController : Controller
+    public class Log1Controller : Controller
     {
-        public IActionResult Log()
+        public IActionResult Log1()
         {
             return View();
         }
