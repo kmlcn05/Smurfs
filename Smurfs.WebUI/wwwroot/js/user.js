@@ -60,7 +60,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#UserGroup').append(`<option value="${x.groupName}">${x.groupName}</option>`)
+        $('#Usergroup').append(`<option value="${x.groupName}">${x.groupName}</option>`)
     });
 })
 
@@ -108,17 +108,17 @@ $(document).on('click', '.Delete', function (e) {
 
 
 $(document).on('click', '.Save', function () {
+
+    username = $('#UserName').val();
+    surname = $('#Surname').val();
+    active = $('#Active').val();
+    mail = $('#Mail').val();
+    dateOfStart = $('#DateOfStart').val();
+    usergroup = $('#Usergroup option:selected').text();
+    team = $('#Team option:selected').text();
+
     if (id == null) {
-
-        username = $('#UserName').val();
-        surname = $('#Surname').val();
-        active = $('#Active').val();
-        mail = $('#Mail').val();
-        dateOfStart = $('#DateOfStart').val();
-        usergroup = $('#Usergroup option:selected').text();
-        team = $('#Team option:selected').text();
-
-        if (name == "Bir Değer Seçiniz" || surname == "" || active == "" || mail == ""
+        if (username == "" || surname == "" || active == "" || mail == ""
             || dateOfStart == "" || usergroup == "Bir Değer Seçiniz" || team == "Bir Değer Seçiniz") {
 
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
@@ -138,7 +138,7 @@ $(document).on('click', '.Save', function () {
                     "name": username,
                     "surname": surname,
                     "mail": mail,
-                    //password eklencek
+                    //Şifre boş gidiyor
                     "active": active,
                     "dateOfStart": dateOfStart,
                     "usergroup": usergroup,
@@ -166,8 +166,6 @@ $(document).on('click', '.Save', function () {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
-            username = $('#UserName').val()
-
             $.ajax({
                 url: "https://smuhammetulas.com/api/User",
                 type: "PUT",
@@ -178,7 +176,7 @@ $(document).on('click', '.Save', function () {
                     "name": username,
                     "surname": surname,
                     "mail": mail,
-                    //password eklencek
+                    //Şifre sıfırlanıyor
                     "active": active,
                     "dateOfStart": dateOfStart,
                     "usergroup": usergroup,
