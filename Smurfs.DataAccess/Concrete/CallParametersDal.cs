@@ -54,6 +54,7 @@ namespace Smurfs.DataAccess.Concrete
 
             result.Id = callParameters.Id;
             result.Name = callParameters.Name;
+            result.ParametersDate = callParameters.ParametersDate;
             result.CallCarpani = Convert.ToInt32(callParameters.CallCarpani);
             result.CallKapasite = Convert.ToInt32(callParameters.CallKapasite);;
             result.CallGerceklesen = Convert.ToInt32(callParameters.CallGerceklesen);

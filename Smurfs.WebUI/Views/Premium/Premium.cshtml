@@ -8,6 +8,7 @@
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="~/css/Project.css" rel="stylesheet" />
 <div class="container">
     <br />
     <p><button onclick="document.getElementById('newpremium').style.display='block'" class="btn btn-success">New Premium</button></p>
@@ -33,13 +34,13 @@
     <div id="newpremium" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
             <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
-                <span onclick="document.getElementById('newpremium').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <span onclick= "reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
                 <h3>Premium</h3>
                 </div>
             <div id="Form">
                 <form method="post">    
 
-                        Amount: <input type="text" id="Amount" placeholder="Amount">
+                        Amount: <input type="number" id="Amount" placeholder="Amount">
                         <br>
                         PremiumDate: <input type="date" id="PremiumDate" placeholder="PremiumDate">
                         <br>

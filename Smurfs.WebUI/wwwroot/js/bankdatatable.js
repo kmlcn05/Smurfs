@@ -3,6 +3,10 @@ var allData = null;
 var id = null;
 var bankname = null;
 
+function reloadPage() {
+    document.getElementById('newbank').style.display = 'none';
+    window.location.reload()
+}
 
 $.ajax({
     'url': "https://smuhammetulas.com/api/Bank",

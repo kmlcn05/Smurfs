@@ -3,6 +3,10 @@ var allData = null;
 var id = null;
 var groupName = null;
 
+function reloadPage() {
+    document.getElementById('newusergroup').style.display = 'none';
+    window.location.reload()
+}
 
 $.ajax({
     'url': "https://smuhammetulas.com/api/UserGroup",
@@ -147,7 +151,7 @@ $(document).on('click', '.Update', function (e) {
         id = e.target.dataset.id;
         groupname = allData.find(x => x.id == parseInt(id)).groupName;
 
-        document.getElementById('newgroup').style.display = 'block';
+        document.getElementById('newusergroup').style.display = 'block';
         $('#GroupName').val(groupname).html();
 
     }

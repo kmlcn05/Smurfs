@@ -3,6 +3,11 @@ var allData = null;
 var id = null;
 var processName = null;
 
+function reloadPage() {
+    document.getElementById('newprocess').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Process",
     'method': "GET",
@@ -123,7 +128,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    alert("silindi");
+                    alert("The record is updated.");
                     window.location.reload()
 
 

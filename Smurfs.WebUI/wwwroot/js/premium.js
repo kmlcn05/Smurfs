@@ -5,6 +5,11 @@ var amount = null;
 var premiumDate = null;
 var users = null;
 
+function reloadPage() {
+    document.getElementById('newpremium').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Premium/GetPremium",
     'method': "GET",
@@ -90,7 +95,7 @@ $(document).on('click', '.Save', function () {
     users = $("#Users option:selected").text();
 
     if (id == null) {
-        if (amount == "Bir Değer Seçiniz" || premiumDate == "" || users == "Bir Değer Seçiniz") {
+        if (amount == "" || premiumDate == "" || users == "Bir Değer Seçiniz") {
 
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
             return false;
@@ -179,9 +184,9 @@ $(document).on('click', '.Update', function (e) {
 
         document.getElementById('newpremium').style.display = 'block';
 
-        $('#Amount').val(amount).html();
-        $('#PremiumDate').val(premiumdate).html();
-        $('#Users').val(users).html();
+        $('#Amount').val(amount);
+        $('#PremiumDate').val(premiumDate);
+        $('#Users').val(users);
 
     }
 });

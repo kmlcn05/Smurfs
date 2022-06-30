@@ -3,6 +3,11 @@ var allData = null;
 var id = null;
 var teamName = null;
 
+function reloadPage() {
+    document.getElementById('newteam').style.display = 'none';
+    window.location.reload()
+}
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Team",
     'method': "GET",

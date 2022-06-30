@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <div class="container">
     <br />
-    <p><button onclick="document.getElementById('newbank').style.display='block'" class="btn btn-success">New Department</button></p>
+    <p><button onclick="document.getElementById('newdepartment').style.display='block'" class="btn btn-success">New Department</button></p>
 
     <div style="width:90%; margin:0 auto;">
         <table id="departmentDatatable" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
@@ -32,7 +32,7 @@
     <div id="newdepartment" class="w3-modal">
         <div class="w3-modal-content w3-animate-zoom">
             <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
-                <span onclick="document.getElementById('newdepartment').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+                <span onclick= "reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
                 <h3>Department</h3>
             </div>
             <form method="post">
