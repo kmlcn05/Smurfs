@@ -70,6 +70,22 @@ $.ajax({
     })
 })
 
+$(document).delegate('#Team', 'change', function (e) {
+    e.preventDefault();
+    var $this = $('#Team');  
+    fetch("https://smuhammetulas.com/api/User/GetUser").then(response => response.json()).then(data => {       
+        $('#Developer').empty().append("<option>Bir Değer Seçiniz</option>");
+        data.filter(x => x.team == $this.val() && x.usergroup == "Developer").forEach(x => {
+            $('#Developer').append(`<option value="${x.name}">${x.name}</option>`);           
+        });
+        $('#Analyst').empty().append("<option>Bir Değer Seçiniz</option>");
+        data.filter(x => x.team == $this.val() && x.usergroup == "Analyst").forEach(x => {
+            $('#Analyst').append(`<option value="${x.name}">${x.name}</option>`);           
+        });
+    })
+});
+
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Bank",
     'method': "GET",
@@ -120,7 +136,6 @@ $.ajax({
     });
 })
 
-
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         var id = e.target.dataset.id;
@@ -161,19 +176,20 @@ $(document).on('click', '.Save', function () {
     status = $("#Status option:selected").text();
     department = $("#Department option:selected").text();
     team = $("#Team option:selected").text();
-    developer = $('#Developer').val();
-    analyst = $('#Analyst').val();
+    developer = $('#Developer option:selected').text();
+    analyst = $('#Analyst option:selected').text();
     totalManDay = $('#TotalManDay').val();
     developerManDay = $('#DeveloperManDay').val();
     analystManDay = $('#AnalystManDay').val();
     pmManDay = $('#PmManDay').val();
 
+
     //boş kontrolü yapılacak
 
     if (id == null) {
-        if (projectDate == " " || bank == "Bir Değer Seçiniz" || jiraProjectNo == "" || jiraTaskNo == ""|| jiraProjectName == ""
+        if (projectDate == " " || bank == "Bir Değer Seçiniz" || jiraProjectNo == "" || jiraTaskNo == "" || jiraProjectName == ""
             || dZDStatus == "Bir Değer Seçiniz" || status == "Bir Değer Seçiniz" || department == "Bir Değer Seçiniz"
-            || team == "Bir Değer Seçiniz" || developer == "Developer" || analyst == "Analyst"
+            || team == "Bir Değer Seçiniz" || developer == "Bir Değer Seçiniz" || analyst == "Bir Değer Seçiniz"
             || totalManDay == "TotalManDay" || developerManDay == "" || analystManDay == "" || pmManDay == "PmManDay") {
 
             document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
@@ -308,8 +324,8 @@ $(document).on('click', '.Update', function (e) {
         $("#Status").val(status);
         $("#Department").val(department);
         $("#Team").val(team);
-        $('#Developer').val(developer).html();
-        $('#Analyst').val(analyst).html();
+        $('#Developer').val(developer);
+        $('#Analyst').val(analyst);
         $('#TotalManDay').val(totalManDay).html();
         $('#DeveloperManDay').val(developerManDay).html();
         $('#AnalystManDay').val(analystManDay).html();
