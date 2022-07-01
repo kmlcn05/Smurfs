@@ -1,0 +1,350 @@
+﻿@{
+    Layout = null;
+}
+<!-- İçini doldurmak kaldı. Anasayfa gözükmüyo ona bakılacak-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DZD TECH | PRİM SİSTEMİ </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/css/AdminIndex.css" rel="stylesheet" />
+    <link href="~/js/AdminIndex.js" rel="stylesheet" /> 
+
+
+
+    @*<style>
+    url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+
+
+
+
+    * {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'open sans',sans-serif;
+    }
+
+
+
+
+
+    body {
+    background: #f5f6fa;
+    }
+
+
+
+
+
+    .wrapper .sidebar {
+    background: rgb(5,68,104);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+    }
+
+
+
+
+
+    .wrapper .sidebar .profile {
+    margin-bottom: 30px;
+    text-align: center;
+    }
+
+
+
+
+
+    .wrapper .sidebar .profile img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    }
+
+
+
+
+
+    .wrapper .sidebar .profile h3 {
+    color: #ffffff;
+    margin: 10px 0 5px;
+    }
+
+
+
+
+
+    .wrapper .sidebar ul li a {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 16px;
+    position: relative;
+    }
+
+    .wrapper .sidebar ul li {
+    list-style-type: none;
+    }
+
+    .wrapper .sidebar ul li a {
+    text-decoration: none;
+    }
+
+
+
+
+    .wrapper .sidebar ul li a .icon {
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+    }
+
+
+
+
+
+    /* link-hover */
+    .wrapper .sidebar ul li a:hover,
+    .wrapper .sidebar ul li a.active {
+    color: #0c7db1;
+    background: white;
+    border-right: 2px solid rgb(5,68,104);
+    }
+
+
+
+
+
+    .wrapper .sidebar ul li a:hover .icon,
+    .wrapper .sidebar ul li a.active .icon {
+    color: #0c7db1;
+    }
+
+
+
+
+
+    .wrapper .sidebar ul li a:hover::before,
+    .wrapper .sidebar ul li a.active::before {
+    display: block;
+    }
+
+
+
+
+
+    .wrapper .section {
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+    }
+
+
+
+
+
+    .wrapper .section .top_navbar {
+    background-color: rgb(7,105,185);
+    height: 2000px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    }
+
+
+
+
+
+    .wrapper .section .top_navbar .hamburger a {
+    font-size: 28px;
+    color: #f4fbff;
+    }
+
+
+
+
+
+    .wrapper .section .top_navbar .hamburger a:hover {
+    color: #a3ecff;
+    }
+
+
+
+
+
+    body.active .wrapper .sidebar {
+    left: -225px;
+    }
+
+
+
+
+
+    body.active .wrapper .section {
+    margin-left: 0;
+    width: 100%;
+    }
+
+    </style>*@
+</head>
+<body>
+
+
+
+
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <!--sidebar profile -->
+            <div class="profile">
+                <img src="/assets/dzdtechlogo.jpg">
+                <h3>DZD TECH</h3>
+                <h3 style="color:black;"><strong>PRİM SİSTEMİ</strong></h3>
+            </div>
+
+
+
+            <!--menu item -->
+            <ul>
+                <li>
+                    <a href="/User/User/">
+                        <span class="icon"><i class="fas fa-tasks"></i></span>
+                        <span class="item">Kullanıcı İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Project/Project/">
+                        <span class="icon"><i class="fas fa-tasks"></i></span>
+                        <span class="item">Proje İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ProjectParameters/ProjectParameters/">
+                        <span class="icon"><i class="fas fa-tasks"></i></span>
+                        <span class="item">Proje Parametreleri Düzenleme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Call/Call/">
+                        <span class="icon"><i class="fas fa-laptop-code"></i></span>
+                        <span class="item">ITSM İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/CallStatus/CallStatus/">
+                        <span class="icon"><i class="fas fa-laptop-code"></i></span>
+                        <span class="item">ITSM Statüleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/CallParameter/CallParameter/">
+                        <span class="icon"><i class="fas fa-laptop-code"></i></span>
+                        <span class="item">ITSM Parametreleri Düzenleme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Bank/Bank/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">Banka Ekleme/Silme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/DZDStatus/DZDStatus/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">DZD Statüleri Düzenleme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Status/Status/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">Statü Değiştirme</span>
+                    </a>
+                </li>
+                 <li>
+                    <a href="/Department/Department/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">Birim İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Team/Team/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">Takım İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/UserGroup/UserGroup/">
+                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="item">Grup İşlemleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="item">Ayarlar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Login/Login/">
+                        <span class="icon"><i class="fas fa-home"></i></span>
+                        <span class="item">Çıkış Yap</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Top menu bar -->
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger" style="margin-right:175px !important;">
+                    <a href="#"><i class="fas fa-bars"></i></a>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+    </div>
+
+
+
+
+
+    <!-- menu active javascript -->
+    <script>
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function() {
+            document.querySelector("body").classList.toggle("active")
+        })
+
+
+
+
+
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/Admin.js" asp-append-version="true"></script>
+    <script src="~/js/AdminIndex.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+
+</body>
+</html>
+
+

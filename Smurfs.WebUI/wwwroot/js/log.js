@@ -1,15 +1,7 @@
 ﻿
-var allData = null;
-var id = null;
-var logDate = null;
-var users = null;
-var page = null;
-var process = null;
-var projects = null;
-var calls = null;
 
 $.ajax({
-    'url': "https://smuhammetulas.com/api/GetLog",
+    'url': "https://smuhammetulas.com/api/Log/GetLog",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
