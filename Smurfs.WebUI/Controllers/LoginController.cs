@@ -12,15 +12,22 @@ namespace Smurfs.WebUI.Controllers
         }
         public IActionResult Login()
         {
+            HttpContext.Session.Clear();
             return View();
         }
         public IActionResult Anasayfa()
         {
-            ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
-            ViewBag.Usermail = HttpContext.Session.GetString("Usermail");
-            ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
+            if (HttpContext.Session.GetString("UserRole") == "Developer"
+               || HttpContext.Session.GetString("UserRole") == "Analyst")
+            {
+                ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
+                ViewBag.Usermail = HttpContext.Session.GetString("Usermail");
+                ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
 
-            return View("Anasayfa");
+                return View();
+            }
+            else
+                return View("NotAuthorized");
         }
 
         [HttpPost]
@@ -37,13 +44,17 @@ namespace Smurfs.WebUI.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
+                    HttpContext.Session.SetString("LoggedUser", account.Result.Name + " " + account.Result.Surname);
                     HttpContext.Session.SetString("UserRole", account.Result.UserGroup +"");
                     HttpContext.Session.SetString("Usermail", account.Result.Mail + "");
 
                     if (HttpContext.Session.GetString("UserRole") == "Admin")
                     {
                         return RedirectToAction("Admin", "Admin");
+                    }
+                    else if (HttpContext.Session.GetString("UserRole") == "Manager")
+                    {
+                        return RedirectToAction("Manager", "Manager");
                     }
                     else
                     {

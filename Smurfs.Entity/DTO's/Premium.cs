@@ -14,7 +14,8 @@ namespace Smurfs.Entity.DTO_s
         public string Amount { get; set; }
         public DateTime PremiumDate { get; set; }
 
-        public string Users { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
 
     }
 }

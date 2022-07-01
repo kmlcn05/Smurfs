@@ -35,9 +35,16 @@
                 </tr>
             </thead>
         </table>
-        <br /><br /><br /><br /><br /><br />   
-        <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
-            
+                 <br /><br /><br /><br /><br /><br />   
+         @if (ViewBag.Usergruop == "Manager")
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Manager/Manager/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
+        else
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
+
     </div>
 </div>
 
@@ -51,25 +58,25 @@
             <div id="Form">
                 <form method="post">
 
-                        Name: <input type="text" id="Name" placeholder="Name">
+                        Name:<input type="text" id="Name" placeholder="Name">
                         <br>
-                        Date: <input type="date" id="ParametersDate" placeholder="ParametersDate">
+                        Date:<input type="date" id="ParametersDate" placeholder="ParametersDate">
                         <br>
-                        Call: <select id="Call">
+                        Call:<select id="Call">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>
                         <br>                   
-                        Carpani: <input type="number" id="CallCarpani" placeholder="CallCarpani">
+                        Carpani:<input type="number" id="CallCarpani" placeholder="CallCarpani">
                         <br>
-                        Kapasite: <input type="number" id="CallKapasite" placeholder="CallKapasite">
+                        Kapasite:<input type="number" id="CallKapasite" placeholder="CallKapasite">
                         <br>
-                        Gerceklesen: <input type="number" id="CallGerceklesen" placeholder="CallGerceklesen" >
+                        Gerceklesen:<input type="number" id="CallGerceklesen" placeholder="CallGerceklesen" >
                         <br>
-                        VerimYuzdesi: <input type="number" id="CallVerimYuzdesi" placeholder="CallVerimYuzdesi">
+                        VerimYuzdesi:<input type="number" id="CallVerimYuzdesi" placeholder="CallVerimYuzdesi">
                         <br>
-                        VerimDegeri: <input type="number" id="CallVerimDegeri" placeholder="CallVerimDegeri">
+                        VerimDegeri:<input type="number" id="CallVerimDegeri" placeholder="CallVerimDegeri">
                         <br>
-                        VerimSonucu: <input type="number" id="CallVerimSonucu" placeholder="CallVerimSonucu">
+                        VerimSonucu:<input type="number" id="CallVerimSonucu" placeholder="CallVerimSonucu">
                         <br>
                         <div id="hata" style="text-align:center; color:red;"> 
 

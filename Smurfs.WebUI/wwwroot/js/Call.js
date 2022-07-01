@@ -26,11 +26,6 @@ $.ajax({
 }).done(function (data) {
     allData = data;
 
-    for (var x of data) {
-        x.callDateCreated = x.callDateCreated.replace("T00:00:00", "");
-        x.callDateResolved = x.callDateResolved.replace("T00:00:00", "");
-    }
-
     $('#CallDatatable').dataTable({
         scrollX: true,
         "paging": true,
@@ -92,7 +87,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Appointee').append(`<option value="${x.name}">${x.name} </option >`)
+        $('#Appointee').append(`<option value="${x.name+' '+x.surname}">${x.name} ${x.surname}</option >`)
     });
 })
 

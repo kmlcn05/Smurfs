@@ -3,7 +3,8 @@ var allData = null;
 var id = null;
 var amount = null;
 var premiumDate = null;
-var users = null;
+var name = null;
+var surname = null;
 
 function reloadPage() {
     document.getElementById('newpremium').style.display = 'none';
@@ -31,7 +32,8 @@ $.ajax({
             { "data": "id" },
             { "data": "amount" },
             { "data": "premiumDate" },
-            { "data": "users" },
+            { "data": "name" },
+            { "data": "surname" },
             {
                 "render": function (data, x, row) {
                     return "<button class='btn btn-danger Delete' data-id='" + row.id + "' >Delete</button>";
@@ -54,7 +56,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Users').append(`<option value="${x.name}">${x.name}</option>`)
+        $('#Users').append(`<option value="${x.name + ' ' + x.surname}">${x.name} ${x.surname}</option>`); 
     });
 })
 
@@ -95,7 +97,11 @@ $(document).on('click', '.Save', function () {
 
     amount = $('#Amount').val();
     premiumDate = $('#PremiumDate').val();
-    users = $("#Users option:selected").text();
+    var users = $("#Users option:selected").text();
+    var array = users.split(' ');
+    name = array[0];
+    surname = array[1];
+    
 
     if (id == null) {
         if (amount == "" || premiumDate == "" || users == "Bir Değer Seçiniz") {
@@ -115,7 +121,8 @@ $(document).on('click', '.Save', function () {
 
                     "amount": amount,
                     "premiumDate": premiumDate,
-                    "users": users
+                    "name": name,
+                    "surname": surname
                 }),
                 success: function () {
 
@@ -138,11 +145,6 @@ $(document).on('click', '.Save', function () {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
-            
-            amount = $('#Amount').val();
-            premiumDate = $('#PremiumDate').val();
-            users = $("#Users option:selected").text();
-
             $.ajax({
                 url: "https://smuhammetulas.com/api/Premium",
                 type: "PUT",
@@ -153,7 +155,8 @@ $(document).on('click', '.Save', function () {
                     "id": id,
                     "amount": amount,
                     "premiumDate": premiumDate,
-                    "users": users
+                    "name": name,
+                    "surname": surname
                 }),
                 success: function () {
 
@@ -183,7 +186,9 @@ $(document).on('click', '.Update', function (e) {
 
         amount = allData.find(x => x.id == parseInt(id)).amount;
         premiumDate = allData.find(x => x.id == parseInt(id)).premiumDate;
-        users = allData.find(x => x.id == parseInt(id)).users;
+        name = allData.find(x => x.id == parseInt(id)).name;
+        surname = allData.find(x => x.id == parseInt(id)).surname;
+        users = name + " " + surname;
 
         document.getElementById('newpremium').style.display = 'block';
 
