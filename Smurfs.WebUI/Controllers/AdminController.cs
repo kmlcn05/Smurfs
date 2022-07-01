@@ -9,7 +9,9 @@ namespace Smurfs.WebUI.Controllers
 
         public IActionResult Admin()
         {
-            return View();
+            ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
+
+            return View("Admin");
 
         }
 
