@@ -22,14 +22,22 @@
                     <th>ID</th>
                     <th>Amount</th>
                     <th>Premium Date</th>
-                    <th>Users</th>
+                    <th>Name</th>
+                    <th>Surname</th>
                     <th>Actions</th>
                     <th>Actions</th>
                 </tr>
             </thead>
         </table>
-        <br /><br /><br /><br /><br /><br />   
-        <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+                 <br /><br /><br /><br /><br /><br />   
+         @if (ViewBag.Usergruop == "Manager")
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Manager/Manager/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
+        else
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
             
     </div>
 </div>
@@ -45,11 +53,11 @@
             <div id="Form">
                 <form method="post">    
 
-                        Amount: <input type="number" id="Amount" placeholder="Amount">
+                        Amount:<input type="number" id="Amount" placeholder="Amount">
                         <br>
-                        PremiumDate: <input type="date" id="PremiumDate" placeholder="PremiumDate">
+                        PremiumDate:<input type="date" id="PremiumDate" placeholder="PremiumDate">
                         <br>
-                        Users: <select id="Users">
+                        Users:<select id="Users">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>       
                         <br>

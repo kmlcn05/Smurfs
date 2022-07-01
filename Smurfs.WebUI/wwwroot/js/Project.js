@@ -76,11 +76,11 @@ $(document).delegate('#Team', 'change', function (e) {
     fetch("https://smuhammetulas.com/api/User/GetUser").then(response => response.json()).then(data => {       
         $('#Developer').empty().append("<option>Bir Değer Seçiniz</option>");
         data.filter(x => x.team == $this.val() && x.usergroup == "Developer").forEach(x => {
-            $('#Developer').append(`<option value="${x.name}">${x.name}</option>`);           
+            $('#Developer').append(`<option value="${x.name+' '+x.surname}">${x.name} ${x.surname}</option>`);           
         });
         $('#Analyst').empty().append("<option>Bir Değer Seçiniz</option>");
         data.filter(x => x.team == $this.val() && x.usergroup == "Analyst").forEach(x => {
-            $('#Analyst').append(`<option value="${x.name}">${x.name}</option>`);           
+            $('#Analyst').append(`<option value="${x.name+' '+x.surname}">${x.name} ${x.surname}</option>`);           
         });
     })
 });
@@ -324,8 +324,10 @@ $(document).on('click', '.Update', function (e) {
         $("#Status").val(status);
         $("#Department").val(department);
         $("#Team").val(team);
-        $('#Developer').val(developer);
-        $('#Analyst').val(analyst);
+        $("#Developer option:selected").text(developer);
+        $("#Analyst option:selected").text(analyst);
+        //$('#Developer').val(developer);
+        //$('#Analyst').val(analyst);
         $('#TotalManDay').val(totalManDay).html();
         $('#DeveloperManDay').val(developerManDay).html();
         $('#AnalystManDay').val(analystManDay).html();

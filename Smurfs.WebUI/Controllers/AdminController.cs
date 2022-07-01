@@ -9,12 +9,19 @@ namespace Smurfs.WebUI.Controllers
 
         public IActionResult Admin()
         {
-            ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
+            if (HttpContext.Session.GetString("UserRole") == "Admin"
+                || HttpContext.Session.GetString("UserRole") == "Manager")
+            {
+                ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
+                ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
 
-            return View("Admin");
-
+                return View();
+            }
+            else
+                return View("NotAuthorized");
         }
 
     }
 }
+
 

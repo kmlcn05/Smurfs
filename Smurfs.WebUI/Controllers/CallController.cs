@@ -14,7 +14,28 @@ namespace Smurfs.WebUI.Controllers
         }
         public IActionResult Call()
         {
-            return View();
+            if (HttpContext.Session.GetString("UserRole") == "Admin"
+                || HttpContext.Session.GetString("UserRole") == "Manager")
+            {
+                ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
+                ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
+
+                return View();
+            }
+            else
+                return View("NotAuthorized");
+        }
+        public IActionResult CallU()
+        {
+            if (HttpContext.Session.GetString("UserRole") == "Analyst"
+                || HttpContext.Session.GetString("UserRole") == "Developer")
+            {
+                ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
+
+                return View();
+            }
+            else
+                return View("NotAuthorized");
         }
 
         public async Task<IActionResult> GetCallsFromAPI()

@@ -36,8 +36,15 @@
                 </tr>
             </thead>
         </table>
-        <br /><br /><br /><br /><br /><br />   
-        <button class="w3-button w3-blue  w3-large" > <a href ="/Login/AnaSayfa/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+                <br /><br /><br /><br /><br /><br />   
+         @if (ViewBag.Usergruop == "Manager")
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Manager/Manager/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
+        else
+        {
+            <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+        }
               
     </div>
 </div>
@@ -52,36 +59,36 @@
             <div id="Form">
                 <form method="post">
 
-                        Bank: <select id="Bank">
+                        Bank:<select id="Bank">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>
                         <br>
-                        Task Type: <input type="text" value="" id="TaskType" placeholder="Task Type">
+                        Task Type:<input type="text" value="" id="TaskType" placeholder="Task Type">
                         <br>
-                        Jira Task No: <input type="text" value="" id="JiraTaskNo"placeholder="Jira Task No" >
+                        Jira Task No:<input type="text" value="" id="JiraTaskNo"placeholder="Jira Task No" >
                         <br>
-                        Call Name: <input type="text" value="" id="CallName"placeholder="Call Name" >
+                        Call Name:<input type="text" value="" id="CallName"placeholder="Call Name" >
                         <br>
-                        Cagri Cozum Suresi: <input type="text" value="" id="CagriCozumSuresi"placeholder="Cagri Cozum Suresi" >
+                        Cagri Cozum Suresi:<input type="text" value="" id="CagriCozumSuresi"placeholder="Cagri Cozum Suresi" >
                         <br>
-                        Call Details: <input type="text" value="" id="CallDetails"placeholder="Call Details" >
+                        Call Details:<input type="text" value="" id="CallDetails"placeholder="Call Details" >
                         <br>
-                        Call Priority: <input type="text" value="" id="CallPriority"placeholder="Call Priority" >
+                        Call Priority:<input type="text" value="" id="CallPriority"placeholder="Call Priority" >
                         <br>
-                        Call Date Created <input type="datetime-local" value="" id="CallDateCreated"placeholder="Call Date Created" >
+                        Call Date Created:<input type="datetime-local" value="" id="CallDateCreated"placeholder="Call Date Created" >
                         <br>
                          
-                        Call Date Resolved : <input type="datetime-local" value="" id="CallDateResolved"placeholder="Call Date Resolved" >
+                        Call Date Resolved:<input type="datetime-local" value="" id="CallDateResolved"placeholder="Call Date Resolved" >
                         <br>
-                        Call Status: <select id="CallStatus">
+                        Call Status:<select id="CallStatus">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>
                         <br>
-                        Appointee :<select id="Appointee">
+                        Appointee:<select id="Appointee">
                             <option selected>Bir Değer Seçiniz</option>
                         </select>
                         <br>
-                        Reporter: <input type="text" value="" id="Reporter" placeholder="Reporter">
+                        Reporter:<input type="text" value="" id="Reporter" placeholder="Reporter">
                         <br>
                         <div id="hata" style="text-align:center; color:red;"> 
 

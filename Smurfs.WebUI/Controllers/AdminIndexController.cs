@@ -6,7 +6,15 @@ namespace Smurfs.WebUI.Controllers
     {
         public IActionResult AdminIndex()
         {
-            return View();
+            if (HttpContext.Session.GetString("UserRole") == "Admin"
+                || HttpContext.Session.GetString("UserRole") == "Manager")
+            {
+                ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
+
+                return View();
+            }
+            else
+                return View("NotAuthorized");
         }
     }
 }

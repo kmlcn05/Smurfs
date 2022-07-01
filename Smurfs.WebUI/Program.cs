@@ -12,6 +12,16 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ICallService, CallService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
+builder.Services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(20);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    }
+);
+
+builder.Services.AddDistributedMemoryCache();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,12 +36,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseSession();
-
-//app.UseEndpoints(endpoints =>
-//{
-//    endpoints.MapControllers();
-//    endpoints.MapRazorPages();
-//});
 
 app.MapControllerRoute(
     name: "default",
