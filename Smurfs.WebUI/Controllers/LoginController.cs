@@ -17,6 +17,8 @@ namespace Smurfs.WebUI.Controllers
         public IActionResult Anasayfa()
         {
             ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
+            ViewBag.Usermail = HttpContext.Session.GetString("Usermail");
+            ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
 
             return View("Anasayfa");
         }
@@ -37,6 +39,7 @@ namespace Smurfs.WebUI.Controllers
                 {
                     HttpContext.Session.SetString("LoggedUserMail", account.Result.Name + " " + account.Result.Surname);
                     HttpContext.Session.SetString("UserRole", account.Result.UserGroup +"");
+                    HttpContext.Session.SetString("Usermail", account.Result.Mail + "");
 
                     if (HttpContext.Session.GetString("UserRole") == "Admin")
                     {
