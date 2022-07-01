@@ -1,6 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Anasayfa";
-    Layout = "~/Views/Shared/IndexPageLayout.cshtml";
+﻿
+@{
+    ViewData["Title"] = "Manager";
+    Layout = "~/Views/Shared/ManagerIndexLayout.cshtml";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -8,17 +9,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link href="~/css/IndexPage.css" rel="stylesheet" />
-<link href="~/js/IndexPage.js" rel="stylesheet" />
+<link href="~/css/AdminIndex.css" rel="stylesheet" />
+<link href="~/css/Admin.css" rel="stylesheet" />
+<link href="~/js/AdminIndex.js" rel="stylesheet" />
+<link href="~/js/Admin.js" rel="stylesheet" />
 
 <div id="card">
     <div>
         <div class="profile">
             <img src="/assets/userAnaSayfaPhoto.png">
             <h3><strong>@ViewBag.Username</strong></h3>
-            <h3>@ViewBag.Usermail</h3>@*silindi*@
-            <h3>@ViewBag.Usergruop</h3>@*silindi*@
-            <h5>Software Developer</h5>
+            <h5>Admin</h5>
         </div>
         <!--ana sayfa content -->
         <!-- !PAGE CONTENT! -->
@@ -30,107 +31,82 @@
             </header>
 
             <div class="w3-row-padding w3-margin-bottom">
-                <div class="w3-quarter">
-                    <div class="w3-container w3-red w3-padding-16">
-                        <h5><b> Toplam Hak Ediş</b></h5>
-                        <div class="w3-left"><i class="fa  fa-trophy w3-xxxlarge"></i></div>
-                        <div class="w3-right">
-                            <h3>0</h3>
-                            <br><br>
-                        </div>
-                        <div class="w3-clear"></div>
-                    </div>
-                </div>
+                
                 <div class="w3-quarter">
                     <div class="w3-container w3-blue w3-padding-16">
-                        <h5><b> Projelerim</b></h5>
+                        <h5><b> Prim </b></h5>
                         <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3>12</h3>
+                            
+
+                            <h3 id="topPrimTam"></h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5> <!--dzd statu done olanlar buraya çekilecek toplamı -->
-                        <p>3</p>
+                        <h5><b><i class="fa fa-check"></i> Toplam Prim Hakeden Sayısı</b></h5> <!--dzd statu done olanlar buraya çekilecek toplamı -->
+                        <p id ="prim"></p>
                     </div>
                 </div>
                 <div class="w3-quarter">
                     <div class="w3-container w3-teal w3-padding-16">
-                        <h5><b> Çağrılarım</b></h5>
+                        <h5><b> Toplam Proje Sayısı </b></h5>
                         <div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3>23</h3>
+                            <h3 id="proje"></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
-                        <p>5</p>
+                        <p id ="ProjeTam"></p>
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-orange w3-text-white w3-padding-16">
-                        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                    <div class="w3-container w3-teal w3-padding-16">
+                        <h5><b> Toplam ITSM Sayısı </b></h5>
+                        <div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3> </h3>
+                            <h3 id="itsm"></h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h4> DZD Takım</h4>
-                        <h5><b>CRM</b></h5>
+                        <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
+                        <p id ="itsmTam"></p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!--primlerim tablo -->
+            <div class="w3-panel">
+                <div class="w3-row-padding" style="margin:0 -16px">
+
+                    <div class="w3-twothird">
+                        <!--burada foreach ile dönülücek -->
+                        <br>
+                        <button class="w3-button w3-purple w3-xlarge" style="width:800px "><a href="/Premium/Premium"> Prim  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
                     </div>
                 </div>
             </div>
-
             <!--projelerim tablo -->
             <div class="w3-panel">
                 <div class="w3-row-padding" style="margin:0 -16px">
 
                     <div class="w3-twothird">
                         <!--burada foreach ile dönülücek -->
-                        <h5><b><i class="fa fa-tasks"></i>Projelerim</b></h5>
-                        <table border="1">
-
-                            <tr>
-                                <th><strong>Proje No</strong></th>
-                                <th><strong>Proje Ad</strong></th>
-                                <th><strong>Öncelik</strong></th>
-                            </tr>
-
-                            <tr>
-                                <td>DENIZAG-27566</td>
-                                <td>DENIZAG-28003 Phone Banking Pın Structure</td>
-                                <td style="text-align:center;">3</td>
-                            </tr>
-                        </table>
                         <br>
-                        <button class="w3-button w3-dark-grey"><a href ="/Project/Project/" style=" text-decoration: none;">Tümünü Görüntüle  <i class="fa fa-arrow-right"></i></a></button> 
+                        <button class="w3-button w3-purple w3-xlarge" style="width:800px "><a href="/Project/Project"> Projeler  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
                     </div>
                 </div>
             </div>
-            <hr>
             <!--Çagrılarım tablo -->
             <div class="w3-container">
-                <h5><b><i class="fa fa-laptop"></i>Çağrılarım</b></h5>
-                <table border="1">
-
-                    <tr>
-                        <th><strong>Çağrı No</strong></th>
-                        <th><strong>Çağrı Ad</strong></th>
-                        <th><strong>Öncelik</strong></th>
-                    </tr>
-
-                    <tr>
-                        <td>ITSM-453728</td>
-                        <td>Internet ve mobil şube şifre değiştirme sorunu</td>
-                        <td style="text-align:center;">Low</td>
-                    </tr>
-                </table><br>
-                 <button class="w3-button w3-dark-grey"><a href ="/Call/Call/" style=" text-decoration: none;">Tümünü Görüntüle  <i class="fa fa-arrow-right"></i></a></button> 
-                      </div>
+                <br>
+                <button class="w3-button w3-brown w3-xlarge" style="width:800px"><a href="/Call/Call"> ITSM  <i class="fa fa-arrow-right"></i></button> <!--burada çağrılarım sayfasına a tagi ile yönlendirilecek-->
+            </div>
             <br>
 
             <div class="w3-container">
-                <h5><b><i class="fa fa-tasks"></i>Projelerim</b></h5>
-                <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
+                <h5><b><i class="fa fa-tasks"></i>Projeler</b></h5>
+                <h5><b><i class="fa fa-check"></i> Tamamlandı </b></h5>
                 <div class="w3-grey">
-                    <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
+                    <div class="w3-container w3-center w3-padding w3-green " style="width:55%">+55%</div>
                 </div>
 
                 <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
@@ -147,7 +123,7 @@
             <hr>
 
             <div class="w3-container">
-                <h5><b><i class="fa fa-laptop"></i>Çağrılarım</b></h5>
+                <h5><b><i class="fa fa-laptop"></i>ITSM</b></h5>
                 <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
                 <div class="w3-grey">
                     <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
@@ -167,6 +143,15 @@
     </div>
 
 </div>
+@section Scripts
+        {
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/Admin.js"></script>
+        <script src="~/js/AdminIndex.js" asp-append-version="true"></script>
+
+    }
+
 
 
 

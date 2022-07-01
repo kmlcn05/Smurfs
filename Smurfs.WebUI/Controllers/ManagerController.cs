@@ -1,20 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Smurfs.WebUI.Models;
-using System.Diagnostics;
 
 namespace Smurfs.WebUI.Controllers
 {
-    public class AdminController : Controller
+    public class ManagerController : Controller
     {
-
-        public IActionResult Admin()
+        public IActionResult Manager()
         {
             ViewBag.Username = HttpContext.Session.GetString("LoggedUserMail");
 
-            return View("Admin");
-
+            return View();
         }
-
     }
 }
-

@@ -86,6 +86,15 @@ $.ajax({
     });
 })
 
+$.ajax({
+    'url': "https://smuhammetulas.com/api/User/GetUser",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        $('#Appointee').append(`<option value="${x.name}">${x.name} </option >`)
+    });
+})
 
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
@@ -128,7 +137,7 @@ $(document).on('click', '.Save', function () {
     callDateCreated = $('#CallDateCreated').val();
     callDateResolved = $('#CallDateResolved').val();
     callStatus = $("#CallStatus option:selected").text();
-    appointee = $('#Appointee').val();
+    appointee = $('#Appointee option:selected').text();
     reporter = $('#Reporter').val();
 
     //boş kontrolü yapılacak
@@ -257,7 +266,7 @@ $(document).on('click', '.Update', function (e) {
         $("#CallDateCreated").val(callDateCreated);
         $('#CallDateResolved').val(callDateResolved).html();
         $('#CallStatus').val(callStatus).html();
-        $('#Appointee').val(appointee).html();
+        $('#Appointee').val(appointee);
         $('#Reporter').val(reporter).html();
     }
 });
