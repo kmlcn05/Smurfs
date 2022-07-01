@@ -1,14 +1,16 @@
 ﻿
 @{
     ViewData["Title"] = "DZDStatus";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/ScreenLayout.cshtml";
 }
 
-<h1>DZDStatus</h1>
+<h1>DZD Status</h1>
 
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link href="~/css/ScreenBack.css" rel="stylesheet" />
 <div class="container">
     <br />
     <p><button onclick="document.getElementById('newdzdstatus').style.display='block'" class="btn btn-success">New DZDStatus</button></p>
@@ -24,6 +26,9 @@
                 </tr>
             </thead>
         </table>
+        <br /><br /><br /><br /><br /><br />   
+        <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+            
     </div>
 </div>
 

@@ -1,0 +1,11 @@
+﻿body, html {
+    height: 100%;
+    /*background-repeat: no-repeat;
+    background-image:linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    background: url('/assets/ekranlar.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-size: 14px;
+}
