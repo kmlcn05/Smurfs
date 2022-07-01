@@ -1,4 +1,33 @@
-﻿
+﻿$.ajax({
+    'url': "https://smuhammetulas.com/api/Premium/GetPremium",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    var i = 0;
+    document.getElementById('prim').innerHTML = Object.keys(data).length;
+
+    data.forEach(x => {
+        i++;            
+        document.getElementById('primTam').innerHTML = i;
+    });
+})
+
+$.ajax({
+    'url': "https://smuhammetulas.com/api/Premium/GetPremium",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    var toplamamount = 0;
+    document.getElementById('prim').innerHTML = Object.keys(data).length;
+
+    data.forEach(x => {
+
+        toplamamount += parseInt(x.amount);
+
+        document.getElementById('topPrimTam').innerHTML = toplamamount + " TL";
+    });
+})
+
 $.ajax({
     'url': "https://smuhammetulas.com/api/Project/GetProjects",
     'method': "GET",
