@@ -35,6 +35,7 @@ builder.Services.AddScoped<ICallStatusService, CallStatusManager>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<ICallParametersService, CallParametersManager>();
 builder.Services.AddScoped<IProjectParametersService, ProjectParametersManager>();
+builder.Services.AddScoped<IEmailService, EmailManager>();
 
 builder.Services.AddSession(options =>
     {
