@@ -15,6 +15,7 @@ $.ajax({
 }).done(function (data) {
     allData = data;
     $('#usergroupDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [

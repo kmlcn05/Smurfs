@@ -31,6 +31,7 @@ $.ajax({
     };
 
     $('#userDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [

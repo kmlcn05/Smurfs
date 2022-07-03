@@ -15,6 +15,7 @@ $.ajax({
 }).done(function (data) {
     allData = data;
     $('#dzdstatusDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [

@@ -12,6 +12,7 @@ $.ajax({
     }
 
     $('#logDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [
