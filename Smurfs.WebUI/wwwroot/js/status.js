@@ -15,6 +15,7 @@ $.ajax({
 }).done(function (data) {
     allData = data;
     $('#statusDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [

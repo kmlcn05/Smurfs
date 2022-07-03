@@ -5,6 +5,10 @@ username = $('#username').text();
 fetch("https://smuhammetulas.com/api/Project/GetProjects").then(response => response.json()).then(data => {
     var alldata = data.filter(x => x.developer == username || x.analyst == username)
 
+    for (var x of alldata) {
+        x.projectDate = x.projectDate.replace("T00:00:00", "")
+    }
+
     $('#ProjectUDatatable').dataTable({
         scrollX: true,
         "paging": true,

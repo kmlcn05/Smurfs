@@ -26,6 +26,7 @@ $.ajax({
     }
 
     $('#premiumDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [

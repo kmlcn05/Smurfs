@@ -14,6 +14,7 @@ $.ajax({
 }).done(function (data) {
     allData = data;
     $('#departmentDatatable').dataTable({
+        scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [
