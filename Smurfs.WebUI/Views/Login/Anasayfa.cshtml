@@ -10,15 +10,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="~/css/IndexPage.css" rel="stylesheet" />
 <link href="~/js/IndexPage.js" rel="stylesheet" />
+ <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
 
 <div id="card">
     <div>
         <div class="profile">
             <img src="/assets/userAnaSayfaPhoto.png">
-            <h3><strong>@ViewBag.Username</strong></h3>
-            <h3>@ViewBag.Usermail</h3>@*silindi*@
-            <h3>@ViewBag.Usergruop</h3>@*silindi*@
-@*            <h5>Software Developer</h5>*@
+            <h2 id="username">@ViewBag.Username</h2>
+            <h4>@ViewBag.Usergruop</h4>
         </div>
         <!--ana sayfa content -->
         <!-- !PAGE CONTENT! -->
@@ -29,13 +28,13 @@
                 <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
             </header>
 
-            <div class="w3-row-padding w3-margin-bottom">
-                <div class="w3-quarter">
-                    <div class="w3-container w3-red w3-padding-16">
+            <div class="w3-row-padding w3-margin-bottom" >
+                <div class="w3-quarter" >
+                    <div class="w3-container w3-red w3-padding-16" id="renk">
                         <h5><b> Toplam Hak Ediş</b></h5>
                         <div class="w3-left"><i class="fa  fa-trophy w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3>0</h3>
+                            <h3 id="prim"></h3>
                             <br><br>
                         </div>
                         <div class="w3-clear"></div>
@@ -46,11 +45,11 @@
                         <h5><b> Projelerim</b></h5>
                         <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3>12</h3>
+                            <h3 id="proje"></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5> <!--dzd statu done olanlar buraya çekilecek toplamı -->
-                        <p>3</p>
+                        <p id="projetam"></p>
                     </div>
                 </div>
                 <div class="w3-quarter">
@@ -58,11 +57,11 @@
                         <h5><b> Çağrılarım</b></h5>
                         <div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            <h3>23</h3>
+                            <h3 id="call"></h3>
                         </div>
                         <div class="w3-clear"></div>
                         <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
-                        <p>5</p>
+                        <p id="calltam"></p>
                     </div>
                 </div>
                 <div class="w3-quarter">
@@ -73,7 +72,7 @@
                         </div>
                         <div class="w3-clear"></div>
                         <h4> DZD Takım</h4>
-                        <h5><b>CRM</b></h5>
+                        <h5 id="takim"></h5>
                     </div>
                 </div>
             </div>
@@ -94,9 +93,9 @@
                             </tr>
 
                             <tr>
-                                <td>DENIZAG-27566</td>
-                                <td>DENIZAG-28003 Phone Banking Pın Structure</td>
-                                <td style="text-align:center;">3</td>
+                                <td id=projeno">DENIZAG-27566</td>
+                                <td id=projead">DENIZAG-28003 Phone Banking Pın Structure</td>
+                                <td style="text-align:center;" id="oncelik">3</td>
                             </tr>
                         </table>
                         <br>
@@ -150,12 +149,12 @@
                 <h5><b><i class="fa fa-laptop"></i>Çağrılarım</b></h5>
                 <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
                 <div class="w3-grey">
-                    <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
+                    <div class="w3-container w3-center w3-padding w3-green" style="width:0%" value=" " id="tam"></div>
                 </div>
 
                 <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
                 <div class="w3-grey">
-                    <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                    <div class="w3-container w3-center w3-padding w3-orange" style="width:0%" value=" " id="devam"></div>
                 </div>
             </div>
             <br><br><br>
@@ -171,5 +170,12 @@
 
 
 
+@section Scripts
+        {
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/IndexPage.js"></script>
 
+
+    }
 
