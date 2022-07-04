@@ -12,7 +12,10 @@ fetch("https://smuhammetulas.com/api/Project/GetProjects").then(response => resp
     document.getElementById('proje').innerHTML = Object.keys(alldata).length;
 
     alldata.forEach(x => {
-        if (x.dZDStatus == "03-Done") {
+        if (x.dZDStatus == "14 - Salesforce Fatura Talebi"
+            || x.dZDStatus == "15 - Salesforce Fatura Onay"
+            || x.dZDStatus == "16 - DZD e-Fatura"
+            || x.dZDStatus == "17 - DZD Finans OK") {
             i++;
         }
         

@@ -244,6 +244,10 @@ $(document).on('click', '.Save', function () {
         }
     }
     else {
+        if (parseInt(totalManDay) != (parseInt(developerManDay) + parseInt(analystManDay) + parseInt(pmManDay))) {
+            alert("Girilen Eforlar Total Efora Eşit Olmalı");
+            return false;
+        }
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
