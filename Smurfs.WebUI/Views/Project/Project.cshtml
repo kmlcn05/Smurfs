@@ -4,8 +4,8 @@
 }
 <h1>Project</h1>
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway" />
 <link href="~/css/Project.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <link href="~/css/ScreenBack.css" rel="stylesheet" />
@@ -38,16 +38,16 @@
                 </tr>
             </thead>
         </table>
-                 <br /><br /><br /><br /><br /><br />   
-         @if (ViewBag.Usergruop == "Manager")
+        <br /><br /><br /><br /><br /><br />
+        @if (ViewBag.Usergruop == "Manager")
         {
-            <button class="w3-button w3-blue  w3-large" > <a href ="/Manager/Manager/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+            <button class="w3-button w3-blue  w3-large"> <a href="/Manager/Manager/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
         }
         else
         {
-            <button class="w3-button w3-blue  w3-large" > <a href ="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
+            <button class="w3-button w3-blue  w3-large"> <a href="/Admin/Admin/" style=" text-decoration: none;"><i class="fa fa-arrow-left"></i>  My Dashboard </a> </button>
         }
-        
+
     </div>
 </div>
 
@@ -55,69 +55,80 @@
 <div id="newproject" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom">
         <div class="w3-container w3-blue w3-display-container rounded-3 border-2 shadow">
-            <span onclick= "reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
+            <span onclick="reloadPage()" class="w3-button w3-display-topright w3-large">x</span>
             <h3>Project</h3>
         </div>
-            <div id="Form">
-                <form method="post">
+        <div id="Form">
+            <form method="post">
 
-                        Project Date: <input type="date" value=" " id="ProjectDate">
-                        <br>
-                        Bank: <select id="Bank">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        JiraProjectNo: <input type="text" value="" id="JiraProjectNo" placeholder="JiraProjectNo">
-                        <br>
-                        JiraTaskNo: <input type="text" value="" id="JiraTaskNo"placeholder="JiraTaskNo" >
-                        <br>
-                        JiraName: <input type="text" value="" id="JiraProjectName"placeholder="JiraProjectName" >
-                        <br>
-                        DZDStatus: <select id="DZDStatus">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        JiraStatus: <select id="Status">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        Department: <select id="Department">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        Team: <select id="Team">
-                            <option value="-1" selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        Developer: <select id="Developer">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        Analyst:  <select id="Analyst">
-                            <option selected>Bir Değer Seçiniz</option>
-                        </select>
-                        <br>
-                        TotalManDay: <input type="number" value="TotalManDay" id="TotalManDay"placeholder="TotalManDay" >
-                        <br>
-                        DevManDay: <input type="number" value="DeveloperManDay " id="DeveloperManDay"placeholder="DeveloperManDay" >
-                        <br>
-                        AnalystMDay: <input type="number" value="AnalystManDay " id="AnalystManDay"placeholder="AnalystManDay" >
-                        <br>
-                        PmManDay: <input type="number" value="PmManDay" id="PmManDay" placeholder="PmManDay">
-                        <br>
-                        <div id="hata" style="text-align:center; color:red;"> 
+                Project Date: <input type="date" value=" " id="ProjectDate">
+                <br>
+                Bank: <select id="Bank">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                JiraProjectNo: <input type="text" value="" id="JiraProjectNo" placeholder="JiraProjectNo">
+                <br>
+                JiraTaskNo: <input type="text" value="" id="JiraTaskNo" placeholder="JiraTaskNo">
+                <br>
+                JiraName: <input type="text" value="" id="JiraProjectName" placeholder="JiraProjectName">
+                <br>
+                DZDStatus: <select id="DZDStatus">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                JiraStatus: <select id="Status">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                Department: <select id="Department">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                Team: <select id="Team">
+                    <option value="-1" selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                Developer: <select id="Developer">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                Analyst:  <select id="Analyst">
+                    <option selected>Bir Değer Seçiniz</option>
+                </select>
+                <br>
+                TotalManDay: <input type="number" value="TotalManDay" id="TotalManDay" placeholder="TotalManDay">
+                <br>
+                DevManDay: <input type="number" value="DeveloperManDay " id="DeveloperManDay" placeholder="DeveloperManDay">
+                <br>
+                AnalystMDay: <input type="number" value="AnalystManDay " id="AnalystManDay" placeholder="AnalystManDay">
+                <br>
+                PmManDay: <input type="number" value="PmManDay" id="PmManDay" placeholder="PmManDay">
+                <br>
+                <script>
+                    document.getElementById("TotalManDay").oninput = () => {
+                        const TotalManDay = document.getElementById('TotalManDay');
+                        const DeveloperManDay = document.getElementById('DeveloperManDay');
+                        const AnalystManDay = document.getElementById('AnalystManDay');
+                        const PmManDay = document.getElementById('PmManDay');
 
-                        </div>
-                        <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
-                </form>
-         </div>
-     </div>
+                        DeveloperManDay.value = TotalManDay.value / 2;
+                        AnalystManDay.value = (TotalManDay.value / 5) * 2;
+                        PmManDay.value = TotalManDay.value / 10;
+                    }
+                </script>
+                <div id="hata" style="text-align:center; color:red;">
+                </div>
+                <button class="btn btn-lg btn-success btn-block Save" onclick="" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 </div>
 
-    @section Scripts
-        {
-        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
-        <script src="~/js/Project.js"></script>
+@section Scripts
+    {
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/Project.js"></script>
 
     }
