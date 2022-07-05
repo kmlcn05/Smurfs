@@ -12,7 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="~/css/AdminIndex.css" rel="stylesheet" />
-    <link href="~/js/AdminIndex.js" rel="stylesheet" /> 
+    <link href="~/js/AdminIndex.js" rel="stylesheet" />
+   
 
 
 
@@ -276,7 +277,7 @@
                         <span class="item">Statü Değiştirme</span>
                     </a>
                 </li>
-                 <li>
+                <li>
                     <a href="/Department/Department/">
                         <span class="icon"><i class="fas fa-arrow-right"></i></span>
                         <span class="item">Birim İşlemleri</span>
@@ -295,51 +296,97 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-cog"></i></span>
-                        <span class="item">Ayarlar</span>
+
+                    <a href="/SifreDegistir/SifreDegistir/">
+                        <div class="dropdown">
+                            <span class="icon"><i class="fas fa-cog"></i></span>
+                            <span class="item">Ayarlar</span>
+                            <div class="dropdown-child">
+                                <div>Şifre Değiştir</div>
+                            </div>
+                        </div>
                     </a>
-                </li>
-                <li>
-                    <a href="/Login/Login/">
-                        <span class="icon"><i class="fas fa-arrow-right"></i></span>
-                        <span class="item">Çıkış Yap</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <!-- Top menu bar -->
-        <div class="section">
-            <div class="top_navbar">
-                <div class="hamburger" style="margin-right:175px !important;">
-                    <a href="#"><i class="fas fa-bars"></i></a>
-                </div>
+
+                    <html>
+
+                    <body>
+                        <head>
+                            <style>
+                                .mainmenubtn {
+                                    background-color: red;
+                                    color: white;
+                                    border: none;
+                                    cursor: pointer;
+                                    padding: 20px;
+                                    margin-top: 20px;
+                                }
+
+                                .dropdown {
+                                    position: relative;
+                                   /* display: inline-block;*/
+                                }
+
+                                .dropdown-child {
+                                    display: none;
+                                    background-color: white;
+                                    min-width: 200px;
+                                }
+
+                                    .dropdown-child a {
+                                        color: white;
+                                        padding: 20px;
+                                        text-decoration: none;
+                                        display: block;
+                                    }
+
+                                .dropdown:hover .dropdown-child {
+                                    display: block;
+                                }
+                            </style>
+                        </head>
+                    </body>
+                </html>
+            </li>
+            <li>
+                <a href="/Login/Login/">
+                    <span class="icon"><i class="fas fa-arrow-right"></i></span>
+                    <span class="item">Çıkış Yap</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Top menu bar -->
+    <div class="section">
+        <div class="top_navbar">
+            <div class="hamburger" style="margin-right:175px !important;">
+                <a href="#"><i class="fas fa-bars"></i></a>
             </div>
         </div>
-        @RenderBody()
     </div>
+        @RenderBody()
+</div>
 
 
 
 
 
-    <!-- menu active javascript -->
-    <script>
-        var hamburger = document.querySelector(".hamburger");
-        hamburger.addEventListener("click", function() {
-            document.querySelector("body").classList.toggle("active")
-        })
+<!-- menu active javascript -->
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    hamburger.addEventListener("click", function() {
+        document.querySelector("body").classList.toggle("active")
+    })
 
 
 
 
 
-    </script>
+</script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/Admin.js" asp-append-version="true"></script>
-    <script src="~/js/AdminIndex.js" asp-append-version="true"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/Admin.js" asp-append-version="true"></script>
+<script src="~/js/AdminIndex.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 

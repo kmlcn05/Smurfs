@@ -1,0 +1,50 @@
+﻿.change-password {
+    padding: 28%;
+    margin-top: -22%;
+}
+
+    .change-password .card-header {
+        color: white;
+        background: #76c5fe;
+        padding: 2.8%;
+        border: 1px solid #76c5fe;
+    }
+
+    .change-password .card-body {
+        background: #ffffff;
+        border: 1px solid #ffffff;
+        padding: 7%;
+        text-align: left;
+        font-size: 18px;
+        margin-bottom: -78%;
+    }
+
+   /* .change-password .btn {
+        width: 100%;
+        margin-top: 5%;
+        font-size: 15px;
+    }*/
+
+    .change-password .btn {
+        /*background-color: #4d90fe; */
+        background-color: rgb(104, 145, 162);
+        /* background-color: linear-gradient(rgb(104, 145, 163), rgb(12, 97, 33));*/
+        padding: 0px;
+        font-weight: 700;
+        font-size: 16px;
+        height: 45px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        border: none;
+        -o-transition: all 0.218s;
+        -moz-transition: all 0.218s;
+        -webkit-transition: all 0.218s;
+        transition: all 0.218s;
+    }
+
+    .btn.btn-signin:hover,
+    .btn.btn-signin:active,
+    .btn.btn-signin:focus {
+        background-color: rgb(12, 97, 33);
+    }
