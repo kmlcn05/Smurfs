@@ -13,6 +13,8 @@ namespace Smurfs.Entity.DTO_s
         public string Surname { get; set; }
         public string Mail { get; set; }
         public string UserGroup { get; set; }
+        public string FirstLogin { get; set; }
+
 
     }
 }

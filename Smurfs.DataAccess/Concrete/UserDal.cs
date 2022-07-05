@@ -38,7 +38,8 @@ namespace Smurfs.DataAccess.Concrete
                                 Name = u.Name,
                                 Surname = u.Surname,
                                 Mail = u.Mail,
-                                UserGroup = ug.GroupName
+                                UserGroup = ug.GroupName,
+                                FirstLogin = u.FirstLogin.ToString()
                             };
 
             return loginuser.ToList();
@@ -53,7 +54,7 @@ namespace Smurfs.DataAccess.Concrete
                          join cs in SmurfsContext.Teams
                          on c.team.Id equals cs.Id
                          select new UserDto
-                         { Id = c.Id, Name = c.Name, Surname = c.Surname, Mail = c.Mail, Password = c.Password, Active = Convert.ToString(c.Active), DateOfStart = c.DateOfStart, team = cs.TeamName, usergroup = b.GroupName };
+                         { Id = c.Id, Name = c.Name, Surname = c.Surname, Mail = c.Mail, Password = c.Password, Active = Convert.ToString(c.Active), DateOfStart = c.DateOfStart, team = cs.TeamName, usergroup = b.GroupName, FirstLogin = c.FirstLogin.ToString()};
             return result.ToList();
         }
 
@@ -81,6 +82,7 @@ namespace Smurfs.DataAccess.Concrete
             result.Mail = user.Mail;
             result.Password = user.Password;
             result.Active = Convert.ToByte(user.Active);
+            result.FirstLogin = Convert.ToByte(user.FirstLogin);
             result.DateOfStart = user.DateOfStart;
             result.usergroup = SmurfsContext.UserGroups.Single(a => a.GroupName == user.usergroup);
             result.team = SmurfsContext.Teams.Single(a => a.TeamName == user.team);

@@ -8,6 +8,7 @@ var mail = null;
 var dateOfStart = null;
 var usergroup = null; 
 var team = null; 
+var firstLogin = null;
 var password = null;
 var passwordhash = null;
 
@@ -189,7 +190,8 @@ $(document).on('click', '.Save', function () {
                     "active": active,
                     "dateOfStart": dateOfStart,
                     "usergroup": usergroup,
-                    "team": team
+                    "team": team,
+                    "firstLogin": "1"
 
                 }),
                 success: function () {
@@ -219,7 +221,8 @@ $(document).on('click', '.Save', function () {
                 "active": active,
                 "dateOfStart": dateOfStart,
                 "usergroup": usergroup,
-                "team": team
+                "team": team,
+                "firstLogin": "1"
             }),
         });
 
@@ -244,6 +247,7 @@ $(document).on('click', '.Save', function () {
         if (Confirm) {
 
             password = allData.find(x => x.id == parseInt(id)).password;
+            firstLogin = allData.find(x => x.id == parseInt(id)).firstLogin;
 
             $.ajax({
                 url: "https://smuhammetulas.com/api/User",
@@ -259,7 +263,8 @@ $(document).on('click', '.Save', function () {
                     "active": active,
                     "dateOfStart": dateOfStart,
                     "usergroup": usergroup,
-                    "team": team
+                    "team": team,
+                    "firstLogin": firstLogin
                 }),
                 success: function () {
 

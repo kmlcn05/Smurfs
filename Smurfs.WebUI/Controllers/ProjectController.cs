@@ -15,7 +15,8 @@ namespace WebUI.Controllers
         public IActionResult Project()
         {
             if (HttpContext.Session.GetString("UserRole") == "Admin"
-                || HttpContext.Session.GetString("UserRole") == "Manager")
+                || HttpContext.Session.GetString("UserRole") == "Manager"
+                && HttpContext.Session.GetString("FirstLogin") == "0")
             {
                 ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
                 ViewBag.Usergruop = HttpContext.Session.GetString("UserRole");
@@ -28,7 +29,8 @@ namespace WebUI.Controllers
         public IActionResult ProjectU()
         {
             if (HttpContext.Session.GetString("UserRole") == "Analyst"
-                 || HttpContext.Session.GetString("UserRole") == "Developer")
+                 || HttpContext.Session.GetString("UserRole") == "Developer"
+                 && HttpContext.Session.GetString("FirstLogin") == "0")
             {
                 ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
 

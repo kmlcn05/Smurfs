@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Smurfs.DataAccess.Concrete.Context;
 
@@ -11,9 +12,10 @@ using Smurfs.DataAccess.Concrete.Context;
 namespace Smurfs.DataAccess.Migrations
 {
     [DbContext(typeof(SmurfsContext))]
-    partial class SmurfsContextModelSnapshot : ModelSnapshot
+    [Migration("20220705164743_First-Login")]
+    partial class FirstLogin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -322,8 +324,8 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<DateTime>("DateOfStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte>("FirstLogin")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("FirstLogin")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
