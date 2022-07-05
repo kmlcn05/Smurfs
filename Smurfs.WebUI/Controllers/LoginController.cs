@@ -18,7 +18,8 @@ namespace Smurfs.WebUI.Controllers
         public IActionResult Anasayfa()
         {
             if (HttpContext.Session.GetString("UserRole") == "Developer"
-               || HttpContext.Session.GetString("UserRole") == "Analyst")
+               || HttpContext.Session.GetString("UserRole") == "Analyst"
+               && HttpContext.Session.GetString("FirstLogin") == "0")
             {
                 ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
                 ViewBag.Usermail = HttpContext.Session.GetString("Usermail");
@@ -47,7 +48,13 @@ namespace Smurfs.WebUI.Controllers
                     HttpContext.Session.SetString("LoggedUser", account.Result.Name + " " + account.Result.Surname);
                     HttpContext.Session.SetString("UserRole", account.Result.UserGroup +"");
                     HttpContext.Session.SetString("Usermail", account.Result.Mail + "");
+                    HttpContext.Session.SetString("FirstLogin", account.Result.FirstLogin + "");
+                    HttpContext.Session.SetString("Id", account.Result.Id + "");
 
+                    if (HttpContext.Session.GetString("FirstLogin") == "1")
+                    {
+                        return RedirectToAction("SifreDegistir", "SifreDegistir");
+                    }
                     if (HttpContext.Session.GetString("UserRole") == "Admin")
                     {
                         return RedirectToAction("Admin", "Admin");
