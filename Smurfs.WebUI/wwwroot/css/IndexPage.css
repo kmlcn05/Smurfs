@@ -7,7 +7,7 @@ html, body, h1, h2, h3, h4, h5 {
 * {
     list-style: none;
     text-decoration: none;
-    margin: 0;
+    margin-left: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'open sans',sans-serif;
@@ -15,6 +15,7 @@ html, body, h1, h2, h3, h4, h5 {
 
 body {
     background: #b0c4de;
+    transition: 0.5s;
 }
 
 
@@ -26,6 +27,7 @@ body {
     width: 225px;
     height: 100%;
     padding: 20px 0;
+    margin-left:-225px;
     transition: all 0.5s ease;
 }
 
@@ -81,8 +83,8 @@ body {
             }
 
 .wrapper .section {
-    width: calc(100% - 225px);
-    margin-left: 225px;
+    width: 100%;
+    margin-left: 0px;
     transition: all 0.5s ease;
 }
 
@@ -98,6 +100,8 @@ body {
         .wrapper .section .top_navbar .hamburger a {
             font-size: 28px;
             color: #f4fbff;
+            margin-left:0;
+            transition:0.5s;
         }
 
             .wrapper .section .top_navbar .hamburger a:hover {
@@ -105,12 +109,21 @@ body {
             }
 
 body.active .wrapper .sidebar {
-    left: -225px;
+    margin-left: 225px;
+}
+
+body.active .wrapper .top_navbar .hamburger a {
+    transition: 0.5s;
 }
 
 body.active .wrapper .section {
     margin-left: 0;
     width: 100%;
+}
+
+body.active {
+    margin-left: 215px;
+    transition: 0.5s;
 }
 
 
