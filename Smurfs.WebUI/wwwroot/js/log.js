@@ -7,9 +7,9 @@ $.ajax({
 }).done(function (data) {
     allData = data;
 
-    for (var x of data) {
-        x.logDate = x.logDate.replace("T00:00:00", "");
-    }
+    //for (var x of data) {
+    //    x.logDate = x.logDate.replace("T00:00:00", "");
+    //}
 
     $('#logDatatable').dataTable({
         scrollX: true,
@@ -18,11 +18,10 @@ $.ajax({
         "columns": [
             { "data": "id" },
             { "data": "logDate" },
-            { "data": "users" },
+            { "data": "name" },
+            { "data": "surname" },
             { "data": "page" },
             { "data": "process" },
-            { "data": "projects" },
-            { "data": "calls" },
 
             {
                 "render": function (data, x, row) {

@@ -11,10 +11,9 @@ namespace Smurfs.Entity.DTO_s
     {
         public int Id { get; set; }
         public DateTime LogDate { get; set; }
-        public string Users { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
         public string Page { get; set; }
         public string Process { get; set; }
-        public string Projects { get; set; }
-        public string Calls { get; set; }
     }
 }

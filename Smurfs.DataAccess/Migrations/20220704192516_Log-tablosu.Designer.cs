@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Smurfs.DataAccess.Concrete.Context;
 
@@ -11,9 +12,10 @@ using Smurfs.DataAccess.Concrete.Context;
 namespace Smurfs.DataAccess.Migrations
 {
     [DbContext(typeof(SmurfsContext))]
-    partial class SmurfsContextModelSnapshot : ModelSnapshot
+    [Migration("20220704192516_Log-tablosu")]
+    partial class Logtablosu
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,6 +149,9 @@ namespace Smurfs.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("CallId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("LogDate")
                         .HasColumnType("datetime2");
 
@@ -156,12 +161,19 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int?>("ProcessId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UsersId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CallId");
+
                     b.HasIndex("ProcessId");
+
+                    b.HasIndex("ProjectId");
 
                     b.HasIndex("UsersId");
 
@@ -466,9 +478,17 @@ namespace Smurfs.DataAccess.Migrations
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Log", b =>
                 {
+                    b.HasOne("Smurfs.Entities.Conrete.Call", null)
+                        .WithMany("Log")
+                        .HasForeignKey("CallId");
+
                     b.HasOne("Smurfs.Entities.Conrete.Process", "Process")
                         .WithMany("Logs")
                         .HasForeignKey("ProcessId");
+
+                    b.HasOne("Smurfs.Entities.Conrete.Project", null)
+                        .WithMany("Log")
+                        .HasForeignKey("ProjectId");
 
                     b.HasOne("Smurfs.Entities.Conrete.User", "Users")
                         .WithMany("Logs")
@@ -562,6 +582,8 @@ namespace Smurfs.DataAccess.Migrations
             modelBuilder.Entity("Smurfs.Entities.Conrete.Call", b =>
                 {
                     b.Navigation("CallParameters");
+
+                    b.Navigation("Log");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Department", b =>
@@ -581,6 +603,8 @@ namespace Smurfs.DataAccess.Migrations
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Project", b =>
                 {
+                    b.Navigation("Log");
+
                     b.Navigation("ProjectParameters");
                 });
 

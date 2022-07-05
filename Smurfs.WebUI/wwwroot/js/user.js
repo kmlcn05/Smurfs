@@ -11,6 +11,13 @@ var team = null;
 var password = null;
 var passwordhash = null;
 
+var pagelog = null;
+
+var userlog = $('#userlog').text();
+var userlog2 = userlog.split(' ');
+var namelog = userlog2[0];
+var surnamelog = userlog2[1];
+
 function reloadPage() {
     document.getElementById('newuser').style.display = 'none';
     window.location.reload()
@@ -83,7 +90,8 @@ $.ajax({
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         var id = e.target.dataset.id;
-
+        username = allData.find(x => x.id == parseInt(id)).name;
+        surname = allData.find(x => x.id == parseInt(id)).surname;
         var Confirm = confirm("Are you sure, do you want to delete it?");
         if (Confirm) {
 
@@ -101,13 +109,32 @@ $(document).on('click', '.Delete', function (e) {
 
                 },
                 error: function (e) {
-                    alert("Error please try again" + JSON.stringify(e));
+                    alert("Bu kullanıcı projelerde görev aldığı için silinemez");
                     window.location.reload()
                 }
 
             })
 
         }
+        var datetime = new Date().toJSON();
+        pagelog = username + surname + " isimli kullanıcı silindi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Silme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
 });
 
@@ -134,6 +161,14 @@ $(document).on('click', '.Save', function () {
             return false;
         }
 
+        for (var x of allData) {
+            if (x.mail == mail) {
+                alert("Bu mail adresi zaten kayıtlıdır.");
+                alert("Lütfen farklı bir mail adresi giriniz.");
+                return false;
+            }
+        };
+
         var Confirm = confirm("Kayıt yapılsın mı?");
         if (Confirm) {
 
@@ -159,23 +194,6 @@ $(document).on('click', '.Save', function () {
                 }),
                 success: function () {
 
-                    $.ajax({
-                        url: "https://smuhammetulas.com/api/Email",
-                        type: "POST",
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        data: JSON.stringify({
-                            "name": username,
-                            "surname": surname,
-                            "mail": mail,
-                            "password": passwordhash,
-                            "active": active,
-                            "dateOfStart": dateOfStart,
-                            "usergroup": usergroup,
-                            "team": team
-                        }),
-                    });
-
                     alert("Kayıt Başarılı");
                     window.location.reload()
 
@@ -188,9 +206,38 @@ $(document).on('click', '.Save', function () {
             })
 
         }
-        else {
-            return false;
-        }
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Email",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "name": username,
+                "surname": surname,
+                "mail": mail,
+                "password": passwordhash,
+                "active": active,
+                "dateOfStart": dateOfStart,
+                "usergroup": usergroup,
+                "team": team
+            }),
+        });
+
+        var datetime = new Date().toJSON();
+        pagelog = username + surname + " isimli kullanıcı eklendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Ekleme"
+            }),
+        })
     }
     else {
         var Confirm = confirm("Are you sure, do you want to update it?");
@@ -230,6 +277,21 @@ $(document).on('click', '.Save', function () {
             })
 
         }
+        var datetime = new Date().toJSON();
+        pagelog = username + surname + " isimli kullanıcı güncellendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Güncelleme"
+            })
+        })
     }
 
 });

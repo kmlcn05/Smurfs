@@ -11,6 +11,13 @@ var callVerimYuzdesi = null;
 var callVerimDegeri = null;
 var callVerimSonucu = null;
 
+var pagelog = null;
+
+var userlog = $('#userlog').text();
+var userlog2 = userlog.split(' ');
+var namelog = userlog2[0];
+var surnamelog = userlog2[1];
+
 function reloadPage() {
     document.getElementById('newcallparameter').style.display = 'none';
     window.location.reload()
@@ -74,6 +81,7 @@ $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
 
         var id = e.target.dataset.id;
+        call = allData.find(x => x.id == parseInt(id)).call;
 
         var Confirm = confirm("Are you sure, do you want to delete it?");
         if (Confirm) {
@@ -99,6 +107,26 @@ $(document).on('click', '.Delete', function (e) {
             })
 
         }
+        var datetime = new Date().toJSON();
+        pagelog = call + " isimli ITSM için parametreler silindi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Silme"
+            }),
+
+            success: function () {
+
+            }
+        })
+
     }
 });
 
@@ -159,9 +187,25 @@ $(document).on('click', '.Save', function () {
             })
 
         }
-        else {
-            return false;
-        }
+        var datetime = new Date().toJSON();
+        pagelog = call + " isimli ITSM için parametreler eklendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Ekleme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
     else {
         var Confirm = confirm("Are you sure, do you want to update it?");
@@ -203,6 +247,25 @@ $(document).on('click', '.Save', function () {
             })
 
         }
+        var datetime = new Date().toJSON();
+        pagelog = call + " isimli ITSM için parametreler güncellendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Güncelleme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
 
 });
