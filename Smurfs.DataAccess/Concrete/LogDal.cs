@@ -24,16 +24,12 @@ namespace Smurfs.DataAccess.Concrete
         public List<LogDto> LogDetails()
         {
             var result = from p in SmurfsContext.Logs
-                         join b in SmurfsContext.Projects
-                         on p.Projects.Id equals b.Id
                          join dz in SmurfsContext.Processes
                          on p.Process.Id equals dz.Id
-                         join s in SmurfsContext.Calls
-                         on p.Calls.Id equals s.Id
                          join de in SmurfsContext.Users
                          on p.Users.Id equals de.Id
                          select new LogDto
-                         { Id = p.Id, Page = p.Page, LogDate = p.LogDate,Calls = s.CallName, Process = dz.ProcessName, Projects = b.JiraProjectName, Users = de.Name };
+                         { Id = p.Id, Page = p.Page, LogDate = p.LogDate, Process = dz.ProcessName, Name = de.Name,Surname = de.Surname };
             return result.ToList();
         }
         public async Task<Log> DeleteLog(int id)
@@ -53,10 +49,8 @@ namespace Smurfs.DataAccess.Concrete
             var result = new Log(); result.Id = log.Id;
             result.LogDate = log.LogDate;
             result.Page = log.Page;
-            result.Projects = SmurfsContext.Projects.Single(a => a.JiraProjectName == log.Projects);
             result.Process = SmurfsContext.Processes.Single(a => a.ProcessName == log.Process);
-            result.Calls = SmurfsContext.Calls.Single(a => a.CallName == log.Calls);
-            result.Users = SmurfsContext.Users.Single(a => a.Name == log.Users);
+            result.Users = SmurfsContext.Users.Single(a => a.Name == log.Name && a.Surname == log.Surname);
             return result;
         }
     }
