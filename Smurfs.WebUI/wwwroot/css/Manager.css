@@ -18,6 +18,8 @@ html, body, h1, h2, h3, h4, h5 {
 
 body {
     background: #b0c4de;
+    margin-left: 0;
+    transition: 0.5s;
 }
 
 
@@ -123,7 +125,7 @@ body.active .wrapper .sidebar {
 }
 
 body.active .wrapper .top_navbar .hamburger a {
-    margin-left: 400px;
+    /*margin-left: 400px;*/
     transition: 0.5s;
 }
 
@@ -132,8 +134,9 @@ body.active .wrapper .section {
     width: 100%;
 }
 
-body.active body {
-    background: #576475;
+body.active {
+    margin-left: 390px;
+    transition: 0.5s;
 }
 
 #card img {

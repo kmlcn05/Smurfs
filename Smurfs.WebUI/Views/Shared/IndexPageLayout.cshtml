@@ -241,10 +241,55 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <span class="icon"><i class="fas fa-cog"></i></span>
-                        <span class="item">Ayarlar</span>
+                    <a href="/SifreDegistir/SifreDegistir/">
+                        <div class="dropdown">
+                            <span class="icon"><i class="fas fa-cog"></i></span>
+                            <span class="item">Ayarlar</span>
+                            <div class="dropdown-child">
+                                <div>Şifre Değiştir</div>
+                            </div>
+                        </div>
                     </a>
+
+                    <html>
+
+                    <body>
+                        <head>
+                            <style>
+                                .mainmenubtn {
+                                    background-color: red;
+                                    color: white;
+                                    border: none;
+                                    cursor: pointer;
+                                    padding: 20px;
+                                    margin-top: 20px;
+                                }
+
+                                .dropdown {
+                                    position: relative;
+                                   /* display: inline-block;*/
+                                }
+
+                                .dropdown-child {
+                                    display: none;
+                                    background-color: white;
+                                    min-width: 200px;
+                                }
+
+                                    .dropdown-child a {
+                                        color: white;
+                                        padding: 20px;
+                                        text-decoration: none;
+                                        display: block;
+                                    }
+
+                                .dropdown:hover .dropdown-child {
+                                    display: block;
+                                }
+                            </style>
+                        </head>
+                    </body>
+                </html>
                 </li>
                 <li>
                     <a href="/Login/Login/">
