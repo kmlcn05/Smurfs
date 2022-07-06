@@ -14,7 +14,6 @@ var appointee = null;
 var reporter = null;
 
 var icerik = null;
-var mail = null;
 
 var pagelog = null;
 
@@ -199,7 +198,7 @@ $(document).on('click', '.Save', function () {
 
                 }),
                 success: function () {
-
+                    notification(appointee);
                     alert("Kayıt Başarılı");
                     window.location.reload()
                 },
@@ -257,6 +256,7 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
+                    notification(appointee);
                     alert("The record is updated.");
                     window.location.reload();
 
@@ -286,29 +286,41 @@ $(document).on('click', '.Save', function () {
             }),
 
             success: function () {
-
+                
             }
         })
+
     }
-    fetch("https://smuhammetulas.com/api/User/GetUser").then(response => response.json()).then(data => {
+    
+});
+
+function notification(appointee) {
+    var mail = null;
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/User/GetUser",
+        'method': "GET",
+        'contentType': 'application/json'
+    }).done(function (data) {
         data.filter(x => (x.name + " " + x.surname) == appointee).forEach(x => {
+            console.log(x.name)
+            console.log(x.surname)
             mail = x.mail
         });
     })
 
-    icerik = mail + "," + appointee + "," + call + "," + priority;
-    $.ajax({
-        url: "https://smuhammetulas.com/api/Email/Notification",
-        type: "POST",
-        dataType: "json",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify({
-           icerik
-        }),
-    })
-});
-
-
+    if (callPriority == "Medium" || callPriority == "High") {
+        icerik = mail + "," + appointee + "," + callName + "," + callPriority;
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Email/Notification",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                icerik
+            }),
+        })
+    }
+}
 
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
