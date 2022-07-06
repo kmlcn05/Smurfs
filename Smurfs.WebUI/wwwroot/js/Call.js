@@ -162,6 +162,8 @@ $(document).on('click', '.Save', function () {
     appointee = $('#Appointee option:selected').text();
     reporter = $('#Reporter').val();
 
+    notification(appointee);
+
     //boş kontrolü yapılacak
 
     if (id == null) {
@@ -198,7 +200,6 @@ $(document).on('click', '.Save', function () {
 
                 }),
                 success: function () {
-                    notification(appointee);
                     alert("Kayıt Başarılı");
                     window.location.reload()
                 },
@@ -256,7 +257,6 @@ $(document).on('click', '.Save', function () {
                 success: function () {
 
                     //Yenile
-                    notification(appointee);
                     alert("The record is updated.");
                     window.location.reload();
 
