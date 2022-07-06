@@ -4,7 +4,6 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-
 <div class="container">
     <div class="card card-container">
         <img id="dzdlogo-img" class="dzdlogo-img-card" src="https://imgyukle.com/f/2022/06/17/VYWP7s.png" />
@@ -26,8 +25,24 @@
                 Sign in
             </button>
         </form>
-        <a href="#" class="forgot-password">
+        <a href="#" id ="fp-button" class="forgot-password">
             Forgot the password?
         </a>
     </div>
 </div>
+
+<!--modal-->
+<div class="bg-modal">
+    <div class="modal-content">
+        <p class="fp-title"> Reset your Password </p>
+        <div class="close">+</div>
+        <img id="profile-img" class="profile-img-card-1" src="/assets/userAnaSayfaPhoto.png" />
+        <form action="">
+            <input id="girilenMail" class="fp-email" type="email" placeholder="E-Mail" />
+            <button class="btn btn-lg btn-primary btn-signin btn-fpsubmit gonder" type="submit"> Submit </button>
+        </form>
+    </div>
+</div>
+
+<link href="~/js/ForgotPassword.js" rel="stylesheet" />
+<script src="~/js/ForgotPassword.js"></script>

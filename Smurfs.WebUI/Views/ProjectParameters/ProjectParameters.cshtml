@@ -5,7 +5,7 @@
 }
 
 <h1>Project Parameters</h1>
-
+<h1 id=userlog style="display:none">@ViewBag.Username</h1>
 <link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -21,6 +21,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>ParametersDate</th>
                     <th>ProjeCarpani</th>
                     <th>Actions</th>
                     <th>Actions</th>
@@ -50,9 +51,13 @@
             </div>
             <div id="Form">
                 <form method="post">
-                        <br>                   
+
+                        Date: <input type="date" id="ParametersDate" placeholder="ParametersDate">
+                        <br>
+
                         Carpani: <input type="number" id="ProjeCarpani" placeholder="ProjeCarpani">
                         <br>
+
                         <div id="hata" style="text-align:center; color:red;"> 
 
                         </div>

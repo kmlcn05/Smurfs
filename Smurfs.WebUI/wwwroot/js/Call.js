@@ -9,9 +9,18 @@ var callDetails = null;
 var callPriority = null;
 var callDateCreated = null;
 var callDateResolved = null;
-var callStatus = null;
+var callStatus = null;  
 var appointee = null;
 var reporter = null;
+
+var icerik = null;
+
+var pagelog = null;
+
+var userlog = $('#userlog').text();
+var userlog2 = userlog.split(' ');
+var namelog = userlog2[0];
+var surnamelog = userlog2[1];
 
 
 function reloadPage() {
@@ -94,6 +103,7 @@ $.ajax({
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         var id = e.target.dataset.id;
+        callName = allData.find(x => x.id == parseInt(id)).callName;
 
         var Confirm = confirm("Are you sure, do you want to delete it?");
         if (Confirm) {
@@ -116,6 +126,23 @@ $(document).on('click', '.Delete', function (e) {
                 }
             })
         }
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Silme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
 });
 
@@ -128,12 +155,14 @@ $(document).on('click', '.Save', function () {
     callName = $('#CallName').val();
     cagriCozumSuresi = $("#CagriCozumSuresi").val();
     callDetails = $("#CallDetails").val();
-    callPriority = $("#CallPriority").val();
+    callPriority = $("#CallPriority option:selected").text();
     callDateCreated = $('#CallDateCreated').val();
     callDateResolved = $('#CallDateResolved').val();
     callStatus = $("#CallStatus option:selected").text();
     appointee = $('#Appointee option:selected').text();
     reporter = $('#Reporter').val();
+
+    notification(appointee);
 
     //boş kontrolü yapılacak
 
@@ -171,7 +200,6 @@ $(document).on('click', '.Save', function () {
 
                 }),
                 success: function () {
-
                     alert("Kayıt Başarılı");
                     window.location.reload()
                 },
@@ -182,9 +210,25 @@ $(document).on('click', '.Save', function () {
 
             })
         }
-        else {
-            return false;
-        }
+        var datetime = new Date().toJSON();
+        pagelog = callName + " isimli ITSM eklendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Ekleme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
     else {
         var Confirm = confirm("Are you sure, do you want to update it?");
@@ -226,11 +270,57 @@ $(document).on('click', '.Save', function () {
             })
 
         }
-    }
+        var datetime = new Date().toJSON();
+        pagelog = callName + " isimli ITSM güncelleme";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Güncelleme"
+            }),
 
+            success: function () {
+                
+            }
+        })
+
+    }
+    
 });
 
+function notification(appointee) {
+    var mail = null;
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/User/GetUser",
+        'method': "GET",
+        'contentType': 'application/json'
+    }).done(function (data) {
+        data.filter(x => (x.name + " " + x.surname) == appointee).forEach(x => {
+            console.log(x.name)
+            console.log(x.surname)
+            mail = x.mail
+        });
+    })
 
+    if (callPriority == "Medium" || callPriority == "High") {
+        icerik = mail + "," + appointee + "," + callName + "," + callPriority;
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Email/Notification",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                icerik
+            }),
+        })
+    }
+}
 
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {

@@ -65,7 +65,7 @@ namespace Smurfs.API.Controllers
         {
             var Log = _logService.LogDetails();
             return Ok(Log);
-        }
+        }   
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Log>> DeleteLog(int id)

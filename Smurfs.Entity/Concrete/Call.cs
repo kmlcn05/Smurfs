@@ -23,7 +23,6 @@ namespace Smurfs.Entities.Conrete
         public CallStatus CallStatus { get; set; }
         public string Appointee { get; set; }
         public string Reporter { get; set; }
-        public List<Log> Log { get; set; }
         public List<CallParameters> CallParameters { get; set; }
         public bool IsState { get; set; }
     }

@@ -14,7 +14,10 @@ fetch("https://smuhammetulas.com/api/Project/GetProjects").then(response => resp
     document.getElementById('projead').innerHTML = alldata[0].jiraProjectName;
     document.getElementById('dzdstatu').innerHTML = alldata[0].dZDStatus;
     alldata.forEach(x => {
-        if (x.dZDStatus == "03-Done") {
+        if (x.dZDStatus == "14 - Salesforce Fatura Talebi"
+            || x.dZDStatus == "15 - Salesforce Fatura Onay"
+            || x.dZDStatus == "16 - DZD e-Fatura"
+            || x.dZDStatus == "17 - DZD Finans OK") {
             i++;
         }
         

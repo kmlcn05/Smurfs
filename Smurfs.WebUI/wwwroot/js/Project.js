@@ -16,6 +16,13 @@ var developerManDay = null;
 var analystManDay = null;
 var pmManDay = null;
 
+var pagelog = null;
+
+var userlog = $('#userlog').text();
+var userlog2 = userlog.split(' ');
+var namelog = userlog2[0];
+var surnamelog = userlog2[1];
+
 function reloadPage() {
     document.getElementById('newproject').style.display = 'none';
     window.location.reload()
@@ -139,12 +146,12 @@ $.ajax({
 $(document).on('click', '.Delete', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         var id = e.target.dataset.id;
-
+        jiraProjectName = allData.find(x => x.id == parseInt(id)).jiraProjectName;
         var Confirm = confirm("Are you sure, do you want to delete it?");
         if (Confirm) {
 
             $.ajax({
-                url: "https://smuhammetulas.com/Project/" + id,
+                url: "https://smuhammetulas.com/api/Project/" + id,
                 type: "DELETE",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
@@ -161,6 +168,25 @@ $(document).on('click', '.Delete', function (e) {
                 }
             })
         }
+        var datetime = new Date().toJSON();
+        pagelog = jiraProjectName + " isimli proje silindi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Silme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
 });
 
@@ -182,7 +208,6 @@ $(document).on('click', '.Save', function () {
     developerManDay = $('#DeveloperManDay').val();
     analystManDay = $('#AnalystManDay').val();
     pmManDay = $('#PmManDay').val();
-
 
     //boş kontrolü yapılacak
 
@@ -239,11 +264,31 @@ $(document).on('click', '.Save', function () {
 
             })
         }
-        else {
-            return false;
-        }
+        var datetime = new Date().toJSON();
+        pagelog = jiraProjectName + " isimli proje eklendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Ekleme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
     else {
+        if (parseInt(totalManDay) != (parseInt(developerManDay) + parseInt(analystManDay) + parseInt(pmManDay))) {
+            alert("Girilen Eforlar Total Efora Eşit Olmalı");
+            return false;
+        }
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
@@ -286,6 +331,25 @@ $(document).on('click', '.Save', function () {
             })
 
         }
+        var datetime = new Date().toJSON();
+        pagelog = jiraProjectName + " isimli proje güncellendi";
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Log",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                "logDate": datetime,
+                "name": namelog,
+                "surname": surnamelog,
+                "page": pagelog,
+                "process": "Güncelleme"
+            }),
+
+            success: function () {
+
+            }
+        })
     }
 
 });

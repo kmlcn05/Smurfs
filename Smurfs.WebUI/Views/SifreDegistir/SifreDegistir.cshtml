@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "SifreDegistir";
+    Layout = "~/Views/Shared/ScreenLayout.cshtml";
+}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<title>Şifre Değiştir </title>
+<title id="UserId" style="display: none">@ViewBag.UserId</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="~/css/SifreDegistir.css" rel="stylesheet" />
+    <link href="~/css/ScreenBack.css" rel="stylesheet" />
+@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->*@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="change-password">
+        <div class="card-header">
+            <h2>Şifre Değiştir</h2>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="pwd">Mevcut Şifre</label>
+                <input type="password" id="eskiSifre" name="pwd" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Yeni Şifre</label>
+                <input type="password" id="yeniSifre" name="pwd" class="form-control">              
+            </div>
+            <div class="form-group">
+                <label for="pwd">Yeni Şifre(Tekrar)</label>
+                <input type="password" id="yeniSifre2" name="pwd" class="form-control">
+                <span class="form-text small text-muted">Yeni şifreyi tekrar girin.
+                </span>
+            </div>
+            <button  class="btn btn-lg btn-primary btn-block btn-signin gonder"  type="submit">
+                Değiştirmek için tıklayın
+            </button>
+           @* <button class="form-group">
+                <input type="submit" class="btn" data-toggle="modal" data-target="#myModal" Value="Değiştirmek için tıkla">
+            </button>*@
+        </div>
+    </div>
+   <div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Please enter the following information.</h3>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+          <asp:Label ID="Label1" runat="server">Enter your mother's maiden name</asp:Label>
+          <input type="text" id="mname" name="mname">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@section Scripts
+{
+    
+    <script src="~/js/SifreDegistirme.js"></script>
+}

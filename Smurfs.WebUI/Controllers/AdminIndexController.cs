@@ -7,7 +7,8 @@ namespace Smurfs.WebUI.Controllers
         public IActionResult AdminIndex()
         {
             if (HttpContext.Session.GetString("UserRole") == "Admin"
-                || HttpContext.Session.GetString("UserRole") == "Manager")
+                || HttpContext.Session.GetString("UserRole") == "Manager"
+                && HttpContext.Session.GetString("FirstLogin") == "0")
             {
                 ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
 

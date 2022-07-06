@@ -37,7 +37,10 @@ $.ajax({
     document.getElementById('proje').innerHTML = Object.keys(data).length;
 
     data.forEach(x => {
-        if (x.dZDStatus == "03-Done") {
+        if (x.dZDStatus == "14 - Salesforce Fatura Talebi"
+            || x.dZDStatus == "15 - Salesforce Fatura Onay"
+            || x.dZDStatus == "16 - DZD e-Fatura"
+            || x.dZDStatus == "17 - DZD Finans OK") {
             i++;
         }
         document.getElementById('ProjeTam').innerHTML = i;
