@@ -10,5 +10,6 @@ namespace Smurfs.Business.Abstract
     public interface IEmailService
     {
         public void SendMail(UserDto User);
+        public void Notification(string icerik);
     }
 }

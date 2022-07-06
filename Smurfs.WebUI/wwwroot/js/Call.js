@@ -13,6 +13,9 @@ var callStatus = null;
 var appointee = null;
 var reporter = null;
 
+var icerik = null;
+var mail = null;
+
 var pagelog = null;
 
 var userlog = $('#userlog').text();
@@ -124,8 +127,6 @@ $(document).on('click', '.Delete', function (e) {
                 }
             })
         }
-        var datetime = new Date().toJSON();
-        pagelog = callName + " isimli ITSM silindi";
         $.ajax({
             url: "https://smuhammetulas.com/api/Log",
             type: "POST",
@@ -155,7 +156,7 @@ $(document).on('click', '.Save', function () {
     callName = $('#CallName').val();
     cagriCozumSuresi = $("#CagriCozumSuresi").val();
     callDetails = $("#CallDetails").val();
-    callPriority = $("#CallPriority").val();
+    callPriority = $("#CallPriority option:selected").text();
     callDateCreated = $('#CallDateCreated').val();
     callDateResolved = $('#CallDateResolved').val();
     callStatus = $("#CallStatus option:selected").text();
@@ -289,7 +290,22 @@ $(document).on('click', '.Save', function () {
             }
         })
     }
+    fetch("https://smuhammetulas.com/api/User/GetUser").then(response => response.json()).then(data => {
+        data.filter(x => (x.name + " " + x.surname) == appointee).forEach(x => {
+            mail = x.mail
+        });
+    })
 
+    icerik = mail + "," + appointee + "," + call + "," + priority;
+    $.ajax({
+        url: "https://smuhammetulas.com/api/Email/Notification",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+           icerik
+        }),
+    })
 });
 
 
