@@ -1,47 +1,45 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Smurfs.Business.Abstract;
-using Smurfs.Entities.Conrete;
-using Smurfs.Entity.DTO_s;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Smurfs.Entity.Concrete;
 
 namespace Smurfs.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PremiumController : ControllerBase
+    public class GeneralPremiumController : ControllerBase
     {
-        private IPremiumService _premiumService;
-        public PremiumController(IPremiumService PremiumService)
+
+        private IGeneralPremiumService _generalpremiumService;
+        public GeneralPremiumController(IGeneralPremiumService GeneralPremiumService)
         {
-            _premiumService = PremiumService;
+            _generalpremiumService = GeneralPremiumService;
         }
         // GET: api/<PremiumController>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var PremiumService = await _premiumService.GetAll();
-            return Ok(PremiumService);
+            var GeneralPremiumService = await _generalpremiumService.GetAll();
+            return Ok(GeneralPremiumService);
         }
 
         // GET api/<PremiumController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int Id)
         {
-            var p = await _premiumService.GetById(Id);
-            if (p == null)
+            var gp = await _generalpremiumService.GetById(Id);
+            if (gp == null)
             {
                 return NotFound();
             }
 
-            return Ok(p);
+            return Ok(gp);
         }
 
         // POST api/<PremiumController>
         [HttpPost]
         public IActionResult Create(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
         {
-            _premiumService.Create(Id, premiumDate, name, surname, projectAmount, callAmount);
+            _generalpremiumService.Create(Id, premiumDate, name, surname, projectAmount, callAmount);
             return Ok("Eklendi");
         }
 
@@ -49,38 +47,38 @@ namespace Smurfs.API.Controllers
         [HttpPut]
         public IActionResult Update(int Id, DateTime premiumDate, string name, string surname, string projectAmount, string callAmount)
         {
-            _premiumService.Update(Id, premiumDate, name, surname, projectAmount, callAmount);
+            _generalpremiumService.Update(Id, premiumDate, name, surname, projectAmount, callAmount);
             return Ok("Güncellendi");
         }
 
         // DELETE api/<PremiumController>/5
         [HttpDelete]
-        public IActionResult Delete([FromBody] Premium Premium)
+        public IActionResult Delete([FromBody] GeneralPremium Premium)
         {
-            _premiumService.Delete(Premium);
+            _generalpremiumService.Delete(Premium);
             return Ok("Silindi");
         }
 
         [HttpGet("GetPremium")]
         public IActionResult GetPremium()
         {
-            var Premium = _premiumService.PremiumDetails();
-            return Ok(Premium);
+            var GeneralPremium = _generalpremiumService.GeneralPremiumDetails();
+            return Ok(GeneralPremium);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Premium>> DeletePremium(int id)
+        public async Task<ActionResult<GeneralPremium>> DeleteGeneralPremium(int id)
         {
             try
             {
-                var employeeToDelete = await _premiumService.GetById(id);
+                var employeeToDelete = await _generalpremiumService.GetById(id);
 
                 if (employeeToDelete == null)
                 {
                     return NotFound($"ITSM with Id = {id} not found");
                 }
 
-                return await _premiumService.DeletePremium(id);
+                return await _generalpremiumService.DeleteGeneralPremium(id);
             }
             catch (Exception)
             {

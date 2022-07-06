@@ -18,17 +18,17 @@ namespace Smurfs.Business.Concrete
         {
             _unitofwork = unitofwork;
         }
-        public void Create(PremiumDto entity)
+        public void Create(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
         {
-            var Premium = _unitofwork.Premium.AddPremium(entity);
+            var Premium = _unitofwork.Premium.AddPremium(Id, premiumDate, name, surname, projectAmount, callAmount);
             _unitofwork.Premium.Create(Premium);
             _unitofwork.Save();
 
         }
 
-        public void Update(PremiumDto entity)
+        public void Update(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
         {
-            var Premium = _unitofwork.Premium.AddPremium(entity);
+            var Premium = _unitofwork.Premium.AddPremium(Id, premiumDate, name, surname, projectAmount, callAmount);
             _unitofwork.Premium.Update(Premium);
             _unitofwork.Save();
         }

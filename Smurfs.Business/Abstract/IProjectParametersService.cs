@@ -15,7 +15,7 @@ namespace Smurfs.Business.Abstract
         void UpdateParameters(ProjectParametersDto entity);
 
         void DeleteParameters(ProjectParameters entity);
-        public ProjectParameters Calculate(int callId);
+        public  void Calculate(int projecarpanı);
         List<ProjectParametersDto> ProjectParametersDetails();
 
         Task<ProjectParameters> DeleteProjectParameters(int id);

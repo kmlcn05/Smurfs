@@ -21,7 +21,7 @@ namespace Smurfs.Business.Abstract
         void UpdateParameters(CallParametersDto entity);
 
         void DeleteParameters(CallParameters entity);
-        public CallParameters Calculate(int callId);
+        public void Calculate(int cagricarpanı);
 
         List<CallParametersDto> CallParametersDetails();
 
