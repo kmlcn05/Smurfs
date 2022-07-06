@@ -1,15 +1,9 @@
 ﻿
 var allData = null;
 var id = null;
-var name = null;
 var parametersDate = null;
-var project = null;
 var projeCarpani = null;
-var projeKapasite = null;
-var projeGerceklesen = null;
-var projeVerimYuzdesi = null;
-var projeVerimDegeri = null;
-var projeVerimSonucu = null;
+
 
 var pagelog = null;
 
@@ -40,15 +34,9 @@ $.ajax({
         "aaData": data,
         "columns": [
             { "data": "id" },
-            { "data": "name" },
             { "data": "parametersDate" },
-            { "data": "project" },
             { "data": "projeCarpani" },
-            { "data": "projeKapasite" },
-            { "data": "projeGerceklesen" },
-            { "data": "projeVerimYuzdesi" },
-            { "data": "projeVerimDegeri" },
-            { "data": "projeVerimSonucu" },
+
 
             {
                 "render": function (data, x, row) {
@@ -66,15 +54,15 @@ $.ajax({
     })
 })
 
-$.ajax({
-    'url': "https://smuhammetulas.com/api/Project/GetProjects",
-    'method': "GET",
-    'contentType': 'application/json'
-}).done(function (data) {
-    data.forEach(x => { 
-        $('#Project').append(`<option value="${x.jiraProjectName}">${x.jiraProjectName}</option>`)
-    });
-})
+//$.ajax({
+//    'url': "https://smuhammetulas.com/api/Project/GetProjects",
+//    'method': "GET",
+//    'contentType': 'application/json'
+//}).done(function (data) {
+//    data.forEach(x => { 
+//        $('#Project').append(`<option value="${x.jiraProjectName}">${x.jiraProjectName}</option>`)
+//    });
+//})
 
 
 $(document).on('click', '.Delete', function (e) {
@@ -131,21 +119,12 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
 
-
-        name = $('#Name').val();
         parametersDate = $('#ParametersDate').val();
-        project = $("#Project option:selected").text();
         projeCarpani = $('#ProjeCarpani').val();
-        projeKapasite = $('#ProjeKapasite').val();
-        projeGerceklesen = $('#ProjeGerceklesen').val();
-        projeVerimYuzdesi = $('#ProjeVerimYuzdesi').val();
-        projeVerimDegeri = $('#ProjeVerimDegeri').val();
-        projeVerimSonucu = $('#ProjeVerimSonucu').val();
+
 
         if (id == null) {
-            if (name == "" || parametersDate == "" || project == "Bir Değer Seçiniz" || projeCarpani == ""
-                || projeKapasite == "" || projeGerceklesen == "" || projeVerimYuzdesi == "" || projeVerimDegeri == ""
-                || projeVerimSonucu == "") {
+            if (parametersDate == "" || projeCarpani == "") {
 
                 document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
                 return false;
@@ -161,15 +140,8 @@ $(document).on('click', '.Save', function () {
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
 
-                    "name": name,
                     "parametersDate": parametersDate,
-                    "project": project,
                     "projeCarpani": projeCarpani,
-                    "projeKapasite": projeKapasite,
-                    "projeGerceklesen": projeGerceklesen,
-                    "projeVerimYuzdesi": projeVerimYuzdesi,
-                    "projeVerimDegeri": projeVerimDegeri,
-                    "projeVerimSonucu": projeVerimSonucu,
 
                 }),
                 success: function () {
@@ -219,15 +191,8 @@ $(document).on('click', '.Save', function () {
                 data: JSON.stringify({
 
                     "id": id,
-                    "name": name,
-                    "parametersDate": parametersDate,
-                    "project": project,
                     "projeCarpani": projeCarpani,
-                    "projeKapasite": projeKapasite,
-                    "projeGerceklesen": projeGerceklesen,
-                    "projeVerimYuzdesi": projeVerimYuzdesi,
-                    "projeVerimDegeri": projeVerimDegeri,
-                    "projeVerimSonucu": projeVerimSonucu,
+
 
                 }),
                 success: function () {
@@ -277,26 +242,13 @@ $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {
         id = e.target.dataset.id;
 
-        name = allData.find(x => x.id == parseInt(id)).name;
         parametersDate = allData.find(x => x.id == parseInt(id)).parametersDate;
-        project = allData.find(x => x.id == parseInt(id)).project;
         projeCarpani = allData.find(x => x.id == parseInt(id)).projeCarpani;
-        projeKapasite = allData.find(x => x.id == parseInt(id)).projeKapasite;
-        projeGerceklesen = allData.find(x => x.id == parseInt(id)).projeGerceklesen;
-        projeVerimYuzdesi = allData.find(x => x.id == parseInt(id)).projeVerimYuzdesi;
-        projeVerimDegeri = allData.find(x => x.id == parseInt(id)).projeVerimDegeri;
-        projeVerimSonucu = allData.find(x => x.id == parseInt(id)).projeVerimSonucu;
 
         document.getElementById('newprojectparameter').style.display = 'block';
 
-        $('#Name').val(name);
         $('#ParametersDate').val(parametersDate);
-        $('#Project').val(project);
         $('#ProjeCarpani').val(projeCarpani);
-        $('#ProjeKapasite').val(projeKapasite);
-        $('#ProjeGerceklesen').val(projeGerceklesen);
-        $('#ProjeVerimYuzdesi').val(projeVerimYuzdesi);
-        $('#ProjeVerimDegeri').val(projeVerimDegeri);
-        $('#ProjeVerimSonucu').val(projeVerimSonucu);
+
     }
 });

@@ -2,11 +2,12 @@
 
 namespace Smurfs.WebUI.Controllers
 {
-    public class PremiumController : Controller
+    public class EmployeeStatusController : Controller
     {
-        public IActionResult Premium()
+        public IActionResult EmployeeStatus()
         {
-            if (HttpContext.Session.GetString("UserRole") == "Manager"
+            if (HttpContext.Session.GetString("UserRole") == "Admin"
+                || HttpContext.Session.GetString("UserRole") == "Manager"
                 && HttpContext.Session.GetString("FirstLogin") == "0")
             {
                 ViewBag.Username = HttpContext.Session.GetString("LoggedUser");
@@ -15,7 +16,7 @@ namespace Smurfs.WebUI.Controllers
                 return View();
             }
             else
-                return View("NotAuthorized");            
+                return View("NotAuthorized");
         }
     }
 }

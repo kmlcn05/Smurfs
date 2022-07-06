@@ -2,9 +2,9 @@
 
 namespace Smurfs.WebUI.Controllers
 {
-    public class PremiumController : Controller
+    public class GeneralPremiumController : Controller
     {
-        public IActionResult Premium()
+        public IActionResult GeneralPremium()
         {
             if (HttpContext.Session.GetString("UserRole") == "Manager"
                 && HttpContext.Session.GetString("FirstLogin") == "0")
