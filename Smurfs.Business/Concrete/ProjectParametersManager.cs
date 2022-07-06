@@ -142,8 +142,8 @@ namespace Smurfs.Business.Concrete
                 verimsonucu = verimdeger * int.Parse(carpan);
                 if (verimsonucu >0)
                 {
-                    _unitofwork.Premium.AddPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString()
-                    );
+                    _unitofwork.Premium.AddPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
+                    _unitofwork.GeneralPremium.AddGeneralPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
                 }
             }
         }

@@ -82,8 +82,8 @@ namespace Smurfs.Business.Concrete
                                 CallStatus = c.CallStatus,
                                 Appointee = c.Appointee,
                                 Reporter = c.Reporter,
-                                IsState = c.IsState,
-    };
+                                IsState = "1",
+                            };
 
                             var sonuc = _unitofwork.Call.AddCall(getCallDto);
                             _unitofwork.Call.Update(sonuc);
@@ -104,6 +104,7 @@ namespace Smurfs.Business.Concrete
                 if (verimsonucu > 0)
                 {
                     _unitofwork.Premium.AddPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                    _unitofwork.GeneralPremium.AddGeneralPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
                 }
             }
         }

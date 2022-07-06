@@ -37,7 +37,7 @@ namespace Smurfs.API.Controllers
 
         // POST api/<PremiumController>
         [HttpPost]
-        public IActionResult Create(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
+        public IActionResult Create([FromBody]int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
         {
             _generalpremiumService.Create(Id, premiumDate, name, surname, projectAmount, callAmount);
             return Ok("Eklendi");
