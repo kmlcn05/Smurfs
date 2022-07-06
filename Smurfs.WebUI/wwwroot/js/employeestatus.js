@@ -1,12 +1,13 @@
 ﻿
 var allData = null;
 var id = null;
-var premiumDate = null;
+var date = null;
+date = new Date().toJSON();
 var name = null;
 var surname = null;
-var projectamount = null;
-var callamount = null;
-var amount = null;
+var expected = null;
+var happening = null;
+var remainder = null;
 
 function reloadPage() {
     document.getElementById('newpremium').style.display = 'none';
@@ -27,19 +28,18 @@ $.ajax({
         x.amount = x.amount.replace(".00", "");
     }
 
-    $('#premiumDatatable').dataTable({
+    $('#employeeDatatable').dataTable({
         scrollX: true,
         "paging": true,
         "aaData": data,
         "columns": [
             { "data": "id" },
-            { "data": "premiumDate" },
+            { "data": "date" },
             { "data": "name" },
             { "data": "surname" },
-            { "data": "amount" },
-            { "data": "projectamount" },
-            { "data": "callamount" },
-            
+            { "data": "expected" },
+            { "data": "happening" },
+            { "data": "remainder" },
 
         ]
     })
@@ -51,7 +51,7 @@ $.ajax({
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Users').append(`<option value="${x.name + ' ' + x.surname}">${x.name} ${x.surname}</option>`); 
+        $('#Users').append(`<option value="${x.name + ' ' + x.surname}">${x.name} ${x.surname}</option>`);
     });
 })
 
@@ -96,7 +96,7 @@ $.ajax({
 //    var array = users.split(' ');
 //    name = array[0];
 //    surname = array[1];
-    
+
 
 //    if (id == null) {
 //        if (amount == "" || premiumDate == "" || users == "Bir Değer Seçiniz") {
@@ -106,7 +106,7 @@ $.ajax({
 //        }
 //        var Confirm = confirm("Kayıt yapılsın mı?");
 //        if (Confirm) {
-            
+
 //            $.ajax({
 //                url: "https://smuhammetulas.com/api/Premium",
 //                type: "POST",
