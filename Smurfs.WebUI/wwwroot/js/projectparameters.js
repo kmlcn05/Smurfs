@@ -135,7 +135,7 @@ $(document).on('click', '.Save', function () {
                 data: JSON.stringify({
 
                     "parametersDate": parametersDate,
-                    "projeCarpani": projeCarpani,
+                    "projeCarpani": projeCarpani
 
                 }),
                 success: function () {
@@ -175,8 +175,6 @@ $(document).on('click', '.Save', function () {
             var Confirm = confirm("Are you sure, do you want to update it?");
             if (Confirm) {
 
-                name = $('#Name').val()
-
                 $.ajax({
                 url: "https://smuhammetulas.com/api/ProjectParameters/UpdateProjectParameters",
                 type: "PUT",
@@ -185,8 +183,8 @@ $(document).on('click', '.Save', function () {
                 data: JSON.stringify({
 
                     "id": id,
-                    "projeCarpani": projeCarpani,
-
+                    "parametersDate": parametersDate,
+                    "projeCarpani": projeCarpani
 
                 }),
                 success: function () {

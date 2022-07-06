@@ -118,9 +118,6 @@ $(document).on('click', '.Delete', function (e) {
 
 $(document).on('click', '.Save', function () {
 
-    
-    
-    
     parametersDate = $('#ParametersDate').val();
     callCarpani = $('#CallCarpani').val();
 
@@ -182,8 +179,6 @@ $(document).on('click', '.Save', function () {
     else {
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
-
-            name = $('#Name').val()
 
             $.ajax({
                 url: "https://smuhammetulas.com/api/CallParameters/UpdateCallParameters",

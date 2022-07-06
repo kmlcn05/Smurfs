@@ -12,6 +12,7 @@ var callDateResolved = null;
 var callStatus = null;  
 var appointee = null;
 var reporter = null;
+var isState = "0";
 
 var icerik = null;
 
@@ -126,6 +127,7 @@ $(document).on('click', '.Delete', function (e) {
                 }
             })
         }
+        pagelog = callName + " isimli ITSM silindi";
         $.ajax({
             url: "https://smuhammetulas.com/api/Log",
             type: "POST",
@@ -196,7 +198,8 @@ $(document).on('click', '.Save', function () {
                     "callDateResolved": callDateResolved,
                     "callStatus": callStatus,
                     "appointee": appointee,
-                    "reporter": reporter
+                    "reporter": reporter,
+                    "isState" : "0"
 
                 }),
                 success: function () {
@@ -231,6 +234,7 @@ $(document).on('click', '.Save', function () {
         })
     }
     else {
+        isState = allData.find(x => x.id == parseInt(id)).isState;
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
@@ -252,7 +256,8 @@ $(document).on('click', '.Save', function () {
                     "callDateResolved": callDateResolved,
                     "callStatus": callStatus,
                     "appointee": appointee,
-                    "reporter": reporter
+                    "reporter": reporter,
+                    "isState": isState
                 }),
                 success: function () {
 
