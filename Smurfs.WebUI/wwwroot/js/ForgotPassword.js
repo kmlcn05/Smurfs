@@ -37,7 +37,6 @@ function myfetchFunction(data) {
     var allData = data.filter(x => x.mail == mail);
     for (var x of allData) {
         mail2 = x.mail;
-        console.log(x.mail);
     }
 
     if (mail2 == null) {
@@ -87,21 +86,21 @@ function myfetchFunction(data) {
     }
 }
 
-function sendMail(name, surname, mail, passwordhash, active, dateOfStart, usergroup, team) {
+function sendMail(name1, surname1, mail1, passwordhash1, active1, dateOfStart1, usergroup1, team1) {
     $.ajax({
         url: "https://smuhammetulas.com/api/Email",
         type: "POST",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify({
-            "name": name,
-            "surname": surname,
-            "mail": mail,
-            "password": passwordhash,
-            "active": active,
-            "dateOfStart": dateOfStart,
-            "usergroup": usergroup,
-            "team": team,
+            "name": name1,
+            "surname": surname1,
+            "mail": mail1,
+            "password": passwordhash1,
+            "active": active1,
+            "dateOfStart": dateOfStart1,
+            "usergroup": usergroup1,
+            "team": team1,
             "firstLogin": "1"
         }),
         success: function () {

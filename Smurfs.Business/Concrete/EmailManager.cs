@@ -32,7 +32,7 @@ namespace Smurfs.Business.Concrete
 
             //SMTP/Gönderici bilgilerinin yer aldığı erişim/doğrulama bilgileri
             SmtpClient smtp = new SmtpClient("smtp-mail.outlook.com", 587); //Bu alanda gönderim yapacak hizmetin smtp adresini ve size verilen portu girmelisiniz.
-            NetworkCredential AccountInfo = new NetworkCredential("smurfsdzd@outlook.com", "Dzd123456");
+            NetworkCredential AccountInfo = new NetworkCredential("smurfsdzd@outlook.com", "fbunckeiegfbjmsg");
             smtp.UseDefaultCredentials = false; //Standart doğrulama kullanılsın mı? -> Yalnızca gönderici özellikle istiyor ise TRUE işaretlenir.
             smtp.Credentials = AccountInfo;
             smtp.EnableSsl = true; //SSL kullanılarak mı gönderilsin...
@@ -76,3 +76,4 @@ namespace Smurfs.Business.Concrete
         }
     }
 }
+    
