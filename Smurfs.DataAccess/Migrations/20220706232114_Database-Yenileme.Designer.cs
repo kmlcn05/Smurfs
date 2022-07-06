@@ -12,8 +12,8 @@ using Smurfs.DataAccess.Concrete.Context;
 namespace Smurfs.DataAccess.Migrations
 {
     [DbContext(typeof(SmurfsContext))]
-    [Migration("20220614093524_efdal1")]
-    partial class efdal1
+    [Migration("20220706232114_Database-Yenileme")]
+    partial class DatabaseYenileme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,7 +57,10 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<string>("CagriCozumSuresi")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CallDate")
+                    b.Property<DateTime>("CallDateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CallDateResolved")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CallDetails")
@@ -72,25 +75,23 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int?>("CallStatusId")
                         .HasColumnType("int");
 
-                    b.Property<string>("JiraProjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JiraProjectNo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsState")
+                        .HasColumnType("bit");
 
                     b.Property<string>("JiraTaskNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LogId")
-                        .HasColumnType("int");
+                    b.Property<string>("Reporter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TaskType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BankId");
 
                     b.HasIndex("CallStatusId");
-
-                    b.HasIndex("LogId");
 
                     b.ToTable("Calls");
                 });
@@ -160,17 +161,12 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int?>("ProcessId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProjectId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("UsersId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProcessId");
-
-                    b.HasIndex("ProjectId");
 
                     b.HasIndex("UsersId");
 
@@ -188,7 +184,21 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("CallAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PremiumDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ProjectAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("UsersId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
 
                     b.ToTable("Premiums");
                 });
@@ -237,6 +247,9 @@ namespace Smurfs.DataAccess.Migrations
 
                     b.Property<string>("DeveloperManDay")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsState")
+                        .HasColumnType("bit");
 
                     b.Property<string>("JiraProjectName")
                         .HasColumnType("nvarchar(max)");
@@ -323,6 +336,9 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<DateTime>("DateOfStart")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte>("FirstLogin")
+                        .HasColumnType("tinyint");
+
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
 
@@ -335,9 +351,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("premiumId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("teamId")
                         .HasColumnType("int");
 
@@ -345,8 +358,6 @@ namespace Smurfs.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("premiumId");
 
                     b.HasIndex("teamId");
 
@@ -371,6 +382,84 @@ namespace Smurfs.DataAccess.Migrations
                     b.ToTable("UserGroups");
                 });
 
+            modelBuilder.Entity("Smurfs.Entity.Concrete.CallParameters", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CallCarpani")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CallId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ParametersDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CallId");
+
+                    b.ToTable("CallParameters");
+                });
+
+            modelBuilder.Entity("Smurfs.Entity.Concrete.GeneralPremium", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CallAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PremiumDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ProjectAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("GeneralPremiums");
+                });
+
+            modelBuilder.Entity("Smurfs.Entity.Concrete.ProjectParameters", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("ParametersDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProjeCarpani")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectParameters");
+                });
+
             modelBuilder.Entity("Smurfs.Entities.Conrete.Call", b =>
                 {
                     b.HasOne("Smurfs.Entities.Conrete.Bank", "Bank")
@@ -381,15 +470,9 @@ namespace Smurfs.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("CallStatusId");
 
-                    b.HasOne("Smurfs.Entities.Conrete.Log", "Log")
-                        .WithMany()
-                        .HasForeignKey("LogId");
-
                     b.Navigation("Bank");
 
                     b.Navigation("CallStatus");
-
-                    b.Navigation("Log");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Log", b =>
@@ -398,17 +481,20 @@ namespace Smurfs.DataAccess.Migrations
                         .WithMany("Logs")
                         .HasForeignKey("ProcessId");
 
-                    b.HasOne("Smurfs.Entities.Conrete.Project", "Project")
-                        .WithMany("Log")
-                        .HasForeignKey("ProjectId");
-
                     b.HasOne("Smurfs.Entities.Conrete.User", "Users")
                         .WithMany("Logs")
                         .HasForeignKey("UsersId");
 
                     b.Navigation("Process");
 
-                    b.Navigation("Project");
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Smurfs.Entities.Conrete.Premium", b =>
+                {
+                    b.HasOne("Smurfs.Entities.Conrete.User", "Users")
+                        .WithMany("Premium")
+                        .HasForeignKey("UsersId");
 
                     b.Navigation("Users");
                 });
@@ -448,10 +534,6 @@ namespace Smurfs.DataAccess.Migrations
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.User", b =>
                 {
-                    b.HasOne("Smurfs.Entities.Conrete.Premium", "premium")
-                        .WithMany("Users")
-                        .HasForeignKey("premiumId");
-
                     b.HasOne("Smurfs.Entities.Conrete.Team", "team")
                         .WithMany("Users")
                         .HasForeignKey("teamId");
@@ -460,16 +542,42 @@ namespace Smurfs.DataAccess.Migrations
                         .WithMany("Users")
                         .HasForeignKey("usergroupId");
 
-                    b.Navigation("premium");
-
                     b.Navigation("team");
 
                     b.Navigation("usergroup");
                 });
 
+            modelBuilder.Entity("Smurfs.Entity.Concrete.CallParameters", b =>
+                {
+                    b.HasOne("Smurfs.Entities.Conrete.Call", null)
+                        .WithMany("CallParameters")
+                        .HasForeignKey("CallId");
+                });
+
+            modelBuilder.Entity("Smurfs.Entity.Concrete.GeneralPremium", b =>
+                {
+                    b.HasOne("Smurfs.Entities.Conrete.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Smurfs.Entity.Concrete.ProjectParameters", b =>
+                {
+                    b.HasOne("Smurfs.Entities.Conrete.Project", null)
+                        .WithMany("ProjectParameters")
+                        .HasForeignKey("ProjectId");
+                });
+
             modelBuilder.Entity("Smurfs.Entities.Conrete.Bank", b =>
                 {
                     b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Smurfs.Entities.Conrete.Call", b =>
+                {
+                    b.Navigation("CallParameters");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Department", b =>
@@ -482,11 +590,6 @@ namespace Smurfs.DataAccess.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("Smurfs.Entities.Conrete.Premium", b =>
-                {
-                    b.Navigation("Users");
-                });
-
             modelBuilder.Entity("Smurfs.Entities.Conrete.Process", b =>
                 {
                     b.Navigation("Logs");
@@ -494,7 +597,7 @@ namespace Smurfs.DataAccess.Migrations
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Project", b =>
                 {
-                    b.Navigation("Log");
+                    b.Navigation("ProjectParameters");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Status", b =>
@@ -512,6 +615,8 @@ namespace Smurfs.DataAccess.Migrations
             modelBuilder.Entity("Smurfs.Entities.Conrete.User", b =>
                 {
                     b.Navigation("Logs");
+
+                    b.Navigation("Premium");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.UserGroup", b =>
