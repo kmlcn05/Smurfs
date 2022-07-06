@@ -15,6 +15,6 @@ namespace Smurfs.DataAccess.Abstract
 
         public Task<Premium> DeletePremium(int id);
 
-        public Premium AddPremium(PremiumDto premium);
+        public Premium AddPremium(int Id, DateTime premiumDate, string name, string surname, string projectAmount="0", string callAmount="0");
     }
 }

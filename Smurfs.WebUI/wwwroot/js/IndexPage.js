@@ -10,7 +10,9 @@ fetch("https://smuhammetulas.com/api/Project/GetProjects").then(response => resp
     var alldata = data.filter(x => x.developer == username || x.analyst == username)
     var i = 0;
     document.getElementById('proje').innerHTML = Object.keys(alldata).length;
-
+    document.getElementById('projeno').innerHTML = alldata[0].jiraProjectNo;
+    document.getElementById('projead').innerHTML = alldata[0].jiraProjectName;
+    document.getElementById('dzdstatu').innerHTML = alldata[0].dZDStatus;
     alldata.forEach(x => {
         if (x.dZDStatus == "14 - Salesforce Fatura Talebi"
             || x.dZDStatus == "15 - Salesforce Fatura Onay"
@@ -33,11 +35,15 @@ fetch("https://smuhammetulas.com/api/Call/GetCall").then(response => response.js
     var alldata = data.filter(x => x.appointee == username)
     var i = 0;
     document.getElementById('call').innerHTML = Object.keys(alldata).length;
-
+    document.getElementById('taskType').innerHTML = alldata[0].taskType;
+    document.getElementById('calldetay').innerHTML = alldata[0].callDetails;
+    document.getElementById('oncelik').innerHTML = alldata[0].callPriority;
+    
     alldata.forEach(x => {
         if (x.callStatus == "Closed") {
             i++;
         }
+        
        
     });
 

@@ -24,10 +24,6 @@ $.ajax({
 }).done(function (data) {
     allData = data;
 
-    for (var x of data) {
-        x.parametersDate = x.parametersDate.replace("T00:00:00", "");
-    }
-
     $('#projectparametersDatatable').dataTable({
         scrollX : true,
         "paging": true,
@@ -114,8 +110,6 @@ $(document).on('click', '.Delete', function (e) {
         })
     }
 });
-
-
 
 $(document).on('click', '.Save', function () {
 

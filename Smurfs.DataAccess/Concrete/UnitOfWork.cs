@@ -29,6 +29,7 @@ namespace Smurfs.DataAccess.Concrete
         private CallStatusDal _callStatusDal;
         private CallDal _callDal;
         private CallParametersDal _callParametersDal;
+        private GeneralPremiumDal _generalPremiumDal;
 
 
         public IUserDal User =>
@@ -69,6 +70,8 @@ namespace Smurfs.DataAccess.Concrete
         public ICallParametersDal CallParameters =>
              _callParametersDal = _callParametersDal ?? new CallParametersDal(_context);
 
+        public IGeneralPremiumDal GeneralPremium =>
+            _generalPremiumDal = _generalPremiumDal ?? new GeneralPremiumDal(_context);
         public void Dispose()
         {
             _context.Dispose();

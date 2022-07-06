@@ -1,13 +1,14 @@
 ﻿using Smurfs.Core.Abstract;
+using Smurfs.Entities.Conrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Smurfs.Entities.Conrete
+namespace Smurfs.Entity.Concrete
 {
-    public class Premium : IEntity
+    public class GeneralPremium:IEntity
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
@@ -18,7 +19,5 @@ namespace Smurfs.Entities.Conrete
         public DateTime PremiumDate { get; set; }
 
         public User Users { get; set; }
-
-
     }
 }

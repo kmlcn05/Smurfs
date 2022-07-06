@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Smurfs.Entity.DTO_s
 {
-    public class PremiumDto : IDto
+    public class GeneralPremiumDto:IDto
     {
         public int Id { get; set; }
         public string Amount { get; set; }
@@ -18,6 +18,5 @@ namespace Smurfs.Entity.DTO_s
 
         public string Name { get; set; }
         public string Surname { get; set; }
-
     }
 }
