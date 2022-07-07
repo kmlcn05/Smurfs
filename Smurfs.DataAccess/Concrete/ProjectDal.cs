@@ -77,7 +77,7 @@ namespace Smurfs.DataAccess.Concrete
             result.DeveloperManDay = project.developerManDay;
             result.AnalystManDay = project.analystManDay;
             result.PmManDay = project.pmManDay;
-            result.IsState = Convert.ToBoolean(project.IsState);
+            result.IsState = project.IsState.Equals("1");
             return result;
         }
 
