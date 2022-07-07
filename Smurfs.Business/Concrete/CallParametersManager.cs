@@ -67,26 +67,6 @@ namespace Smurfs.Business.Concrete
                         if (c.CallStatus == "Closed")
                         {
                             gerceklesen++;  // bir proje bir defa dahil edilme kontrolü   
-                            GetCallDto getCallDto = new GetCallDto
-                            {
-                                Id = c.Id,
-                                Bank = c.Bank,
-                                TaskType = c.TaskType,
-                                JiraTaskNo = c.JiraTaskNo,
-                                CallName = c.CallName,
-                                CagriCozumSuresi = c.CagriCozumSuresi,
-                                CallDetails =c.CallDetails,
-                                CallPriority = c.CallPriority,
-                                CallDateCreated = c.CallDateCreated,
-                                CallDateResolved =c.CallDateResolved,
-                                CallStatus = c.CallStatus,
-                                Appointee = c.Appointee,
-                                Reporter = c.Reporter,
-                                IsState = "1",
-                            };
-
-                            var sonuc = _unitofwork.Call.AddCall(getCallDto);
-                            _unitofwork.Call.Update(sonuc);
                         }
                     }
                 }
@@ -103,8 +83,13 @@ namespace Smurfs.Business.Concrete
                 verimsonucu = verimdeger * int.Parse(carpan);
                 if (verimsonucu > 0)
                 {
-                    _unitofwork.Premium.AddPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
-                    _unitofwork.GeneralPremium.AddGeneralPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                    var result1 = _unitofwork.Premium.AddPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                    _unitofwork.Premium.Create(result1);
+                    _unitofwork.Save();
+
+                    var result2 = _unitofwork.GeneralPremium.AddGeneralPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                    _unitofwork.GeneralPremium.Create(result2);
+                    _unitofwork.Save();
                 }
             }
         }
