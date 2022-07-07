@@ -63,69 +63,25 @@ namespace Smurfs.Business.Concrete
                 var verimsonucu = 0;
                 foreach (var proje in project)
                 {
-                    if (user.usergroup== "Developer" && proje.developer==user.Name + " " + user.Surname && proje.IsState=="0") //eğer bir olursa prim ödendi oluyor
+                    if (user.usergroup == "Developer" && proje.developer == user.Name + " " + user.Surname && proje.IsState == "0") //eğer bir olursa prim ödendi oluyor
                     {
                         if (proje.dZDStatus == "14 - Salesforce Fatura Talebi"
                             || proje.dZDStatus == "15 - Salesforce Fatura Onay"
                             || proje.dZDStatus == "16 - DZD e-Fatura"
-                            || proje.dZDStatus == "17 - DZD Finans OK") 
+                            || proje.dZDStatus == "17 - DZD Finans OK")
                         {
-                            gerceklesen = int.Parse(proje.developerManDay);  // bir proje bir defa dahil edilme kontrolü
-                            GetProjectsDto getProjectsDto= new GetProjectsDto{
-                                id = proje.id,
-                                projectDate = proje.projectDate,
-                                bank = proje.bank,
-                                jiraProjectNo = proje.jiraProjectNo,
-                                jiraTaskNo = proje.jiraTaskNo,
-                                jiraProjectName = proje.jiraProjectName,
-                                dZDStatus = proje.dZDStatus,
-                                status = proje.status,
-                                department = proje.department,
-                                team = proje.team,
-                                developer = proje.developer,
-                                analyst = proje.analyst,
-                                totalManDay = proje.totalManDay,
-                                developerManDay = proje.developerManDay,
-                                analystManDay = proje.analystManDay,
-                                pmManDay = proje.pmManDay,
-                                IsState = "1",
-                            };
-                            
-                            var sonuc=_unitofwork.Project.AddProject(getProjectsDto);
-                            _unitofwork.Project.Update(sonuc);
-                        }  
+                            gerceklesen += int.Parse(proje.developerManDay);  // bir proje bir defa dahil edilme kontrolü  
+                        }
                     }
                     if (user.usergroup == "Analyst" && proje.analyst == user.Name + " " + user.Surname && proje.IsState == "0")
                     {
                         if (proje.dZDStatus == "14 - Salesforce Fatura Talebi"
                             || proje.dZDStatus == "15 - Salesforce Fatura Onay"
                             || proje.dZDStatus == "16 - DZD e-Fatura"
-                            || proje.dZDStatus == "17 - DZD Finans OK") 
+                            || proje.dZDStatus == "17 - DZD Finans OK")
                         {
                             gerceklesen = int.Parse(proje.analystManDay);
-                            GetProjectsDto getProjectsDto = new GetProjectsDto
-                            {
-                                id = proje.id,
-                                projectDate = proje.projectDate,
-                                bank = proje.bank,
-                                jiraProjectNo = proje.jiraProjectNo,
-                                jiraTaskNo = proje.jiraTaskNo,
-                                jiraProjectName = proje.jiraProjectName,
-                                dZDStatus = proje.dZDStatus,
-                                status = proje.status,
-                                department = proje.department,
-                                team = proje.team,
-                                developer = proje.developer,
-                                analyst = proje.analyst,
-                                totalManDay = proje.totalManDay,
-                                developerManDay = proje.developerManDay,
-                                analystManDay = proje.analystManDay,
-                                pmManDay = proje.pmManDay,
-                                IsState = "1",
-                            };
 
-                            var sonuc = _unitofwork.Project.AddProject(getProjectsDto);
-                            _unitofwork.Project.Update(sonuc);
                         }
                     }
                 }
@@ -140,10 +96,15 @@ namespace Smurfs.Business.Concrete
                     verimdeger = 0;
                 }
                 verimsonucu = verimdeger * int.Parse(carpan);
-                if (verimsonucu >0)
+                if (verimsonucu > 0)
                 {
-                    _unitofwork.Premium.AddPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
-                    _unitofwork.GeneralPremium.AddGeneralPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
+                    var result1 = _unitofwork.Premium.AddPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
+                    _unitofwork.Premium.Create(result1);
+                    _unitofwork.Save();
+
+                    var result2 = _unitofwork.GeneralPremium.AddGeneralPremium(Id: 0, premiumDate: DateTime.Now, name: user.Name, surname: user.Surname, projectAmount: verimsonucu.ToString());
+                    _unitofwork.GeneralPremium.Create(result2);
+                    _unitofwork.Save();
                 }
             }
         }
