@@ -22,5 +22,6 @@ namespace Smurfs.Entity.DTO_s
         public string CallStatus { get; set; }
         public string Appointee { get; set; }
         public string Reporter { get; set; }
+        public string IsState { get; set; }
     }
 }

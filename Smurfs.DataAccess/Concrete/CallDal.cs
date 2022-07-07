@@ -32,7 +32,7 @@ namespace Smurfs.DataAccess.Concrete
                          join cs in SmurfsContext.CallStatus
                          on c.CallStatus.Id equals cs.Id
                          select new GetCallDto
-                         { Id = c.Id, Bank = b.BankName, TaskType = c.TaskType, JiraTaskNo = c.JiraTaskNo, CallName = c.CallName, CagriCozumSuresi = c.CagriCozumSuresi, CallDetails = c.CallDetails, CallPriority = c.CallPriority, CallDateCreated = c.CallDateCreated, CallDateResolved = c.CallDateResolved, CallStatus = cs.CallStatusName, Appointee = c.Appointee, Reporter = c.Reporter };
+                         { Id = c.Id, Bank = b.BankName, TaskType = c.TaskType, JiraTaskNo = c.JiraTaskNo, CallName = c.CallName, CagriCozumSuresi = c.CagriCozumSuresi, CallDetails = c.CallDetails, CallPriority = c.CallPriority, CallDateCreated = c.CallDateCreated, CallDateResolved = c.CallDateResolved, CallStatus = cs.CallStatusName, Appointee = c.Appointee, Reporter = c.Reporter, IsState = Convert.ToString(c.IsState) };
             return result.ToList();
         }
 
@@ -67,6 +67,7 @@ namespace Smurfs.DataAccess.Concrete
             result.CallStatus = SmurfsContext.CallStatus.Single(a => a.CallStatusName == call.CallStatus);
             result.Appointee = call.Appointee;
             result.Reporter = call.Reporter;
+            result.IsState = Convert.ToBoolean(call.IsState);
             return result;
         }
 

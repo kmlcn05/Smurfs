@@ -1,10 +1,6 @@
 ﻿
-var allData = null;
-var id = null;
-var amount = null;
-var premiumDate = null;
-var name = null;
-var surname = null;
+var projeCarpani = null;
+var callCarpani = null;
 
 function reloadPage() {
     document.getElementById('newpremium').style.display = 'none';
@@ -31,171 +27,120 @@ $.ajax({
         "aaData": data,
         "columns": [
             { "data": "id" },
-            { "data": "amount" },
             { "data": "premiumDate" },
             { "data": "name" },
             { "data": "surname" },
-            {
-                "render": function (data, x, row) {
-                    return "<button class='btn btn-danger Delete' data-id='" + row.id + "' >Delete</button>";
-                }
-            },
-            {
-                "render": function (data, x, row) {
-                    return "<button class='btn btn-info Update' data-id='" + row.id + "' >Update</button>";
-                }
-
-            },
-
+            { "data": "amount" },
+            { "data": "projectamount" },
+            { "data": "callamount" },
         ]
     })
 })
 
+
 $.ajax({
-    'url': "https://smuhammetulas.com/api/User/GetUser",
+    'url': "https://smuhammetulas.com/api/ProjectParameters/GetProjectParameters",
     'method': "GET",
     'contentType': 'application/json'
 }).done(function (data) {
     data.forEach(x => {
-        $('#Users').append(`<option value="${x.name + ' ' + x.surname}">${x.name} ${x.surname}</option>`); 
+        projeCarpani = x.projeCarpani;
     });
 })
 
-$(document).on('click', '.Delete', function (e) {
-    if (allData && e.target && e.target.dataset && e.target.dataset.id) {
-        var id = e.target.dataset.id;
-
-        var Confirm = confirm("Are you sure, do you want to delete it?");
-        if (Confirm) {
-
-            $.ajax({
-                url: "https://smuhammetulas.com/api/Premium/" + id,
-                type: "DELETE",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function () {
-
-                    //Yenile
-                    alert("silindi");
-                    window.location.reload()
+$.ajax({
+    'url': "https://smuhammetulas.com/api/CallParameters/GetCallParameters",
+    'method': "GET",
+    'contentType': 'application/json'
+}).done(function (data) {
+    data.forEach(x => {
+        callCarpani = x.callCarpani;
+    });
+})
 
 
-                },
-                error: function (e) {
-                    alert("Error please try again" + JSON.stringify(e));
-                    window.location.reload()
-                }
+//function ConfirmPremiums() {
 
-            })
+//    $.ajax({
+//        'url': "https://smuhammetulas.com/api/Premium/GetPremium",
+//        'method': "GET",
+//        'contentType': 'application/json'
+//    }).done(function (data) {
+//        data.forEach(x => {
 
+//            $.ajax({
+//                'url': "https://smuhammetulas.com/api/ProjectParameters/Calculate",
+//                type: "POST",
+//                dataType: "json",
+//                contentType: "application/json; charset=utf-8",
+//                data: JSON.stringify({
+//                    x
+//                }),
+//                success: function () {
+
+//                    alert("Kayıt Başarılı");
+//                    window.location.reload()
+//                },
+//                error: function () {
+//                    alert("Error please try again");
+//                    window.location.reload()
+//                }
+
+//            });
+//        })
+//    })
+   
+//}
+
+
+function Calculate() {
+
+    CalculateProject(projeCarpani);
+
+    CalculateCall(callCarpani);
+}
+
+function CalculateProject(projeCarpani) {
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/ProjectParameters/Calculate",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            projeCarpani
+        }),
+        success: function () {
+
+            alert("Kayıt Başarılı");
+            window.location.reload()
+        },
+        error: function () {
+            alert("Error please try again");
+            window.location.reload()
         }
-    }
-});
 
+    });
+}
 
+function CalculateCall(callCarpani) {
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/CallParameters/CalculateCall",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({
+            callCarpani
+        }),
+        success: function () {
 
-$(document).on('click', '.Save', function () {
-
-    amount = $('#Amount').val();
-    premiumDate = $('#PremiumDate').val();
-    var users = $("#Users option:selected").text();
-    var array = users.split(' ');
-    name = array[0];
-    surname = array[1];
-    
-
-    if (id == null) {
-        if (amount == "" || premiumDate == "" || users == "Bir Değer Seçiniz") {
-
-            document.getElementById("hata").innerHTML = "*Boş Alanları Doldurunuz!";
-            return false;
+            alert("Kayıt Başarılı");
+            window.location.reload()
+        },
+        error: function () {
+            alert("Error please try again");
+            window.location.reload()
         }
-        var Confirm = confirm("Kayıt yapılsın mı?");
-        if (Confirm) {
-            
-            $.ajax({
-                url: "https://smuhammetulas.com/api/Premium",
-                type: "POST",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
 
-                    "amount": amount,
-                    "premiumDate": premiumDate,
-                    "name": name,
-                    "surname": surname
-                }),
-                success: function () {
+    });
+}
 
-                    alert("Kayıt Başarılı");
-                    window.location.reload()
-                },
-                error: function () {
-                    alert("Error please try again");
-                    window.location.reload()
-                }
-
-            })
-
-        }
-        else {
-            return false;
-        }
-    }
-    else {
-        var Confirm = confirm("Are you sure, do you want to update it?");
-        if (Confirm) {
-
-            $.ajax({
-                url: "https://smuhammetulas.com/api/Premium",
-                type: "PUT",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
-
-                    "id": id,
-                    "amount": amount,
-                    "premiumDate": premiumDate,
-                    "name": name,
-                    "surname": surname
-                }),
-                success: function () {
-
-                    //Yenile
-                    alert("The record is updated");
-                    window.location.reload()
-
-
-                },
-                error: function (e) {
-                    alert("Error please try again" + JSON.stringify(e));
-                    window.location.reload()
-                }
-
-            })
-
-        }
-    }
-
-});
-
-
-
-$(document).on('click', '.Update', function (e) {
-    if (allData && e.target && e.target.dataset && e.target.dataset.id) {
-        id = e.target.dataset.id;
-
-        amount = allData.find(x => x.id == parseInt(id)).amount;
-        premiumDate = allData.find(x => x.id == parseInt(id)).premiumDate;
-        name = allData.find(x => x.id == parseInt(id)).name;
-        surname = allData.find(x => x.id == parseInt(id)).surname;
-        users = name + " " + surname;
-
-        document.getElementById('newpremium').style.display = 'block';
-
-        $('#Amount').val(amount);
-        $('#PremiumDate').val(premiumDate);
-        $('#Users').val(users);
-
-    }
-});

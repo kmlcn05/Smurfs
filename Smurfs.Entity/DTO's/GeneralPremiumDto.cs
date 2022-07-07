@@ -1,0 +1,22 @@
+﻿using Smurfs.Core.Abstract;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Smurfs.Entity.DTO_s
+{
+    public class GeneralPremiumDto:IDto
+    {
+        public int Id { get; set; }
+        public string Amount { get; set; }
+        public string ProjectAmount { get; set; }
+
+        public string CallAmount { get; set; }
+        public DateTime PremiumDate { get; set; }
+
+        public string Name { get; set; }
+        public string Surname { get; set; }
+    }
+}

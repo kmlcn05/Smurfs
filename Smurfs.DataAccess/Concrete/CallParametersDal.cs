@@ -26,12 +26,8 @@ namespace Smurfs.DataAccess.Concrete
         {
 
             var result = from c in SmurfsContext.CallParameters
-                         join b in SmurfsContext.Calls
-                         on c.Call.Id equals b.Id
                          select new CallParametersDto
-                         { Id = c.Id, Name = c.Name, CallCarpani = Convert.ToString(c.CallCarpani), CallKapasite = Convert.ToString(c.CallKapasite), 
-                         CallGerceklesen = Convert.ToString(c.CallGerceklesen), CallVerimYuzdesi = Convert.ToString(c.CallVerimYuzdesi), 
-                         CallVerimDegeri = Convert.ToString(c.CallVerimDegeri), CallVerimSonucu = Convert.ToString(c.CallVerimSonucu),Call=b.CallName, ParametersDate = c.ParametersDate };
+                         { Id = c.Id, CallCarpani = Convert.ToString(c.CallCarpani), ParametersDate = c.ParametersDate };
             return result.ToList();
         }
 
@@ -53,15 +49,8 @@ namespace Smurfs.DataAccess.Concrete
             var result = new CallParameters();
 
             result.Id = callParameters.Id;
-            result.Name = callParameters.Name;
             result.ParametersDate = callParameters.ParametersDate;
             result.CallCarpani = Convert.ToInt32(callParameters.CallCarpani);
-            result.CallKapasite = Convert.ToInt32(callParameters.CallKapasite);;
-            result.CallGerceklesen = Convert.ToInt32(callParameters.CallGerceklesen);
-            result.CallVerimYuzdesi = Convert.ToInt32(callParameters.CallVerimYuzdesi);
-            result.CallVerimDegeri = Convert.ToInt32(callParameters.CallVerimDegeri);
-            result.CallVerimSonucu = Convert.ToInt32(callParameters.CallVerimSonucu);
-            result.Call = SmurfsContext.Calls.Single(a => a.CallName == callParameters.Call);
 
             return result;
         }

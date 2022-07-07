@@ -29,6 +29,7 @@ namespace Smurfs.DataAccess.Concrete.Context
         public DbSet<DZDStatus> DZDStatuses { get; set; }
         public DbSet<Log> Logs { get; set; }
         public DbSet<Premium> Premiums { get; set; }
+        public DbSet<GeneralPremium> GeneralPremiums { get; set; }
         public DbSet<Process> Processes { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectParameters> ProjectParameters { get; set; }

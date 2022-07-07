@@ -28,7 +28,7 @@ namespace Smurfs.DataAccess.Concrete
                          join b in SmurfsContext.Users
                          on p.Users.Id equals b.Id
                          select new PremiumDto
-                         { Id = p.Id, Amount = Convert.ToString(p.Amount), PremiumDate = p.PremiumDate, Name = b.Name, Surname = b.Surname };
+                         { Id = p.Id, Amount = Convert.ToString(p.Amount),ProjectAmount= Convert.ToString(p.ProjectAmount),CallAmount= Convert.ToString(p.CallAmount), PremiumDate = p.PremiumDate, Name = b.Name, Surname = b.Surname };
             return result.ToList();
         }
 
@@ -45,14 +45,16 @@ namespace Smurfs.DataAccess.Concrete
 
             return null;
         }
-        public Premium AddPremium(PremiumDto premium)
+        public Premium AddPremium(int Id,DateTime premiumDate,string name,string surname, string projectAmount="0", string callAmount="0")
         {
             var result = new Premium();
 
-            result.Id = premium.Id;
-            result.Amount = Convert.ToDecimal(premium.Amount);
-            result.PremiumDate = premium.PremiumDate;
-            result.Users = SmurfsContext.Users.Single(a => a.Name == premium.Name && a.Surname == premium.Surname);
+            result.Id = Id;
+            result.Amount = Convert.ToDecimal(projectAmount) + Convert.ToDecimal(callAmount);
+            result.ProjectAmount = Convert.ToDecimal(projectAmount);
+            result.CallAmount = Convert.ToDecimal(callAmount);  
+            result.PremiumDate =premiumDate;
+            result.Users = SmurfsContext.Users.Single(a => a.Name ==name && a.Surname == surname);
 
             return result;
         }

@@ -5,6 +5,7 @@ using Smurfs.DataAccess.Abstract;
 using Smurfs.DataAccess.Concrete.Context;
 using Smurfs.Entities.Conrete;
 using Smurfs.Entity.DTO_s;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace Smurfs.DataAccess.Concrete
                          join te in SmurfsContext.Teams
                          on p.Team.Id equals te.Id
                          select new GetProjectsDto
-                         { id = p.Id, projectDate = p.ProjectDate, bank = b.BankName, jiraProjectNo = p.JiraProjectNo, jiraTaskNo = p.JiraTaskNo, jiraProjectName = p.JiraProjectName, dZDStatus = dz.DZDStatusName, status = s.StatusName, department = de.DepartmentName, team = te.TeamName, developer = p.Developer, analyst = p.Analyst, totalManDay = p.TotalManDay, developerManDay = p.DeveloperManDay, analystManDay = p.AnalystManDay, pmManDay = p.PmManDay };
+                         { id = p.Id, projectDate = p.ProjectDate, bank = b.BankName, jiraProjectNo = p.JiraProjectNo, jiraTaskNo = p.JiraTaskNo, jiraProjectName = p.JiraProjectName, dZDStatus = dz.DZDStatusName, status = s.StatusName, department = de.DepartmentName, team = te.TeamName, developer = p.Developer, analyst = p.Analyst, totalManDay = p.TotalManDay, developerManDay = p.DeveloperManDay, analystManDay = p.AnalystManDay, pmManDay = p.PmManDay ,IsState = Convert.ToString(p.IsState) };
             return result.ToList();
         }
 
@@ -76,7 +77,7 @@ namespace Smurfs.DataAccess.Concrete
             result.DeveloperManDay = project.developerManDay;
             result.AnalystManDay = project.analystManDay;
             result.PmManDay = project.pmManDay;
-
+            result.IsState = Convert.ToBoolean(project.IsState);
             return result;
         }
 

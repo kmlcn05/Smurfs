@@ -73,6 +73,9 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int?>("CallStatusId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsState")
+                        .HasColumnType("bit");
+
                     b.Property<string>("JiraTaskNo")
                         .HasColumnType("nvarchar(max)");
 
@@ -179,8 +182,14 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<decimal>("CallAmount")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<DateTime>("PremiumDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ProjectAmount")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("UsersId")
                         .HasColumnType("int");
@@ -236,6 +245,9 @@ namespace Smurfs.DataAccess.Migrations
 
                     b.Property<string>("DeveloperManDay")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsState")
+                        .HasColumnType("bit");
 
                     b.Property<string>("JiraProjectName")
                         .HasColumnType("nvarchar(max)");
@@ -322,6 +334,9 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<DateTime>("DateOfStart")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte>("FirstLogin")
+                        .HasColumnType("tinyint");
+
                     b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
 
@@ -376,26 +391,8 @@ namespace Smurfs.DataAccess.Migrations
                     b.Property<int>("CallCarpani")
                         .HasColumnType("int");
 
-                    b.Property<int>("CallGerceklesen")
-                        .HasColumnType("int");
-
                     b.Property<int?>("CallId")
                         .HasColumnType("int");
-
-                    b.Property<int>("CallKapasite")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CallVerimDegeri")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CallVerimSonucu")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CallVerimYuzdesi")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ParametersDate")
                         .HasColumnType("datetime2");
@@ -407,6 +404,36 @@ namespace Smurfs.DataAccess.Migrations
                     b.ToTable("CallParameters");
                 });
 
+            modelBuilder.Entity("Smurfs.Entity.Concrete.GeneralPremium", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CallAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PremiumDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ProjectAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int?>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("GeneralPremiums");
+                });
+
             modelBuilder.Entity("Smurfs.Entity.Concrete.ProjectParameters", b =>
                 {
                     b.Property<int>("Id")
@@ -415,28 +442,10 @@ namespace Smurfs.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ParametersDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ProjeCarpani")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjeGerceklesen")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjeKapasite")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjeVerimDegeri")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjeVerimSonucu")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProjeVerimYuzdesi")
                         .HasColumnType("int");
 
                     b.Property<int?>("ProjectId")
@@ -538,20 +547,25 @@ namespace Smurfs.DataAccess.Migrations
 
             modelBuilder.Entity("Smurfs.Entity.Concrete.CallParameters", b =>
                 {
-                    b.HasOne("Smurfs.Entities.Conrete.Call", "Call")
+                    b.HasOne("Smurfs.Entities.Conrete.Call", null)
                         .WithMany("CallParameters")
                         .HasForeignKey("CallId");
+                });
 
-                    b.Navigation("Call");
+            modelBuilder.Entity("Smurfs.Entity.Concrete.GeneralPremium", b =>
+                {
+                    b.HasOne("Smurfs.Entities.Conrete.User", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Smurfs.Entity.Concrete.ProjectParameters", b =>
                 {
-                    b.HasOne("Smurfs.Entities.Conrete.Project", "Project")
+                    b.HasOne("Smurfs.Entities.Conrete.Project", null)
                         .WithMany("ProjectParameters")
                         .HasForeignKey("ProjectId");
-
-                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Smurfs.Entities.Conrete.Bank", b =>

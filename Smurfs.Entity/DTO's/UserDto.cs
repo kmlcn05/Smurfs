@@ -18,6 +18,7 @@ namespace Smurfs.Entity.DTO_s
         public DateTime DateOfStart { get; set; }
         public string usergroup { get; set; }
         public string team { get; set; }
+        public string FirstLogin { get; set; }
     }
 }
 

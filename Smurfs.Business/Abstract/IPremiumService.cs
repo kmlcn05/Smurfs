@@ -12,8 +12,8 @@ namespace Smurfs.Business.Abstract
     {
         Task<Premium> GetById(int id);
         Task<List<Premium>> GetAll();
-        void Create(PremiumDto entity);
-        void Update(PremiumDto entity);
+        void Create(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0");
+        void Update(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0");
         void Delete(Premium entity);
         List<PremiumDto> PremiumDetails();
         Task<Premium> DeletePremium(int id);

@@ -15,6 +15,7 @@ var totalManDay = null;
 var developerManDay = null;
 var analystManDay = null;
 var pmManDay = null;
+var isState = "0";
 
 var pagelog = null;
 
@@ -249,7 +250,8 @@ $(document).on('click', '.Save', function () {
                     "totalManDay": totalManDay,
                     "developerManDay": developerManDay,
                     "analystManDay": analystManDay,
-                    "pmManDay": pmManDay
+                    "pmManDay": pmManDay,
+                    "isState" : "0"
 
                 }),
                 success: function () {
@@ -285,6 +287,7 @@ $(document).on('click', '.Save', function () {
         })
     }
     else {
+        isState = allData.find(x => x.id == parseInt(id)).isState;
         if (parseInt(totalManDay) != (parseInt(developerManDay) + parseInt(analystManDay) + parseInt(pmManDay))) {
             alert("Girilen Eforlar Total Efora Eşit Olmalı");
             return false;
@@ -313,7 +316,8 @@ $(document).on('click', '.Save', function () {
                     "totalManDay": totalManDay,
                     "developerManDay": developerManDay,
                     "analystManDay": analystManDay,
-                    "pmManDay": pmManDay
+                    "pmManDay": pmManDay,
+                    "isState": isState
                 }),
                 success: function () {
 

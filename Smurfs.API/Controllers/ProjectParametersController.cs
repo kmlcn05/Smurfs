@@ -66,9 +66,9 @@ namespace Smurfs.API.Controllers
 
         // CALCULATE api/<ProjectParametersController>/5
         [HttpPost("Calculate")]
-        public IActionResult Calculate([FromBody] int projectId)
+        public IActionResult Calculate([FromBody] int projecarpanı)
         {
-            _projectParametersService.Calculate(projectId);
+            _projectParametersService.Calculate(projecarpanı);
             return Ok("Hesaplamalar doğru şekilde yapıldı");
         }
 

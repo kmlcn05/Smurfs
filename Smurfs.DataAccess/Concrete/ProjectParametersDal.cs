@@ -26,13 +26,8 @@ namespace Smurfs.DataAccess.Concrete
         {
 
             var result = from p in SmurfsContext.ProjectParameters
-                         join b in SmurfsContext.Projects
-                         on p.Project.Id equals b.Id
                          select new ProjectParametersDto
-                         { Id = p.Id, Name = p.Name, ParametersDate = p.ParametersDate, ProjeCarpani = Convert.ToString(p.ProjeCarpani), 
-                         ProjeKapasite = Convert.ToString(p.ProjeKapasite), ProjeGerceklesen = Convert.ToString(p.ProjeGerceklesen), 
-                         ProjeVerimYuzdesi = Convert.ToString(p.ProjeVerimYuzdesi), ProjeVerimDegeri = Convert.ToString(p.ProjeVerimDegeri), 
-                         ProjeVerimSonucu = Convert.ToString(p.ProjeVerimSonucu), Project = b.JiraProjectName };
+                         { Id = p.Id,ParametersDate = p.ParametersDate, ProjeCarpani = Convert.ToString(p.ProjeCarpani)};
             return result.ToList();
         }
 
@@ -54,16 +49,8 @@ namespace Smurfs.DataAccess.Concrete
             var result = new ProjectParameters();
 
             result.Id = projectParameters.Id;
-            result.Name = projectParameters.Name;
             result.ParametersDate = projectParameters.ParametersDate;
             result.ProjeCarpani = Convert.ToInt32(projectParameters.ProjeCarpani);
-            result.ProjeKapasite = Convert.ToInt32(projectParameters.ProjeKapasite);
-            result.ProjeGerceklesen = Convert.ToInt32(projectParameters.ProjeGerceklesen);
-            result.ProjeVerimYuzdesi = Convert.ToInt32(projectParameters.ProjeVerimYuzdesi);
-            result.ProjeVerimSonucu = Convert.ToInt32(projectParameters.ProjeVerimSonucu);
-            result.ProjeVerimDegeri = Convert.ToInt32(projectParameters.ProjeVerimDegeri);
-            result.Project = SmurfsContext.Projects.Single(a => a.JiraProjectName == projectParameters.Project);
-
             return result;
         }
     }

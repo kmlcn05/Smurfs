@@ -25,6 +25,6 @@ namespace Smurfs.Entity.DTO_s
         public string developerManDay { get; set; }
         public string analystManDay { get; set; }
         public string pmManDay { get; set; }
-
+        public string IsState { get; set; }
     }
 }

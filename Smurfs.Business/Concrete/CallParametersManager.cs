@@ -43,35 +43,70 @@ namespace Smurfs.Business.Concrete
             _unitofwork.CallParameters.Delete(entity);
             _unitofwork.Save();
         }
-        public CallParameters Calculate(int callId)
+        public void Calculate(int cagricarpanı)
         {
-            var call = _unitofwork.Call.GetById(callId);
-            if (call != null)
+            var users = _unitofwork.User.UserDetails();
+            var call = _unitofwork.Call.GetCallDetails();
+            var parametre = _unitofwork.CallParameters.CallParametersDetails();
+            
+            foreach (var user in users)
             {
-                CallParameters callParameter = new CallParameters();
-                callParameter.CallVerimYuzdesi = (callParameter.CallGerceklesen / callParameter.CallKapasite) * 100;
-                callParameter.CallVerimDegeri = (callParameter.CallGerceklesen - callParameter.CallKapasite);
-
-                if (callParameter.CallVerimDegeri < 0)
+                var gerceklesen = 0;
+                var month = 0;
+                var fark = 0;
+                var kapasite = 0;
+                var carpan = "";
+                var verimyüzdesi = 0;
+                var verimdeger = 0;
+                var verimsonucu = 0;
+                
+                foreach (var c in call)
                 {
-                    callParameter.CallVerimDegeri = 0;
+                    if (user.Name + " " + user.Surname ==c.Appointee && c.IsState=="0")
+                    {
+                        if (c.CallStatus == "Closed")
+                        {
+                            gerceklesen++;  // bir proje bir defa dahil edilme kontrolü   
+                            GetCallDto getCallDto = new GetCallDto
+                            {
+                                Id = c.Id,
+                                Bank = c.Bank,
+                                TaskType = c.TaskType,
+                                JiraTaskNo = c.JiraTaskNo,
+                                CallName = c.CallName,
+                                CagriCozumSuresi = c.CagriCozumSuresi,
+                                CallDetails =c.CallDetails,
+                                CallPriority = c.CallPriority,
+                                CallDateCreated = c.CallDateCreated,
+                                CallDateResolved =c.CallDateResolved,
+                                CallStatus = c.CallStatus,
+                                Appointee = c.Appointee,
+                                Reporter = c.Reporter,
+                                IsState = "1",
+                            };
+
+                            var sonuc = _unitofwork.Call.AddCall(getCallDto);
+                            _unitofwork.Call.Update(sonuc);
+                        }
+                    }
                 }
-                else
+                month = Convert.ToDateTime(user.DateOfStart).Month;
+                fark = DateTime.Now.Month - month;
+                kapasite = fark * 3; //her ay üç çağrı çözmek diye baz alınmış 
+                carpan = parametre[0].CallCarpani;
+                verimyüzdesi = (gerceklesen / kapasite) * 100;
+                verimdeger = gerceklesen - kapasite;
+                if (verimdeger < 0)
                 {
-                    callParameter.CallVerimDegeri = callParameter.CallVerimDegeri;
+                    verimdeger = 0;
                 }
-                callParameter.CallVerimSonucu = (callParameter.CallVerimDegeri * callParameter.CallCarpani);
-
-                CallParameters callhesap = new CallParameters();
-                callhesap = callParameter;
-
-                return callhesap;
+                verimsonucu = verimdeger * int.Parse(carpan);
+                if (verimsonucu > 0)
+                {
+                    _unitofwork.Premium.AddPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                    _unitofwork.GeneralPremium.AddGeneralPremium(Id:0,premiumDate:DateTime.Now,name:user.Name,surname:user.Surname,callAmount:verimsonucu.ToString());
+                }
             }
-            else
-            {
-                throw new Exception("Call Not found!");
-            }
-
         }
 
         public List<CallParametersDto> CallParametersDetails()

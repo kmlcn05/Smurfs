@@ -25,5 +25,7 @@ namespace Smurfs.Entities.Conrete
         public string PmManDay { get; set; }
         public List<ProjectParameters> ProjectParameters { get; set; }
 
+        public bool IsState { get; set; }
+
     }
 }

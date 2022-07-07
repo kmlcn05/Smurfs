@@ -54,36 +54,6 @@ namespace Smurfs.Business.Concrete
             _unitofwork.Save();
         }
        
-        public CallParameters Calculate(int callId)
-        {
-            var call = _unitofwork.Call.GetById(callId);
-            if (call != null)
-            {
-                CallParameters callParameter = new CallParameters();
-                callParameter.CallVerimYuzdesi = (callParameter.CallGerceklesen / callParameter.CallKapasite) * 100;
-                callParameter.CallVerimDegeri = (callParameter.CallGerceklesen - callParameter.CallKapasite);
-
-                if (callParameter.CallVerimDegeri < 0)
-                {
-                    callParameter.CallVerimDegeri = 0;
-                }
-                else
-                {
-                    callParameter.CallVerimDegeri = callParameter.CallVerimDegeri;
-                }
-                callParameter.CallVerimSonucu = (callParameter.CallVerimDegeri * callParameter.CallCarpani);
-
-                CallParameters callhesap = new CallParameters();
-                callhesap = callParameter;
-
-                return callhesap;
-            }
-            else
-            {
-                throw new Exception("Call Not found!");
-            }
-
-        }
         public List<GetCallDto> GetCallDetails()
         {
             var call = _unitofwork.Call.GetCallDetails();

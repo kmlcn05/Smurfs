@@ -39,18 +39,18 @@ namespace Smurfs.API.Controllers
 
         // POST api/<PremiumController>
         [HttpPost]
-        public IActionResult Create([FromBody] PremiumDto Premium)
+        public IActionResult Create(int Id, DateTime premiumDate, string name, string surname, string projectAmount = "0", string callAmount = "0")
         {
-            _premiumService.Create(Premium);
-            return Ok(Premium);
+            _premiumService.Create(Id, premiumDate, name, surname, projectAmount, callAmount);
+            return Ok("Eklendi");
         }
 
         // PUT api/<PremiumController>/5
         [HttpPut]
-        public IActionResult Update([FromBody] PremiumDto Premium)
+        public IActionResult Update(int Id, DateTime premiumDate, string name, string surname, string projectAmount, string callAmount)
         {
-            _premiumService.Update(Premium);
-            return Ok(Premium);
+            _premiumService.Update(Id, premiumDate, name, surname, projectAmount, callAmount);
+            return Ok("Güncellendi");
         }
 
         // DELETE api/<PremiumController>/5

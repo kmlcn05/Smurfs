@@ -26,6 +26,8 @@ namespace Smurfs.Core.Abstract
         ICallParametersDal CallParameters { get; }
         IProjectParametersDal ProjectParameters { get; }
 
+        IGeneralPremiumDal GeneralPremium { get; }
+
 
         void Save();
         Task<int> SaveAsync();

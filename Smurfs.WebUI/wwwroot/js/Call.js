@@ -12,6 +12,9 @@ var callDateResolved = null;
 var callStatus = null;  
 var appointee = null;
 var reporter = null;
+var isState = "0";
+
+var icerik = null;
 
 var pagelog = null;
 
@@ -124,7 +127,6 @@ $(document).on('click', '.Delete', function (e) {
                 }
             })
         }
-        var datetime = new Date().toJSON();
         pagelog = callName + " isimli ITSM silindi";
         $.ajax({
             url: "https://smuhammetulas.com/api/Log",
@@ -155,12 +157,14 @@ $(document).on('click', '.Save', function () {
     callName = $('#CallName').val();
     cagriCozumSuresi = $("#CagriCozumSuresi").val();
     callDetails = $("#CallDetails").val();
-    callPriority = $("#CallPriority").val();
+    callPriority = $("#CallPriority option:selected").text();
     callDateCreated = $('#CallDateCreated').val();
     callDateResolved = $('#CallDateResolved').val();
     callStatus = $("#CallStatus option:selected").text();
     appointee = $('#Appointee option:selected').text();
     reporter = $('#Reporter').val();
+
+    notification(appointee);
 
     //boş kontrolü yapılacak
 
@@ -194,11 +198,11 @@ $(document).on('click', '.Save', function () {
                     "callDateResolved": callDateResolved,
                     "callStatus": callStatus,
                     "appointee": appointee,
-                    "reporter": reporter
+                    "reporter": reporter,
+                    "isState" : "0"
 
                 }),
                 success: function () {
-
                     alert("Kayıt Başarılı");
                     window.location.reload()
                 },
@@ -230,6 +234,7 @@ $(document).on('click', '.Save', function () {
         })
     }
     else {
+        isState = allData.find(x => x.id == parseInt(id)).isState;
         var Confirm = confirm("Are you sure, do you want to update it?");
         if (Confirm) {
 
@@ -251,7 +256,8 @@ $(document).on('click', '.Save', function () {
                     "callDateResolved": callDateResolved,
                     "callStatus": callStatus,
                     "appointee": appointee,
-                    "reporter": reporter
+                    "reporter": reporter,
+                    "isState": isState
                 }),
                 success: function () {
 
@@ -285,14 +291,41 @@ $(document).on('click', '.Save', function () {
             }),
 
             success: function () {
-
+                
             }
         })
-    }
 
+    }
+    
 });
 
+function notification(appointee) {
+    var mail = null;
+    $.ajax({
+        'url': "https://smuhammetulas.com/api/User/GetUser",
+        'method': "GET",
+        'contentType': 'application/json'
+    }).done(function (data) {
+        data.filter(x => (x.name + " " + x.surname) == appointee).forEach(x => {
+            console.log(x.name)
+            console.log(x.surname)
+            mail = x.mail
+        });
+    })
 
+    if (callPriority == "Medium" || callPriority == "High") {
+        icerik = mail + "," + appointee + "," + callName + "," + callPriority;
+        $.ajax({
+            url: "https://smuhammetulas.com/api/Email/Notification",
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({
+                icerik
+            }),
+        })
+    }
+}
 
 $(document).on('click', '.Update', function (e) {
     if (allData && e.target && e.target.dataset && e.target.dataset.id) {

@@ -83,8 +83,10 @@ fetch("https://smuhammetulas.com/api/Call/GetCall").then(response => response.js
     var j = 0;
 
     document.getElementById('call').innerHTML = Object.keys(alldata).length;
-
-
+    document.getElementById('taskType').innerHTML = alldata[0].taskType;
+    document.getElementById('calldetay').innerHTML = alldata[0].callDetails;
+    document.getElementById('oncelik').innerHTML = alldata[0].callPriority;
+    
     alldata.forEach(x => {
         if (x.callStatus == "Closed") {
             i++;

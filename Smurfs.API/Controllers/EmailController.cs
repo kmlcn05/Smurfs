@@ -32,6 +32,20 @@ namespace Smurfs.API.Controllers
             }
            
         }
+        [HttpPost("Notification")]
+        public IActionResult Notification([FromBody] string icerik)
+        {
+            try
+            {
+                _mailService.Notification(icerik);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+
+        }
     }
 
 }
