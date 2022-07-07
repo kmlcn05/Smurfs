@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Manager";
     Layout = "~/Views/Shared/ManagerIndexLayout.cshtml";
 }
@@ -13,13 +12,14 @@
 <link href="~/css/Admin.css" rel="stylesheet" />
 <link href="~/js/AdminIndex.js" rel="stylesheet" />
 <link href="~/js/Admin.js" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 <div id="card">
     <div>
         <div class="profile">
             <img src="/assets/userAnaSayfaPhoto.png">
             <h3><strong>@ViewBag.Username</strong></h3>
-            <h5>Admin</h5>
+            <h5>Manager</h5>
         </div>
         <!--ana sayfa content -->
         <!-- !PAGE CONTENT! -->
@@ -31,58 +31,100 @@
             </header>
 
             <div class="w3-row-padding w3-margin-bottom">
-                
+
                 <div class="w3-quarter">
-                    <div class="w3-container w3-blue w3-padding-16">
+                    <div class="w3-container w3-pink w3-padding-16" style="width:300px;height:340px">
                         <h5><b> Prim </b></h5>
                         <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
                         <div class="w3-right">
-                            
-
                             <h3 id="topPrimTam"></h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h5><b><i class="fa fa-check"></i> Toplam Prim Hakeden Sayısı</b></h5> <!--dzd statu done olanlar buraya çekilecek toplamı -->
-                        <p id ="prim"></p>
+                        <h7><b><i class="fa fa-check"></i> Toplam Prim Hakeden Sayısı</b></h7> <!--dzd statu done olanlar buraya çekilecek toplamı -->
+                        <p id="prim"></p>
+                        <h5><b><i class="fa fa-check"></i> Toplam A/G</b></h5> <!--dzd statu done olanlar buraya çekilecek toplamı -->
+                        <p id="prim"></p>
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-teal w3-padding-16">
-                        <h5><b> Toplam Proje Sayısı </b></h5>
-                        <div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
+                    <div class="w3-container w3-blue w3-padding-16" style="width:300px;height:340px">
+                        <h5><b> Projeler</b></h5>
+                        <div class="w3-left"><h5><i class="fa fa-tasks w3-xxxlarge"></i><b>  Toplam</b></h5></div>
                         <div class="w3-right">
                             <h3 id="proje"></h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
-                        <p id ="ProjeTam"></p>
+                        <div class="w3-left"><h5><i class="fa fa-check w3-large "></i><b>  Tamamlandı</b></h5></div> <!--dzd statu done olanlar buraya çekilecek toplamı -->
+                        <div class="w3-right">
+                            <h3 id="ProjeTam"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-history w3-large "></i><b>  Devam Ediyor</b></h5></div>
+                        <div class="w3-right">
+                            <h3 id="ProjeDevam"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-times w3-large "></i><b>  İptal</b></h5></div>
+                        <div class="w3-right">
+                            <h3 id="ProjeIptal"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
                     </div>
                 </div>
                 <div class="w3-quarter">
-                    <div class="w3-container w3-teal w3-padding-16">
-                        <h5><b> Toplam ITSM Sayısı </b></h5>
-                        <div class="w3-left"><i class="fa fa-laptop w3-xxxlarge"></i></div>
+                    <div class="w3-container  w3-teal w3-padding-16" style="width:300px;height:340px">
+                        <h5><b> ITSM </b></h5>
+                        <div class="w3-left"><h5><i class="fa fa-tasks w3-xxxlarge"></i><b>  Toplam</b></h5></div>
                         <div class="w3-right">
-                            <h3 id="itsm"></h3>
+                            <h3 id="call"></h3>
                         </div>
                         <div class="w3-clear"></div>
-                        <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
-                        <p id ="itsmTam"></p>
+                        <div class="w3-left"><h5><i class="fa fa-check w3-large "></i><b>  Tamamlandı</b></h5></div> <!--dzd statu done olanlar buraya çekilecek toplamı -->
+                        <div class="w3-right">
+                            <h3 id="callTam"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-history w3-large "></i><b>  Devam Ediyor</b></h5></div>
+                        <div class="w3-right">
+                            <h3 id="calldevam"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-users w3-large "></i><b>  Müşteri Bekleniyor</b></h5></div>
+                        <div class="w3-right">
+                            <h3 id="callbeklemede"></h3>
+                        </div>
+                        <div class="w3-clear"></div>
                     </div>
                 </div>
-                
-            </div>
-
-            <!--primlerim tablo -->
-            <div class="w3-panel">
-                <div class="w3-row-padding" style="margin:0 -16px">
-
-                    <div class="w3-twothird">
-                        <!--burada foreach ile dönülücek -->
-                        <br>
-                        <button class="w3-button w3-purple w3-xlarge" style="width:800px "><a href="/Premium/Premium"> Prim  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
+                <div class="w3-quarter">
+                    <div class="w3-container w3-orange w3-text-white w3-padding-16" style="width:300px;height:340px">
+                        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3> </h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4> DZD Takım</h4>
+                        @*<h5 id="takim"></h5>*@
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-users w3-large "></i><b>  Eleman Sayısı</b></h5></div>
+                        <div class="w3-right">
+                            @*<h3 id="callbeklemede"></h3>*@
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-users w3-large "></i><b>  Lead Sayısı</b></h5></div>
+                        <div class="w3-right">
+                            @*<h3 id="callbeklemede"></h3>*@
+                        </div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-clear"></div>
+                        <div class="w3-left"><h5><i class="fa fa-users w3-large "></i><b>  Head Sayısı</b></h5></div>
+                        <div class="w3-right">
+                            @*<h3 id="callbeklemede"></h3>*@
+                        </div>
+                        <div class="w3-clear"></div>
                     </div>
                 </div>
+
             </div>
             <!--projelerim tablo -->
             <div class="w3-panel">
@@ -90,60 +132,240 @@
 
                     <div class="w3-twothird">
                         <!--burada foreach ile dönülücek -->
-                        <br>
-                        <button class="w3-button w3-purple w3-xlarge" style="width:800px "><a href="/Project/Project"> Projeler  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
+                        <h5><b><i class="fa fa-tasks"></i>Projelerim</b></h5>
+                        <table border="1">
+
+                            <tr>
+                                <th><strong>Proje No</strong></th>
+                                <th><strong>Proje Ad</strong></th>
+                                <th><strong>DZD Statü</strong></th>
+                            </tr>
+
+                            <tr>
+                                <td id="projeno"></td>
+                                <td id="projead"></td>
+                                <td style="text-align:center;" id="dzdstatu"></td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
+
             <!--Çagrılarım tablo -->
             <div class="w3-container">
+                <h5><b><i class="fa fa-laptop"></i>ITSM</b></h5>
+                <table border="1">
+
+                    <tr>
+                        <th><strong>Task Tipi </strong></th>
+                        <th><strong>ITSM Detay</strong></th>
+                        <th><strong>Öncelik</strong></th>
+                    </tr>
+
+                    <tr>
+                        <td id="taskType"></td>
+                        <td id="calldetay"></td>
+                        <td style="text-align:center;" id="oncelik"></td>
+                    </tr>
+                </table>
+                <!--primlerim tablo -->
+                <div class="w3-panel">
+                    <div class="w3-row-padding" style="margin:0 -16px">
+
+                        <div class="w3-twothird">
+                            <!--burada foreach ile dönülücek -->
+                            <br>
+                            <button class="w3-button w3-purple w3-xlarge" style="width:800px "><a href="/Premium/Premium"> Prim  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
+                        </div>
+                    </div>
+                </div>
+                <!--projelerim tablo -->
+                <div class="w3-panel">
+                    <div class="w3-row-padding" style="margin:0 -16px">
+
+                        <div class="w3-twothird">
+                            <!--burada foreach ile dönülücek -->
+                            <br>
+
+                            <button class="w3-button w3-green w3-xlarge" style="width:800px "><a href="/Project/Project"> Projeler  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
+                        </div>
+                    </div>
+                </div>
+
+                <!--Çagrılarım tablo -->
+                <div class="w3-container">
+                    <br>
+                    <button class="w3-button w3-pink w3-xlarge" style="width:800px"><a href="/Call/Call"> ITSM  <i class="fa fa-arrow-right"></i></button> <!--burada çağrılarım sayfasına a tagi ile yönlendirilecek-->
+                    <br>
+                </div>
+                <!--log tablo -->
+                <div class="w3-panel">
+                    <div class="w3-row-padding" style="margin:0 -16px">
+
+                        <div class="w3-twothird">
+                            <!--burada foreach ile dönülücek -->
+                            <br>
+                            <button class="w3-button w3-blue w3-xlarge" style="width:800px "><a href="/Log/Log"> Log Tablosu  <i class="fa fa-arrow-right"></i> </a> </button> <!--burada Projelerim sayfasına a tagi ile yönlendirilecek-->
+                        </div>
+                    </div>
+                </div>
                 <br>
-                <button class="w3-button w3-brown w3-xlarge" style="width:800px"><a href="/Call/Call"> ITSM  <i class="fa fa-arrow-right"></i></button> <!--burada çağrılarım sayfasına a tagi ile yönlendirilecek-->
-            </div>
-            <br>
+                <div class="w3-container">
+                    <h5><b><i class="fa fa-tasks"></i>Projeler</b></h5>
+                    <!--Project BarChart Horizontal -->
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                    <script>
+                        var tamamlandi = parseInt(document.getElementById("ProjeTam").innerHTML);
+                        var devamediyor = parseInt(document.getElementById("ProjeDevam").innerHTML);
+                        var iptal = parseInt(document.getElementById("ProjeIptal").innerHTML);
+                        var tamamlandi2 = (tamamlandi / (tamamlandi + devamediyor + iptal)) * 100;
+                        var tamamlandi3 = parseInt(tamamlandi2);
+                        var devamediyor2 = (devamediyor / (tamamlandi + devamediyor + iptal)) * 100;
+                        var devamediyor3 = parseInt(devamediyor2);
+                        var iptal2 = (iptal / (tamamlandi + devamediyor + iptal)) * 100;
+                        var iptal3 = parseInt(iptal2);
 
-            <div class="w3-container">
-                <h5><b><i class="fa fa-tasks"></i>Projeler</b></h5>
-                <h5><b><i class="fa fa-check"></i> Tamamlandı </b></h5>
-                <div class="w3-grey">
+                        var xValues = ["Tamamlandı", "Devam Ediyor", "İptal"];
+                        var yValues = [tamamlandi3, devamediyor3, iptal3];
+                        var barColors = ["green", "orange", "red"];
+
+                        new Chart("myChart", {
+                            type: "horizontalBar",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    //text: "World Wine Production 2018"
+                                },
+                                scales: {
+                                    xAxes: [{ ticks: { min: 0, max: 200 } }]
+                                }
+                            }
+                        });
+                    </script>
+                    @*<h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-green" id="ProjeTam" style="width:55%">
+                    <p id="projetamyuzde"></p>
+                    </div>
+                    </div>
+                    <h5><b><i class="fa fa-check"></i> Tamamlandı </b></h5>
+                    <div class="w3-grey">
                     <div class="w3-container w3-center w3-padding w3-green " style="width:55%">+55%</div>
-                </div>
+                    </div>
 
-                <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
-                <div class="w3-grey">
+                    <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
+                    <div class="w3-grey">
                     <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
-                </div>
+                    </div>
 
-                <h5><b><i class="fa fa-times"></i>İptal</b></h5>
-                <div class="w3-grey">
+                    <h5><b><i class="fa fa-times"></i>İptal</b></h5>
+                    <div class="w3-grey">
                     <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+                    </div>*@
                 </div>
-            </div>
-            <br>
-            <hr>
+                <br>
+                <hr>
 
-            <div class="w3-container">
+                <div class="w3-container">
+                    <h5><b><i class="fa fa-laptop"></i>ITSM</b></h5>
+                    <!--ITSM BarChart Horizontal -->
+                    <canvas id="myCharts" style="width:100%;max-width:600px"></canvas>
+                    <script>
+                        var tamamlandi = parseInt(document.getElementById("callTam").innerHTML);
+                        var devamediyor = parseInt(document.getElementById("calldevam").innerHTML);
+                        var bekleme = parseInt(document.getElementById("callbeklemede").innerHTML);
+                        var tamamlandi2 = (tamamlandi / (tamamlandi + devamediyor + bekleme)) * 100;
+                        var tamamlandi3 = parseInt(tamamlandi2);
+                        var devamediyor2 = (devamediyor / (tamamlandi + devamediyor + bekleme)) * 100;
+                        var devamediyor3 = parseInt(devamediyor2);
+                        var bekleme2 = (bekleme / (tamamlandi + devamediyor + bekleme)) * 100;
+                        var bekleme3 = parseInt(bekleme2);
+
+                        var xValues = ["Tamamlandı", "Devam Ediyor", "Müşteri Bekleniyor"];
+                        var yValues = [tamamlandi3, devamediyor3, bekleme3];
+                        var barColors = ["green", "orange", "purple"];
+
+                        new Chart("myCharts", {
+                            type: "horizontalBar",
+                            data: {
+                                labels: xValues,
+                                datasets: [{
+                                    backgroundColor: barColors,
+                                    data: yValues
+                                }]
+                            },
+                            options: {
+                                legend: { display: false },
+                                title: {
+                                    display: true,
+                                    //text: "World Wine Production 2018"
+                                },
+                                scales: {
+                                    xAxes: [{ ticks: { min: 0, max: 200 } }]
+                                }
+                            }
+                        });
+                    </script>
+                    @*<h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
+                    </div>
+
+                    <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                    </div>*@
+                </div>
+                <div class="w3-container">
+                    @*<h5><b><i class="fa fa-tasks"></i>Projeler</b></h5>
+                    <h5><b><i class="fa fa-check"></i> Tamamlandı </b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-blue " style="width:55%">+55%</div>
+                    </div>
+
+                    <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                    </div>
+
+                    <h5><b><i class="fa fa-times"></i>İptal</b></h5>
+                    <div class="w3-grey">
+                    <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+                    </div>*@
+                </div>
+                <br>
+                <hr>
+                @*
+                <div class="w3-container">
                 <h5><b><i class="fa fa-laptop"></i>ITSM</b></h5>
                 <h5><b><i class="fa fa-check"></i> Tamamlandı</b></h5>
                 <div class="w3-grey">
-                    <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
+                <div class="w3-container w3-center w3-padding w3-green" style="width:55%">+55%</div>
                 </div>
 
                 <h5><b><i class="fa fa-code-fork"></i> Devam Ediyor</b></h5>
                 <div class="w3-grey">
-                    <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+                <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
                 </div>
+                </div>*@
+                <br><br><br>
+
+
+                <!-- End page content -->
             </div>
-            <br><br><br>
 
-
-            <!-- End page content -->
         </div>
 
     </div>
-
-</div>
-@section Scripts
+    @section Scripts
         {
         <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
         <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
