@@ -67,7 +67,7 @@ namespace Smurfs.DataAccess.Concrete
             result.CallStatus = SmurfsContext.CallStatus.Single(a => a.CallStatusName == call.CallStatus);
             result.Appointee = call.Appointee;
             result.Reporter = call.Reporter;
-            result.IsState = Convert.ToBoolean(call.IsState);
+            result.IsState =call.IsState.Equals("1");
             return result;
         }
 

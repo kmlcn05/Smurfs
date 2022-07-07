@@ -112,7 +112,6 @@ function CalculateProject(projeCarpani) {
         success: function () {
 
             alert("Kayıt Başarılı");
-            window.location.reload()
         },
         error: function () {
             alert("Error please try again");
@@ -134,7 +133,6 @@ function CalculateCall(callCarpani) {
         success: function () {
 
             alert("Kayıt Başarılı");
-            window.location.reload()
         },
         error: function () {
             alert("Error please try again");
